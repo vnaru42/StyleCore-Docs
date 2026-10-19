@@ -1,0 +1,120 @@
+site_name: StyleCore Docs
+site_description: User guides and complete feature documentation for StyleCore, the QGIS plugin for shared styles, templates
+  and layouts.
+site_author: StyleCore
+site_url: https://vnaru42.github.io/StyleCore-Docs/
+repo_url: https://github.com/vnaru42/StyleCore
+repo_name: vnaru42/StyleCore
+edit_uri: ''
+copyright: StyleCore Docs · StyleCore v1.8.0
+theme:
+  name: material
+  language: en
+  logo: assets/images/stylecore-logo.png
+  favicon: assets/images/stylecore-logo.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+  - navigation.tracking
+  - navigation.sections
+  - navigation.expand
+  - navigation.top
+  - navigation.indexes
+  - toc.follow
+  - content.code.copy
+  - content.tabs.link
+  - search.suggest
+  - search.highlight
+  palette:
+  - scheme: default
+    primary: custom
+    accent: custom
+    toggle:
+      icon: material/weather-night
+      name: Switch to dark mode
+  - scheme: slate
+    primary: custom
+    accent: custom
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+markdown_extensions:
+- admonition
+- attr_list
+- md_in_html
+- tables
+- def_list
+- footnotes
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.highlight:
+    anchor_linenums: true
+- toc:
+    permalink: false
+    toc_depth: 2-3
+extra_css:
+- assets/stylesheets/extra.css
+extra_javascript:
+- assets/javascripts/header-home-link.js
+extra:
+  social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/vnaru42/StyleCore
+    name: StyleCore on GitHub
+nav:
+- Home: index.md
+- All Features: features/feature-reference.md
+- Getting Started:
+  - Installation: getting-started/installation.md
+  - First use: getting-started/first-use.md
+  - Basic Usage: getting-started/basic-usage.md
+- Documentation:
+  - Configuration – In QGIS: documentation/configuration.md
+  - Configuration JSON: documentation/configuration-json.md
+  - Layer Styling: documentation/layer-styling.md
+  - Project Templates: documentation/project-templates.md
+  - Print Layouts: documentation/print-layouts.md
+  - Developer Tools: documentation/developer-tools.md
+  - Troubleshooting: documentation/troubleshooting.md
+- About:
+  - About StyleCore: about.md
+plugins:
+- search
+- i18n:
+    docs_structure: folder
+    fallback_to_default: false
+    reconfigure_material: true
+    reconfigure_search: true
+    languages:
+    - locale: en
+      default: true
+      name: English
+      build: true
+    - locale: da
+      name: Dansk
+      build: true
+      site_name: StyleCore Docs
+      nav_translations:
+        Home: Forside
+        All Features: Alle funktioner
+        Getting Started: Kom godt i gang
+        Installation: Installation
+        First use: Første brug
+        Basic Usage: Daglig brug
+        Documentation: Dokumentation
+        Configuration – In QGIS: Konfiguration – i QGIS
+        Configuration JSON: Konfiguration JSON
+        Layer Styling: Lagstyling
+        Project Templates: Projektskabeloner
+        Print Layouts: Printlayouts
+        Developer Tools: Udviklerværktøjer
+        Troubleshooting: Fejlfinding
+        About: Om
+        About StyleCore: Om StyleCore
+      theme:
+        language: da

@@ -1,0 +1,254 @@
+/* StyleCore Docs example: restrained colors, generous whitespace, and a clear reading hierarchy. */
+:root {
+  --md-primary-fg-color: #405b52;
+  --md-primary-fg-color--light: #67857b;
+  --md-primary-fg-color--dark: #263e36;
+  --md-accent-fg-color: #aa7657;
+  --sc-ink: #243d37;
+  --sc-muted: #5d7169;
+  --sc-border: #dce5df;
+  --sc-bg: #f4f7f4;
+  --sc-paper: #ffffff;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #97bcae;
+  --md-primary-fg-color--light: #aacdc0;
+  --md-primary-fg-color--dark: #588173;
+  --md-accent-fg-color: #d6ad85;
+  --sc-ink: #e8f0ea;
+  --sc-muted: #a7c1b5;
+  --sc-border: #455b52;
+  --sc-bg: #1f302c;
+  --sc-paper: #293b35;
+}
+.md-header { box-shadow: 0 1px 0 rgba(100,130,115,.12); }
+.md-typeset h1 { font-weight: 750; letter-spacing: -.035em; }
+.md-typeset h2 { font-weight: 680; letter-spacing: -.02em; }
+.md-typeset a { text-underline-offset: .18em; }
+.md-typeset .sc-hero {
+  background: linear-gradient(125deg, #e8f0e8, #f7f6ee 72%, #efe8de);
+  border: 1px solid #dbe5dc;
+  border-radius: 1.05rem;
+  padding: clamp(1.45rem, 4.5vw, 3.4rem);
+  margin: .5rem 0 1.45rem;
+  position: relative;
+  overflow: hidden;
+}
+.md-typeset .sc-hero:after {
+  content: ""; width: 18rem; height: 18rem; position: absolute;
+  right: -8rem; bottom: -11rem; border: 2.2rem solid #c5d8cd;
+  border-radius: 45%; transform: rotate(-24deg); opacity: .42; pointer-events: none;
+}
+.md-typeset .sc-hero > * { position: relative; z-index: 1; }
+.md-typeset .sc-hero h1 { color: #28473b; font-size: clamp(2.0rem, 4.4vw, 3.15rem); line-height: 1.11; margin: .4rem 0 .85rem; max-width: 14ch; }
+.md-typeset .sc-hero p { color: #425d52; max-width: 42rem; font-size: .91rem; line-height: 1.6; }
+.md-typeset .sc-eyebrow { color: #657f70 !important; font-size: .68rem !important; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+.md-typeset .sc-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.25rem 0 0; }
+.md-typeset .sc-actions .md-button { font-size: .77rem; padding: .65rem 1rem; border-radius: .45rem; }
+.md-typeset .sc-actions .md-button--primary { background: #405b52; border-color: #405b52; color: #fff; }
+.md-typeset .sc-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .85rem; margin: 1.2rem 0 1.85rem; align-items: stretch; }
+.md-typeset .sc-card-grid--two { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.md-typeset .sc-card { display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; min-width: 0; height: 100%; padding: 1.2rem; border: 1px solid var(--sc-border); border-radius: .8rem; background: var(--sc-paper); color: var(--sc-ink); text-decoration: none; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+.md-typeset .sc-card:hover { border-color: #9eb9aa; transform: translateY(-2px); box-shadow: 0 8px 26px rgba(41,70,50,.08); }
+.md-typeset .sc-card h3 { margin: .1rem 0 0; font-size: .93rem; color: var(--sc-ink); }
+.md-typeset .sc-card p { font-size: .76rem; color: var(--sc-muted); margin: 0; line-height: 1.55; }
+.md-typeset .sc-card .sc-icon { font-size: 1.35rem; }
+.md-typeset .sc-kicker { color: var(--sc-muted); text-transform: uppercase; font-size: .66rem; letter-spacing: .10em; font-weight: 700; }
+.md-typeset .sc-band { padding: 1.15rem 1.35rem; background: var(--sc-bg); border: 1px solid var(--sc-border); border-radius: .75rem; margin: 1rem 0 1.6rem; }
+.md-typeset .sc-band p { margin: 0; }
+.md-typeset .sc-mini-stats { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0 1.6rem; }
+.md-typeset .sc-mini-stats > div { flex: 1; min-width: 120px; padding: 1rem; background: var(--sc-bg); border-radius: .6rem; }
+.md-typeset .sc-mini-stats strong { display: block; font-size: 1.65rem; color: var(--sc-ink); line-height: 1.1; }
+.md-typeset .sc-mini-stats span { font-size: .66rem; color: var(--sc-muted); }
+.md-typeset .sc-steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .7rem; margin: 1rem 0 1.8rem; }
+.md-typeset .sc-step { border-left: 3px solid #96b2a2; background: var(--sc-bg); padding: .8rem; border-radius: .15rem .6rem .6rem .15rem; }
+.md-typeset .sc-step strong { display:block; font-size:.8rem; margin-bottom:.3rem; }
+.md-typeset .sc-step p { font-size:.73rem; color:var(--sc-muted); margin:0; }
+.md-typeset .sc-note { font-size: .74rem; color: var(--sc-muted); }
+[data-md-color-scheme="slate"] .md-typeset .sc-hero { background: linear-gradient(130deg, #293f36, #26352f 75%, #3b3d34); border-color: #496151; }
+[data-md-color-scheme="slate"] .md-typeset .sc-hero h1 { color: #e8f2e8; }
+[data-md-color-scheme="slate"] .md-typeset .sc-hero p { color: #bdd4c5; }
+[data-md-color-scheme="slate"] .md-typeset .sc-eyebrow { color: #b6d1bb !important; }
+[data-md-color-scheme="slate"] .md-typeset .sc-hero:after { border-color: #4b6b59; }
+@media (max-width: 820px) {
+  .md-typeset .sc-card-grid { grid-template-columns: 1fr 1fr; }
+  .md-typeset .sc-steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .md-typeset .sc-card-grid, .md-typeset .sc-card-grid--two { grid-template-columns: 1fr; }
+  .md-typeset .sc-hero { padding: 1.4rem; }
+}
+
+/* Show the site name in the top bar only, not above the left navigation. */
+.md-sidebar--primary .md-nav--primary > .md-nav__title {
+  display: none;
+}
+
+/* Keep the in-page section links on the right, but hide the redundant label. */
+.md-sidebar--secondary .md-nav__title {
+  display: none;
+}
+
+/* Keep headings clean on every page: no paragraph-sign permalink icons. */
+.md-typeset .headerlink {
+  display: none !important;
+}
+
+/* Make the site name next to the logo act like a normal home link. */
+.md-header__title .sc-header-home-link {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+.md-header__title .sc-header-home-link:hover {
+  color: inherit;
+}
+.md-header__title .sc-header-home-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+
+/* Compact reading layout: smaller text and less vertical scrolling.
+   These changes only affect the page content, not the side navigation. */
+.md-typeset {
+  font-size: .76rem;
+  line-height: 1.52;
+}
+.md-typeset h1:not(.sc-hero h1) {
+  font-size: 1.82em;
+  line-height: 1.2;
+  margin: 0 0 .75em;
+}
+.md-typeset h2 {
+  font-size: 1.42em;
+  line-height: 1.28;
+  margin: 1.4em 0 .55em;
+}
+.md-typeset h3 {
+  font-size: 1.15em;
+  line-height: 1.3;
+  margin: 1.1em 0 .45em;
+}
+.md-typeset h4 {
+  font-size: 1.03em;
+  margin: .95em 0 .4em;
+}
+.md-typeset p, .md-typeset ul, .md-typeset ol,
+.md-typeset table, .md-typeset blockquote,
+.md-typeset .highlight, .md-typeset .admonition {
+  margin-top: .65em;
+  margin-bottom: .75em;
+}
+.md-typeset li + li {
+  margin-top: .15em;
+}
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: .55em .8em;
+}
+
+/* Make the custom homepage sections match the compact document sizing. */
+.md-typeset .sc-hero {
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  margin: .35rem 0 1rem;
+}
+.md-typeset .sc-hero h1 {
+  font-size: clamp(1.75rem, 3.35vw, 2.55rem);
+  line-height: 1.13;
+  margin: .3rem 0 .6rem;
+}
+.md-typeset .sc-hero p {
+  font-size: .83rem;
+  line-height: 1.5;
+}
+.md-typeset .sc-actions {
+  margin-top: .85rem;
+}
+.md-typeset .sc-actions .md-button {
+  font-size: .72rem;
+  padding: .5rem .85rem;
+}
+.md-typeset .sc-card-grid,
+.md-typeset .sc-card-grid--two {
+  gap: .7rem;
+  margin: .9rem 0 1.3rem;
+}
+.md-typeset .sc-card {
+  padding: .9rem;
+  gap: .25rem;
+}
+.md-typeset .sc-card h3 {
+  font-size: .84rem;
+  margin: .05rem 0 0;
+}
+.md-typeset .sc-card p {
+  font-size: .71rem;
+  line-height: 1.45;
+}
+.md-typeset .sc-card .sc-icon {
+  font-size: 1.15rem;
+}
+.md-typeset .sc-band {
+  padding: .85rem 1.05rem;
+  margin: .75rem 0 1.1rem;
+}
+.md-typeset .sc-steps {
+  gap: .55rem;
+  margin: .7rem 0 1.25rem;
+}
+.md-typeset .sc-step {
+  padding: .65rem;
+}
+.md-typeset .sc-mini-stats {
+  margin: .75rem 0 1.2rem;
+}
+.md-typeset .sc-mini-stats > div {
+  padding: .8rem;
+}
+.md-typeset .sc-mini-stats strong {
+  font-size: 1.4rem;
+}
+@media (max-width: 480px) {
+  .md-typeset .sc-hero {
+    padding: 1.15rem;
+  }
+}
+
+/* Equal spacing between main navigation sections */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item {
+    margin-top: 0.6rem;
+}
+
+/* Make Home and All Features look like section headings */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item:not(.md-nav__item--nested) > .md-nav__link {
+    font-weight: 700;
+    margin: 0;
+}
+
+/* No extra space before the first item */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item:first-child {
+    margin-top: 0;
+}
+
+/* More space before section headings like
+   Getting Started, Documentation, Advanced, About */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested {
+    margin-top: 1.4rem;
+}
+
+/* Make non-clickable section headings a little smaller and muted */
+.md-sidebar--primary .md-nav--primary > .md-nav__list
+> .md-nav__item > .md-nav__link:not([href]) {
+    font-size: 0.92em;
+    font-weight: 700;
+    color: var(--md-default-fg-color--light);
+}
+
+/* Make page links like Installation, First use, Configuration,
+   JSON Reference slightly darker and a bit stronger */
+.md-sidebar--primary .md-nav--primary .md-nav__item--nested .md-nav__list .md-nav__link {
+    color: var(--md-default-fg-color);
+    font-weight: 500;
+}
