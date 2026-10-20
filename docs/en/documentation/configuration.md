@@ -38,10 +38,12 @@ This is where StyleCore **will create** resource folders. Decide where the resou
 StyleCore_resources/
 ├── layer_styles/        # QML style files
 ├── template_projects/   # QGS / QGZ project templates
-└── layouts/             # QPT layout templates and SVG graphics
+├── layouts/             # QPT layout templates and SVG graphics
+└── fonts/               # Optional; create manually for shared fonts
 ```
 
-The subfolder names are configurable. **When you save a new configuration, StyleCore creates those resource subfolders**. It does not create your actual QML, QGS/QGZ, QPT or SVG files. Add those separately.
+The three standard resource folder names are configurable. **When you save a new configuration, StyleCore creates `layer_styles`, `template_projects` and `layouts`** (using your chosen names). It does not create your actual QML, QGS/QGZ, QPT or SVG files. Add those separately. The optional `fonts` folder is not created automatically.
+
 
 ### 2. Use New configuration in QGIS
 
@@ -78,10 +80,19 @@ StyleCore uses three different locations with different purposes:
 | Location | What is stored there? | Who is affected? |
 |---|---|---|
 | Active configuration JSON | Shared mappings, File Suffix Rules, selected template refresh, resource paths | Everyone using that shared JSON after reloading |
-| Resource root folders | Actual QML files, `.qgs`/`.qgz` templates, `.qpt` layouts and SVG files | Everyone with access to the folders |
+| Resource root folders | Actual QML files, `.qgs`/`.qgz` templates, `.qpt` layouts, fonts and SVG files | Everyone with access to the folders |
 | Your QGIS profile | Selected configuration path, automatic-styling toggle, personal style overrides | Only your own QGIS profile |
 
 Project templates are a special case: StyleCore **copies** project templates from the configured resource folder into each user's local QGIS `project_templates` directory. QML and QPT files are used from their configured locations rather than being included inside the JSON.
+
+### Optional shared fonts
+
+If your QGIS styles or print layouts use fonts that are not installed on every colleague’s computer, create a folder named **`fonts`** directly inside the configured **root folder**. Add the required font files (`.ttf` or `.otf`) there, for example `fonts/Roboto-Regular.ttf`. Include any license files required when distributing the fonts.
+
+StyleCore automatically registers fonts from this folder with QGIS when the configuration is loaded. This works with local and accessible shared network folders, including UNC paths. The fonts do **not** need to be installed in Windows, and **no new JSON field or settings change is required**.
+
+The folder is entirely optional. If it does not exist, StyleCore continues working normally. Create it manually if needed; it is not part of the three folders created by **New configuration**.
+
 
 ## Switch between configurations
 

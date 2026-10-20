@@ -38,10 +38,11 @@ Det er her, StyleCore **opretter** ressourcemapperne. Vælg, om de skal ligge p�
 StyleCore_resources/
 ├── layer_styles/        # QML-stylefiler
 ├── template_projects/   # QGS/QGZ-projektskabeloner
-└── layouts/             # QPT-printlayouts og SVG-grafik
+├── layouts/             # QPT-printlayouts og SVG-grafik
+└── fonts/               # Valgfri; oprettes manuelt
 ```
 
-Navnene på undermapperne kan ændres. **Når du gemmer en ny konfiguration, opretter StyleCore undermapperne.** Den opretter ikke selve QML-, QGS/QGZ-, QPT- eller SVG-filerne. Dem tilføjer du bagefter.
+Navnene på de tre almindelige ressourcemapper kan ændres. **Når du gemmer en ny konfiguration, opretter StyleCore `layer_styles`, `template_projects` og `layouts`** (med de navne, du har valgt). Den opretter ikke selve QML-, QGS/QGZ-, QPT- eller SVG-filerne. Dem tilføjer du bagefter. Den valgfrie `fonts`-mappe oprettes ikke automatisk.
 
 ### 2. Brug New configuration i QGIS
 
@@ -78,10 +79,18 @@ StyleCore bruger tre placeringer til forskellige formål:
 | Placering | Hvad ligger der? | Hvem berøres? |
 |---|---|---|
 | Aktiv konfigurations-JSON | Fælles mappings, File Suffix Rules, valgte skabeloner til refresh og ressourcestier | Alle, der bruger JSON-filen, når den indlæses igen |
-| Ressourcernes rodmappe | QML-filer, `.qgs`/`.qgz`-skabeloner, `.qpt`-layouts og SVG-filer | Alle med adgang til mapperne |
+| Ressourcernes rodmappe | QML-filer, `.qgs`/`.qgz`-skabeloner, `.qpt`-layouts, valgfrie skrifttyper og SVG-filer | Alle med adgang til mapperne |
 | Din QGIS-profil | Sti til valgt konfiguration, automatisk styling til/fra og personlige overrides | Kun din egen QGIS-profil |
 
 Projektskabeloner er et særligt tilfælde: StyleCore **kopierer** dem fra den fælles ressourcemappe til hver brugers lokale QGIS-mappe `project_templates`. QML- og QPT-filer bruges fra deres konfigurerede placeringer og gemmes ikke inde i JSON-filen.
+
+### Valgfrie fælles skrifttyper
+
+Hvis dine QGIS-lagstyles eller printlayouts bruger skrifttyper, som ikke er installeret på alle kollegers computere, kan du selv oprette en mappe med navnet **`fonts`** direkte i konfigurationens **rodmappe**. Læg skrifttypefiler (`.ttf` eller `.otf`) i mappen, fx `fonts/Roboto-Regular.ttf`. Husk eventuelle licensfiler, som skal følge med ved distribution af skrifttyperne.
+
+StyleCore registrerer automatisk skrifttyperne i QGIS, når konfigurationen indlæses. Det fungerer både med lokale mapper og tilgængelige fælles netværksmapper, herunder UNC-stier. Skrifttyperne behøver **ikke** være installeret i Windows, og du skal **ikke** ændre JSON-filen eller tilføje indstillinger.
+
+Mappen er helt valgfri. Hvis den ikke findes, fungerer StyleCore som normalt. Den skal oprettes manuelt og er ikke en af de tre mapper, som **New configuration** opretter.
 
 ## Skift mellem konfigurationer
 
