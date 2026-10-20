@@ -14,7 +14,7 @@
 5. Find the StyleCore icon in the QGIS toolbar.
 
 !!! note "Official QGIS plugin catalogue"
-    These steps use the GitHub release. Im working on getting StyleCore accepted in the official QGIS plugin catalogue
+    These steps use the GitHub release. StyleCore has been submitted to the official QGIS' Plugin Repository and is awaiting approval.
 
 ## After installation
 

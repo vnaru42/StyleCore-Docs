@@ -6,7 +6,7 @@ site_url: https://vnaru42.github.io/StyleCore-Docs/
 repo_url: https://github.com/vnaru42/StyleCore
 repo_name: vnaru42/StyleCore
 edit_uri: ''
-copyright: StyleCore Docs · StyleCore v1.8.0
+copyright: StyleCore Docs · StyleCore v1.8.3
 theme:
   name: material
   language: en

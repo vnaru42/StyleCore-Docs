@@ -12,6 +12,6 @@ Det er udviklet til både enkelte QGIS-brugere og teams, der deler GIS-ressource
 
 ## Dokumentation
 
-Vejledningerne beskriver **StyleCore v1.8.0**, den første offentlige version. Dokumentationshjemmesiden vedligeholdes uafhængigt af QGIS-pluginet og kan opdateres uden at udgive ny pluginkode.
+Vejledningerne beskriver **StyleCore v1.8.3**, den første offentlige version. Dokumentationshjemmesiden vedligeholdes uafhængigt af QGIS-pluginet og kan opdateres uden at udgive ny pluginkode.
 
 Begynd med [Installation](getting-started/installation.md) og [Første brug](getting-started/first-use.md), eller se [Alle funktioner](features/feature-reference.md) for et hurtigt overblik.

@@ -12,6 +12,6 @@ It is designed to support both individual QGIS users and teams that share GIS re
 
 ## Documentation
 
-These guides describe **StyleCore v1.8.0**, its first public release. The documentation website is maintained independently of the QGIS plugin and may be updated without releasing new plugin code.
+These guides describe **StyleCore v1.8.3**, its first public release. The documentation website is maintained independently of the QGIS plugin and may be updated without releasing new plugin code.
 
 Start with [Installation](getting-started/installation.md) and [First use](getting-started/first-use.md), or see [All Features](features/feature-reference.md) for a quick overview.
