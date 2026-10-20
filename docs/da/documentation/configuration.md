@@ -84,7 +84,7 @@ StyleCore bruger tre placeringer til forskellige formål:
 
 Projektskabeloner er et særligt tilfælde: StyleCore **kopierer** dem fra den fælles ressourcemappe til hver brugers lokale QGIS-mappe `project_templates`. QML- og QPT-filer bruges fra deres konfigurerede placeringer og gemmes ikke inde i JSON-filen.
 
-### Valgfrie fælles skrifttyper
+## Valgfrie fælles skrifttyper
 
 Hvis dine QGIS-lagstyles eller printlayouts bruger skrifttyper, som ikke er installeret på alle kollegers computere, kan du selv oprette en mappe med navnet **`fonts`** direkte i konfigurationens **rodmappe**. Læg skrifttypefiler (`.ttf` eller `.otf`) i mappen, fx `fonts/Roboto-Regular.ttf`. Husk eventuelle licensfiler, som skal følge med ved distribution af skrifttyperne.
 

@@ -85,7 +85,7 @@ StyleCore uses three different locations with different purposes:
 
 Project templates are a special case: StyleCore **copies** project templates from the configured resource folder into each user's local QGIS `project_templates` directory. QML and QPT files are used from their configured locations rather than being included inside the JSON.
 
-### Optional shared fonts
+## Optional shared fonts
 
 If your QGIS styles or print layouts use fonts that are not installed on every colleague’s computer, create a folder named **`fonts`** directly inside the configured **root folder**. Add the required font files (`.ttf` or `.otf`) there, for example `fonts/Roboto-Regular.ttf`. Include any license files required when distributing the fonts.
 
