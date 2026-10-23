@@ -7,7 +7,9 @@ StyleCores konfigurationer er JSON-filer. Du behøver normalt ikke redigere dem 
     {
       "name": "Office",
       "config_id": "unique-id-created-by-stylecore",
-      "root_folder": "C:/GIS/StyleCore_resources",
+      "root_mode": "config_dir",
+      "root_folder": "",
+      "save_paths": "relative",
       "folders": {
         "styles": "layer_styles",
         "templates": "template_projects",
@@ -30,6 +32,8 @@ StyleCores konfigurationer er JSON-filer. Du behøver normalt ikke redigere dem 
 |---|---|
 | `name` | Vist navn på konfigurationen |
 | `config_id` | Unikt ID oprettet ved ny konfiguration; holder personlige indstillinger adskilt |
+| `root_mode` | `config_dir`: brug JSON-filens mappe; `custom`: brug separat rodmappe |
+| `save_paths` | Indstilling for lagring af stier |
 | `root_folder` | Rodmappe til styles, skabeloner og layouts |
 | `folders.styles` | Undermappe til QML-filer |
 | `folders.templates` | Undermappe til projektskabeloner |

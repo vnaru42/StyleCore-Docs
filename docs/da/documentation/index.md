@@ -6,7 +6,7 @@ Disse vejledninger går videre end den hurtige introduktion og forklarer, hvorda
 <a class="sc-card" href="configuration/"><h3>Konfiguration – i QGIS →</h3><p>Opret, indlæs og administrer konfigurationer i QGIS.</p></a>
 <a class="sc-card" href="configuration-json/"><h3>Konfiguration JSON →</h3><p>Forstå JSON-felter og fælles regler.</p></a>
 <a class="sc-card" href="layer-styling/"><h3>Lagstyling →</h3><p>Automatisk og manuel anvendelse af QML.</p></a>
-<a class="sc-card" href="project-templates/"><h3>Projektskabeloner →</h3><p>Synkronisér projektskabeloner, og opdater udvalgte styles.</p></a>
+<a class="sc-card" href="project-templates/"><h3>Projektskabeloner →</h3><p>Åbn fælles projektskabeloner direkte, og opdater udvalgte styles.</p></a>
 <a class="sc-card" href="print-layouts/"><h3>Printlayouts →</h3><p>Administrer fælles QPT-layouts og kortelementer.</p></a>
 </div>
 

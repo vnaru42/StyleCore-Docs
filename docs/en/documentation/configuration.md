@@ -49,16 +49,18 @@ The three standard resource folder names are configurable. **When you save a new
 
 1. Open **Settings → Options → StyleCore → Configuration**.
 2. Select **New configuration…**.
-3. Enter a **Name**, choose the **Root folder**, and confirm the three resource folder names.
-4. Enter a **Developer code**, and enter it again for confirmation. 
-5. Click **Save configuration**, choose where to save the JSON file, and give it a meaningful name such as `office.json`.
+3. Enter a **Name** and select the **Configuration file** path (for example, `office.json`) using the browse button.
+4. Leave **Use configuration file folder as resource root** checked to keep JSON and resource folders together, or uncheck it to choose a separate **Root folder**.
+5. Confirm the resource folder names and enter the **Developer code** twice. Click **Save configuration**.
 6. The new configuration becomes active immediately. Place your QML styles, templates and layouts in the corresponding folders.
 
 ??? info "Configuration fields in QGIS"
 	| Field | Example | Purpose |
 	|---|---|---|
 	| Name | `Office` | Shown as the active configuration in QGIS |
-	| Root folder | `C:/GIS/StyleCore_resources` | Base location for resource folders |
+	| Configuration file | `C:/GIS/StyleCore/office.json` | Location of the shared JSON file |
+	| Use configuration file folder as resource root | Checked | Resource folders follow the JSON file when moved |
+	| Root folder | `C:/GIS/StyleCore_resources` | Separate resource location when the checkbox is off |
 	| Styles folder | `layer_styles` | Where StyleCore looks for QML styles |
 	| Templates folder | `template_projects` | Source folder for shared QGIS project templates |
 	| Print layouts folder | `layouts` | Folder containing QPT and related SVG files |
@@ -83,7 +85,7 @@ StyleCore uses three different locations with different purposes:
 | Resource root folders | Actual QML files, `.qgs`/`.qgz` templates, `.qpt` layouts, fonts and SVG files | Everyone with access to the folders |
 | Your QGIS profile | Selected configuration path, automatic-styling toggle, personal style overrides | Only your own QGIS profile |
 
-Project templates are a special case: StyleCore **copies** project templates from the configured resource folder into each user's local QGIS `project_templates` directory. QML and QPT files are used from their configured locations rather than being included inside the JSON.
+StyleCore opens project templates directly from the configured templates folder; it does not copy them to local QGIS profiles. QML and QPT files are also read from their configured locations.
 
 ## Optional shared fonts
 

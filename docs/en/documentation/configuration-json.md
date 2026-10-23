@@ -7,7 +7,9 @@ StyleCore configurations are JSON files. You normally do not need to edit them m
     {
       "name": "Office",
       "config_id": "unique-id-created-by-stylecore",
-      "root_folder": "C:/GIS/StyleCore_resources",
+      "root_mode": "config_dir",
+      "root_folder": "",
+      "save_paths": "relative",
       "folders": {
         "styles": "layer_styles",
         "templates": "template_projects",
@@ -30,7 +32,9 @@ StyleCore configurations are JSON files. You normally do not need to edit them m
 |---|---|
 | `name` | Display name of the configuration |
 | `config_id` | Unique identifier generated for a newly created configuration; helps keep personal preferences isolated |
-| `root_folder` | Base directory for styles, templates and layouts |
+| `root_mode` | `config_dir`: use the JSON file folder; `custom`: use a separate root |
+| `save_paths` | Path storage preference for the configuration |
+| `root_folder` | Resource root path when using a separate (`custom`) root |
 | `folders.styles` | Resource subfolder for QML files |
 | `folders.templates` | Resource subfolder for project templates |
 | `folders.layouts` | Resource subfolder for print layouts and associated SVG graphics |

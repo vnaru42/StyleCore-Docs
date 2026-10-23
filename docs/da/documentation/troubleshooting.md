@@ -24,7 +24,7 @@ Start med at kontrollere den **aktive konfiguration**, om ressourcemapperne er t
     Suffix sammenlignes med **filnavnet uden filendelsen**. Kontrollér, at kilden er indlæst som et gyldigt QGIS-lag, og at reglen har den rigtige filtype eller `*`. Den længste suffix vinder; ved samme længde vinder en bestemt filendelse over `*`.
 
 ??? question "Min skabelon vises ikke i QGIS"
-    Kontrollér, at den **fælles skabelonmappe** indeholder en gyldig og tilgængelig `.qgs`- eller `.qgz`-fil. StyleCore kopierer til QGIS' lokale mappe `project_templates`. Hvis skabelonmenuen endnu ikke er opdateret, kan du prøve at genstarte QGIS. Se [Projektskabeloner](project-templates.md).
+    Kontrollér, at den **fælles skabelonmappe** indeholder en gyldig og tilgængelig `.qgs`- eller `.qgz`-fil. Skabeloner åbnes direkte fra den konfigurerede mappe via **StyleCore → New from Template**. Kontrollér, at skabelonen er **Active** og tilgængelig. Se [Projektskabeloner](project-templates.md).
 
 ??? question "Et almindeligt gemt projekt blev ikke stylet igen"
     Det er forventet: StyleCore bevarer projektets gemte styles. Brug **Manual Style Update** til bevidst at ændre et bestemt lag, og gem derefter QGIS-projektet.
@@ -44,3 +44,7 @@ Start med at kontrollere den **aktive konfiguration**, om ressourcemapperne er t
 ## Indberet et problem
 
 Når du opretter en [GitHub-issue](https://github.com/vnaru42/StyleCore/issues), bør du angive QGIS-version, StyleCore-version, handlingen som fejlede, og relevante StyleCore-logbeskeder. Fjern private netværksstier, tokens og udviklerkoder fra det, du offentliggør.
+
+## Eksisterende konfigurationer efter opdatering
+
+Konfigurationer oprettet før muligheden for at bruge JSON-filens mappe som rodmappe understøttes stadig. Har JSON-filen en separat absolut rodmappe, bruges den fortsat, indtil du aktivt ændrer indstillingen. Vil du kunne flytte konfigurationen samlet, kan du vælge JSON-filens mappe som rodmappe og beholde ressourcemapperne ved siden af filen. Tag en sikkerhedskopi inden ændringen.

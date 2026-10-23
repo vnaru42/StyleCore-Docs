@@ -24,7 +24,7 @@ Start by checking the **active configuration**, whether the referenced folders a
     The suffix is matched against the **filename without the extension**. Confirm the source was loaded as a valid QGIS layer, and the rule's extension matches or is `*`. The longest suffix wins; for equal lengths, a specific extension wins over `*`.
 
 ??? question "My template does not appear in QGIS"
-    Make sure a valid `.qgs` or `.qgz` exists in the **shared template folder** and is accessible. StyleCore copies templates to QGIS' local `project_templates` folder. If the QGIS template menu is not updated yet, try restarting QGIS. See [Project Templates](project-templates.md).
+    Make sure a valid `.qgs` or `.qgz` exists in the **shared template folder** and is accessible. Templates are opened directly from the configured folder through **StyleCore → New from Template**. Check that the template is **Active** and accessible. See [Project Templates](project-templates.md).
 
 ??? question "An ordinary saved project was not restyled"
     This is expected: StyleCore preserves its saved styles. Use **Manual Style Update** to apply a style explicitly to one layer, then save that QGIS project.
@@ -44,3 +44,7 @@ Start by checking the **active configuration**, whether the referenced folders a
 ## Report a problem
 
 When creating a [GitHub issue](https://github.com/vnaru42/StyleCore/issues), include your QGIS version, StyleCore version, the action that failed and relevant StyleCore log messages. Remove private network paths, tokens and developer codes from anything you post publicly.
+
+## Existing configurations after an update
+
+Configurations created before the configuration-folder root option remain supported. If the JSON has a separate absolute resource root, it will keep using that root unless changed explicitly. To make a configuration portable, choose the configuration-file-folder root option and keep the resource subfolders next to the JSON. Back up the JSON before changing resource locations.

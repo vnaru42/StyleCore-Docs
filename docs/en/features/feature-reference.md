@@ -37,8 +37,8 @@ A complete overview of StyleCore's functionality.
 
 | Capability | Details |
 |---|---|
-| Shared templates | Templates from configured root appear as templates in all shared StyleCore installs |
-| Synchronize project templates | Copy missing or newer `.qgs`/`.qgz` files into QGIS' standard template folder. |
+| Shared templates | Templates in the configured folder are available through StyleCore’s New from Template menu |
+| Direct project templates | Open shared `.qgs`/`.qgz` directly via **New from Template**, without local copies. |
 | Selective refresh on open | Restyle existing layers only in recognized templates listed in `Template refresh`. |
 
 **Read more:** [Project Templates](../documentation/project-templates.md)

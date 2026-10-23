@@ -48,16 +48,18 @@ Navnene på de tre almindelige ressourcemapper kan ændres. **Når du gemmer en 
 
 1. Åbn **Settings → Options → StyleCore → Configuration**.
 2. Vælg **New configuration…**.
-3. Indtast et **Name**, vælg **Root folder**, og kontrollér navnene på de tre ressourcemapper.
-4. Angiv en **Developer code**, og gentag den som bekræftelse.
-5. Klik på **Save configuration**, vælg placering til JSON-filen, og giv den et sigende navn, fx `office.json`.
+3. Indtast et **Name**, og vælg stien til **Configuration file**, fx `office.json`, via `...`-knappen.
+4. Behold **Use configuration file folder as resource root** markeret, hvis ressourcerne skal følge JSON-filens mappe. Fjern markeringen for at vælge en særskilt **Root folder**.
+5. Kontrollér ressourcemapperne, angiv og bekræft **Developer code**, og tryk **Save configuration**.
 6. Konfigurationen aktiveres med det samme. Læg dine styles, projektskabeloner og printlayouts i de tilhørende mapper.
 
 ??? info "Konfigurationsfelter i QGIS"
     | Felt | Eksempel | Betydning |
     |---|---|---|
     | Name | `Office` | Navnet på den aktive konfiguration i QGIS |
-    | Root folder | `C:/GIS/StyleCore_resources` | Overordnet placering til ressourcemapperne |
+    | Configuration file | `C:/GIS/StyleCore/office.json` | Placering af den fælles JSON-fil |
+    | Use configuration file folder as resource root | Markerede | Ressourcemapper følger JSON-filen ved flytning |
+    | Root folder | `C:/GIS/StyleCore_resources` | Separat placering, når afkrydsningen er slået fra |
     | Styles folder | `layer_styles` | Mappe med QML-styles |
     | Templates folder | `template_projects` | Kildemappe til fælles QGIS-projektskabeloner |
     | Print layouts folder | `layouts` | Mappe med QPT- og SVG-filer |
@@ -82,7 +84,7 @@ StyleCore bruger tre placeringer til forskellige formål:
 | Ressourcernes rodmappe | QML-filer, `.qgs`/`.qgz`-skabeloner, `.qpt`-layouts, valgfrie skrifttyper og SVG-filer | Alle med adgang til mapperne |
 | Din QGIS-profil | Sti til valgt konfiguration, automatisk styling til/fra og personlige overrides | Kun din egen QGIS-profil |
 
-Projektskabeloner er et særligt tilfælde: StyleCore **kopierer** dem fra den fælles ressourcemappe til hver brugers lokale QGIS-mappe `project_templates`. QML- og QPT-filer bruges fra deres konfigurerede placeringer og gemmes ikke inde i JSON-filen.
+StyleCore åbner projektskabeloner direkte fra den konfigurerede skabelonmappe uden at kopiere dem til den lokale QGIS-profil. QML- og QPT-filer læses ligeledes fra deres angivne placeringer.
 
 ## Valgfrie fælles skrifttyper
 

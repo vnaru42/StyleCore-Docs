@@ -37,7 +37,7 @@ Et samlet overblik over StyleCores funktionalitet.
 | Funktion | Beskrivelse |
 |---|---|
 | Fælles skabeloner | Skabeloner fra den konfigurerede rodmappe bliver tilgængelige for brugerne af den fælles StyleCore-opsætning. |
-| Synkronisering | Manglende eller opdaterede `.qgs`/`.qgz`-filer kopieres til QGIS' standardmappe til skabeloner. |
+| Direkte projektskabeloner | Åbn fælles `.qgs`/`.qgz` via **New from Template** uden lokale kopier. |
 | Selektiv refresh ved åbning | Eksisterende lag får kun opdaterede styles i genkendte skabeloner valgt under `Template refresh`. |
 
 **Læs mere:** [Projektskabeloner](../documentation/project-templates.md)

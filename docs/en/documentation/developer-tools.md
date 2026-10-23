@@ -59,6 +59,6 @@ StyleCore checks duplicate layer names, allows you to retry an incorrect develop
 | Change File Suffix Rules | Active shared JSON | Yes, once reloaded |
 | Change template-refresh selection | Active shared JSON | Yes, once reloaded |
 | Save a shared QML | Configured shared styles folder | Can affect styling of newly added layers or selected templates |
-| Update a shared QPT or QGS/QGZ template | Configured resource folder | Affects layouts or template copies used later |
+| Update a shared QPT or QGS/QGZ template | Configured resource folder | Affects layouts or shared templates opened later |
 
 For everyday QML matching and overrides, see [Layer Styling](layer-styling.md). For shared JSON structure and file locations, see [Configuration – In QGIS](configuration.md).
