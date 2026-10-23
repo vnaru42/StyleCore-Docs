@@ -2,6 +2,9 @@
 
 Start by checking the **active configuration**, whether the referenced folders are accessible, and whether **Automatic styling** is enabled. Most problems can be diagnosed without changing the plugin code.
 
+??? question "There are templates in the QGIS home screen that has been removed from shared location"
+    An earlier version of StyleCore copied templates from the shared location, to make them appear in the QGIS home screen. This funktion has been removed from the plugin, when StyleCore started to handle the templates itself. These old templates can be deleted from its local location, usually: `C:\Users\(User)\AppData\Roaming\QGIS\QGIS3\profiles\default\project_templates`
+
 ??? question "I received a JSON configuration. Where do I load it?"
     In QGIS open **Settings → Options → StyleCore → Configuration**. Use **Load configuration…** or paste its local/UNC path. The file can be outside the plugin folder. See [Configuration](configuration.md#load-an-existing-configuration).
 

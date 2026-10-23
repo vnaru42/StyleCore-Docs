@@ -2,6 +2,9 @@
 
 Start med at kontrollere den **aktive konfiguration**, om ressourcemapperne er tilgængelige, og om **Automatic styling** er aktiveret. De fleste problemer kan undersøges uden at ændre pluginets kode.
 
+??? question "Der skabeloner på min QGIS startskærm som vi ikke benytter mere"
+    En tidligere version af StyleCore kopierede skabeloner fra fællesdrev/delte placeringer, til din lokalt installerede QGIS mappe, for at fremgå på startsiden. Denne funktion er blevet udfaset efter at StyleCore begyndte at varetage skabeloner selv. Disse kan slettes fra din lokale QGIS mappe som normalt ligger på: `C:\Users\(Bruger)\AppData\Roaming\QGIS\QGIS3\profiles\default\project_templates`
+
 ??? question "Jeg har modtaget en JSON-konfiguration. Hvor indlæser jeg den?"
     Åbn **Settings → Options → StyleCore → Configuration** i QGIS. Brug **Load configuration…**, eller indsæt en lokal sti/UNC-sti. Filen behøver ikke ligge i pluginets mappe. Se [Konfiguration](configuration.md#indlæs-en-eksisterende-konfiguration).
 
