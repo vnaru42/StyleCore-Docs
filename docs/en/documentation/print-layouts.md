@@ -1,55 +1,44 @@
 # Print Layouts
 
-StyleCore makes reusable QGIS **print-layout templates** (`.qpt`) available in the **PRINT** dropdown of its toolbar menu. A user can open the desired layout without browsing through folders every time.
+StyleCore reads **QGIS print-layout templates (`.qpt`)** directly from the configured shared `layouts` folder. Users can insert a shared layout into their current project from the StyleCore menu.
 
-## Open a shared print layout
+## 1. Open a shared layout
 
-1. Open or create the QGIS project you want to print from.
-2. Open the **StyleCore** toolbar menu.
-3. Under **PRINT**, choose one of the layouts from the configured shared `layouts` folder.
-4. StyleCore creates a new layout in the current project and opens **QGIS Layout Designer**.
+1. Open the QGIS project and set the canvas to the area you want to print.
+2. Open **StyleCore → Print Layouts** and choose a layout.
+3. StyleCore inserts a **new layout** into the current project and opens **QGIS Layout Designer**.
+4. Where a map with Item ID `main_map` exists, its extent is initialized from the canvas and **Move Item Content** is activated where supported.
+5. Adjust the layout, then export or print it using QGIS.
 
-The layout is read directly from the configured folder. If a layout with the same name is already in the project, StyleCore gives the new one a unique name with a numeric suffix.
+Opening the same QPT again creates another layout with a unique name, rather than replacing the one already in the project.
 
-## Create a new shared layout
+## 2. Create a shared QPT template
 
-1. In QGIS, create a new print layout in **Project → New Print Layout**.
-2. Set the page size, map frames, legend, scale bar, text and other items as required.
-3. For maps that should be initialized by StyleCore, assign the appropriate **Item ID** in each map item's properties.
-4. Export/save the layout as a **QGIS template (`.qpt`)**.
-5. Place the `.qpt` file in the configured shared `layouts` folder. It will be discovered in the StyleCore PRINT menu.
-6. Test the layout in a different project to verify that all intended elements behave correctly.
+1. In QGIS, open **Project → New Print Layout**.
+2. Set page size, map frames, legend, scale bar, logos and other items.
+3. Set the map **Item ID** to `main_map` for the principal map; optionally use `mini_map` for a smaller map.
+4. For automatic SVG images, create Picture items with an **Item ID** that matches the SVG filename without `.svg`.
+5. Save/export the layout as a **QGIS layout template (`.qpt`)**.
+6. Place the QPT and any matching SVGs in the configured shared **layouts folder**.
+7. Open it through **StyleCore → Print Layouts** in a separate QGIS project to test it.
 
-!!! tip "Keep source assets available"
-    QPT files can refer to images, fonts and other project resources. Make those assets available to users of the shared configuration. StyleCore does not package all external dependencies automatically.
+## 3. Understand the Item ID rules
 
-## Map Item ID rules
-
-Use these exact IDs for StyleCore's map-handling features:
-
-| Item ID | What happens when opening the QPT |
+| Item ID | Behavior |
 |---|---|
-| `main_map` | Fits the map to the current QGIS map canvas, selects that item and activates **Move Item Content** when the Layout Designer supports it |
-| `mini_map` | Sets the initial extent from the same QGIS canvas; does not automatically create a QGIS overview-map relationship |
+| `main_map` | Initializes extent from the current QGIS canvas, selects the map, and activates **Move Item Content** where supported |
+| `mini_map` | Also initializes its extent from the canvas; does **not** automatically create an overview-map relationship |
+| `CompanyLogo` | A Picture item with this ID can use `CompanyLogo.svg` from the layouts folder |
 
-In QGIS Layout Designer, click the map item, open **Item Properties**, and set its **Item ID**. The IDs are case-sensitive. StyleCore preserves the map frame's proportions when fitting the extent.
+Set **Item ID** in the relevant item's **Item Properties** in Layout Designer. Names must match exactly. SVGs are discovered in the configured layouts folder, not installed automatically into other programs.
 
-The `main_map` shortcut means you can usually start moving the map contents immediately after opening the layout. `mini_map` can be configured further using ordinary QGIS layout features.
+## 4. Update or maintain a layout
 
-## SVG files and Picture Item IDs
+1. Open the source QPT/layout in QGIS and make your changes.
+2. Export the updated `.qpt` to the **same shared layout location** (or use a new filename for a separate layout).
+3. Check any SVG, fonts or images used by the template are available to colleagues.
+4. Open the updated layout from StyleCore and confirm the map frames and picture assets.
 
-You can keep `.svg` files in the same shared layouts folder as your `.qpt` files. A Picture item in the QPT can be linked automatically when its **Item ID** matches the SVG filename without `.svg`.
+**Already-created layouts in existing QGIS projects are not replaced automatically.** The updated QPT is used for layouts created after the change.
 
-```text
-Shared layouts folder:
-    CompanyLogo.svg
-
-QGIS Layout Picture Item ID:
-    CompanyLogo
-```
-
-StyleCore uses the matching SVG from the configured folder when it opens the layout. Exact filenames and IDs matter.
-
-## Updating a layout
-
-Edit the source layout in QGIS, export it as an updated `.qpt`, and replace the file in the configured shared layouts folder. Future layouts created from the StyleCore menu use the current shared QPT. **Layouts already created inside existing QGIS projects are not automatically replaced.**
+See [Configuration](configuration.md) for shared folder setup and [Troubleshooting](troubleshooting.md) for missing resources.

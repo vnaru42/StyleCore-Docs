@@ -1,55 +1,44 @@
 # Printlayouts
 
-StyleCore gør genanvendelige QGIS-**printlayoutskabeloner** (`.qpt`) tilgængelige i **PRINT**-menuen på værktøjslinjen. Brugeren kan vælge det ønskede layout uden at skulle finde filer i mapper hver gang.
+StyleCore læser **QGIS-printlayoutskabeloner (`.qpt`)** direkte fra den konfigurerede fælles mappe `layouts`. Brugerne kan indsætte et fælles layout i det aktuelle projekt via StyleCore-menuen.
 
-## Åbn et fælles printlayout
+## 1. Åbn et fælles layout
 
-1. Åbn eller opret det QGIS-projekt, du vil lave et print fra.
-2. Åbn **StyleCore**-menuen.
-3. Vælg et layout under **PRINT** fra den konfigurerede fælles `layouts`-mappe.
-4. StyleCore opretter et nyt layout i projektet og åbner **QGIS Layout Designer**.
+1. Åbn QGIS-projektet, og indstil kortudsnittet til det område, du vil udskrive.
+2. Åbn **StyleCore → Print Layouts**, og vælg et layout.
+3. StyleCore indsætter et **nyt layout** i projektet og åbner **QGIS Layout Designer**.
+4. Hvis der findes et kort med Item ID `main_map`, tilpasses det kortudsnittet, og **Move Item Content** aktiveres, hvor QGIS understøtter det.
+5. Tilpas layoutet, og eksportér eller print fra QGIS.
 
-Layoutet indlæses direkte fra den konfigurerede mappe. Hvis et layout med samme navn allerede findes i projektet, får det nye layout et unikt navn med et nummer som suffix.
+Hvis du åbner samme QPT igen, oprettes et nyt layout med et entydigt navn i stedet for at overskrive det eksisterende.
 
-## Opret et nyt fælles layout
+## 2. Opret en fælles QPT-skabelon
 
-1. Opret et nyt printlayout i QGIS via **Project → New Print Layout**.
-2. Indstil papirformat, kortrammer, signaturforklaring, målestok, tekst og øvrige elementer.
-3. Tildel de relevante **Item ID'er** i egenskaberne for de kort, som StyleCore skal initialisere.
-4. Eksportér eller gem layoutet som en **QGIS-skabelon (`.qpt`)**.
-5. Læg `.qpt`-filen i den konfigurerede fælles `layouts`-mappe. Den bliver nu tilgængelig under StyleCores PRINT-menu.
-6. Afprøv layoutet i et andet projekt for at kontrollere, at alle elementer fungerer som ønsket.
+1. Åbn **Project → New Print Layout** i QGIS.
+2. Vælg papirstørrelse, kortfelter, signaturforklaring, målestok, logoer og øvrige elementer.
+3. Giv hovedkortet **Item ID** `main_map`; brug eventuelt `mini_map` til et mindre kort.
+4. Til automatisk SVG-indlæsning oprettes Picture items med et **Item ID**, der svarer til SVG-filens navn uden `.svg`.
+5. Eksportér layoutet som en **QGIS-layoutskabelon (`.qpt`)**.
+6. Læg QPT-filen og eventuelle tilhørende SVG'er i den fælles **layouts-mappe**.
+7. Åbn skabelonen via **StyleCore → Print Layouts** i et andet QGIS-projekt for at teste den.
 
-!!! tip "Sørg for adgang til øvrige ressourcer"
-    QPT-filer kan bruge billeder, skrifttyper og andre ressourcer. Sørg for, at disse også er tilgængelige for brugerne af konfigurationen. StyleCore pakker ikke automatisk alle eksterne afhængigheder med.
+## 3. Forstå reglerne for Item ID
 
-## Regler for kortenes Item ID
-
-Brug præcis disse ID'er til StyleCores kortfunktioner:
-
-| Item ID | Hvad sker der ved åbning af QPT? |
+| Item ID | Funktion |
 |---|---|
-| `main_map` | Kortet tilpasses det aktuelle kortvindue i QGIS. Elemente vælges, og **Move Item Content** aktiveres, hvis Layout Designer understøtter det. |
-| `mini_map` | Det indledende kortudsnit sættes ud fra samme QGIS-kortvindue. Der oprettes ikke automatisk en QGIS-overview-relation. |
+| `main_map` | Tilpasses det aktuelle QGIS-kortudsnit, vælges og aktiverer **Move Item Content**, hvor det understøttes |
+| `mini_map` | Tilpasses også kortudsnittet; opretter **ikke** automatisk et overview-map-forhold |
+| `CompanyLogo` | Et Picture item med dette ID kan bruge `CompanyLogo.svg` fra layouts-mappen |
 
-I QGIS Layout Designer skal du klikke på kortelementet, åbne **Item Properties** og angive **Item ID**. Der skelnes mellem store og små bogstaver. StyleCore bevarer kortrammens proportioner, når udsnittet tilpasses.
+Indstil **Item ID** under det relevante elements **Item Properties** i Layout Designer. Navnene skal matche præcist. SVG-filer findes i den konfigurerede layouts-mappe og installeres ikke automatisk i andre programmer.
 
-Genvejen `main_map` betyder, at du normalt kan flytte kortindholdet med det samme, når layoutet åbnes. `mini_map` kan justeres yderligere med de almindelige QGIS-layoutfunktioner.
+## 4. Opdater eller vedligehold et layout
 
-## SVG-filer og Picture-elementers Item ID
+1. Åbn kildelayoutet/QPT i QGIS, og foretag ændringerne.
+2. Eksportér den opdaterede `.qpt` til **samme fælles placering** (eller et nyt filnavn, hvis det skal være et separat layout).
+3. Kontrollér, at eventuelle SVG'er, skrifttyper og billeder kan tilgås af kollegerne.
+4. Åbn det opdaterede layout via StyleCore, og kontrollér kortfelter og grafik.
 
-Du kan lægge `.svg`-filer i den samme fælles layoutmappe som `.qpt`-filerne. Et Picture-element i QPT'en kan få tilknyttet en SVG automatisk, hvis dets **Item ID** matcher SVG-filnavnet uden `.svg`.
+**Layouts, der allerede ligger i gemte QGIS-projekter, bliver ikke erstattet automatisk.** Den nye QPT bruges, når et nyt layout oprettes efter opdateringen.
 
-```text
-Fælles layoutmappe:
-    CompanyLogo.svg
-
-QGIS Layout Picture Item ID:
-    CompanyLogo
-```
-
-StyleCore bruger den matchende SVG fra den konfigurerede mappe, når layoutet åbnes. Filnavn og Item ID skal svare nøjagtigt til hinanden.
-
-## Opdater et layout
-
-Rediger kildelayoutet i QGIS, eksportér en opdateret `.qpt`, og erstat filen i den konfigurerede fælles layoutmappe. Fremtidige layouts oprettet fra StyleCore-menuen bruger den aktuelle fælles QPT. **Layouts, der allerede er oprettet i gemte QGIS-projekter, bliver ikke automatisk erstattet.**
+Se [Konfiguration](configuration.md) for fællesmapper og [Fejlfinding](troubleshooting.md) ved manglende ressourcer.

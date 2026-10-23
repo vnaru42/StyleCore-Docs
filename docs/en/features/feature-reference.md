@@ -1,71 +1,50 @@
-# StyleCores features
+# All Features
 
-A complete overview of StyleCore's functionality.
+StyleCore connects QGIS users to shared or local **styles, project templates, print layouts and optional fonts** through a JSON configuration. This is a quick overview; each link leads to step-by-step instructions.
 
-##  Configuration
+## Configuration
 
-| Capability | Details |
-|---|---|
-| Create configuration | Complete configuration JSON can be created from QGIS settings.|
-| Load configuration | Choose an existing JSON or create one from the settings dialog. |
-| Local or shared resource roots | Resolve the styles, templates and layout folders relative to a configurable root. |
-| Switch configuration | Use **Load configuration…** to change the active JSON without editing plugin code. |
-| Remember the active configuration | Remember the last selected file path, including temporarily unavailable network paths. |
+- Create or load a JSON configuration directly inside QGIS.
+- Keep JSON and resource folders together for a portable setup, or use a separate resource root.
+- Share a single config on a network drive (including UNC paths), and switch between configurations.
+- Keep shared rules in JSON while personal preferences remain local.
 
-
-  **Read more:** [Configuration – In QGIS](../documentation/configuration.md) · [Configuration JSON](../documentation/configuration-json.md)
-
----
+[Set up Configuration →](../documentation/configuration.md) · [Configuration JSON fields →](../documentation/configuration-json.md)
 
 ## Layer Styling
 
-| Capability | Details |
-|---|---|
-| Automatic layer styling | Apply matching QML styles to newly added layers. |
-| Toggle automatic styling | Enable or disable automatic styling without uninstalling StyleCore. |
-| Manual Style Update | Explicitly apply a selected QML to known layers. |
-| Personal Style Overrides | Use a local QML override for the current configuration without altering the shared JSON. |
-| File Suffix Rules (all QGIS-supported file types) | Match filenames by suffix and extension (or `*`), with longest-suffix priority. |
-| Save current QGIS layer styles | Developer workflow exports selected layers' styles to the configured style folder. |
-| Shared automatic layer mappings | Developers map layer names to QML files in the shared JSON.|
+- Automatically apply QML styles to **newly added** layers.
+- Match by **visible layer name**, **shared layer rule**, **File Suffix Rule**, or **Personal Override**.
+- Toggle Automatic Styling from the StyleCore menu.
+- Apply QML manually to a selected **existing** layer without creating a shared rule.
+- Save selected project-layer styles to shared QMLs with Developer Mode.
 
-**Read more:** [Layer Styling](../documentation/layer-styling.md) · [Developer Tools](../documentation/developer-tools.md)
-
----
+[Use and maintain Layer Styling →](../documentation/layer-styling.md)
 
 ## Project Templates
 
-| Capability | Details |
-|---|---|
-| Shared templates | Templates in the configured folder are available through StyleCore’s New from Template menu |
-| Direct project templates | Open shared `.qgs`/`.qgz` directly via **New from Template**, without local copies. |
-| Selective refresh on open | Restyle existing layers only in recognized templates listed in `Template refresh`. |
+- Open shared `.qgs`/`.qgz` files **directly**, without local template copies.
+- Find templates in the configured root **and subfolders**.
+- Link **external templates** located elsewhere.
+- Configure **Active** (shown in menu) and **Refresh** (reapply matching QML on opening) separately.
+- Start new, unsaved projects from templates to protect the shared originals.
 
-**Read more:** [Project Templates](../documentation/project-templates.md)
-
----
+[Create and maintain Project Templates →](../documentation/project-templates.md)
 
 ## Print Layouts
 
-| Capability | Details |
-|---|---|
-| One click print | Create common print layout directly from StyleCore toolbar button |
-| Open shared QPT layouts | Populate the **PRINT** menu from the configured layout folder and open selected layouts. |
-| `main_map` initialization | Fit to canvas, select map item and activate **Move Item Content**, where supported. |
-| `mini_map` initialization | Fit the matching map item to the canvas extent on layout creation. |
-| Automatic SVG links | Link SVGs to layout Picture items when filenames match Item IDs. |
+- Open shared `.qpt` files from the StyleCore menu.
+- Initialize `main_map` and `mini_map` from the current QGIS canvas.
+- Activate **Move Item Content** for `main_map` where supported.
+- Match SVGs to layout Picture items by **Item ID**.
+- Create multiple layouts without overwriting existing layouts.
 
-**Read more:** [Print Layouts](../documentation/print-layouts.md)
+[Create and maintain Print Layouts →](../documentation/print-layouts.md)
 
----
+## Fonts, maintenance and support
 
-## Other useful behavior
+- Optionally register `.ttf`/`.otf` fonts from `root/fonts` in QGIS.
+- Use **Developer Mode** for shared settings and QML saves, with code confirmation and filesystem permissions.
+- Help and issue links are available directly from the StyleCore menu.
 
-Additional behaviors that are helpful to know:
-
-- **Saved project protection:** ordinary saved project styles are preserved when reopened.
-- **Style selection:** personal overrides take priority over shared mappings; then suffix rules and name-based fallback are checked.
-- **Unique layout names:** duplicate layout names receive a numeric suffix.
-- **QGIS language integration:** interface translations follow supported QGIS language settings.
-
-
+[Developer Tools →](../documentation/developer-tools.md) · [Troubleshooting →](../documentation/troubleshooting.md)

@@ -1,104 +1,80 @@
 # Lagstyling
 
-StyleCore kan anvende QML-styles på lag, der tilføjes i QGIS, og giver brugerne mulighed for at tilpasse styling **uden at ændre kollegernes indstillinger**. Den ansvarlige kan samtidig definere fælles regler, så lagene ser ens ud.
+StyleCore bruger **QML-filer** til at style nye QGIS-lag ensartet. Fælles regler vedligeholdes centralt, mens Personal Overrides bliver lokale. Denne side dækker **oprettelse, brug, ændring og vedligeholdelse** af styles.
 
-## Automatisk styling
+## 1. Opret en QML-style
 
-Når **Automatic styling** er aktiveret, og du tilføjer et lag, leder StyleCore efter en brugbar QML-fil. Den kan findes via lagnavn, en fælles mapping, et personligt override eller en File Suffix Rule. Hvis intet passer, eller QML-filen ikke kan indlæses, bevares lagets nuværende style.
+1. Åbn et QGIS-projekt og style et lag via **Layer Properties → Symbology / Labels**.
+2. Eksportér stilen til en `.qml`-fil i den valgte `layer_styles`-mappe.
+3. Hvis QML-navnet matcher det synlige lagnavn, behøver du ingen ekstra regel.
+4. Tilføj et nyt matchende lag for at teste det.
 
-Brug StyleCore-menuens kontakt til automatisk styling eller **Settings → Options → StyleCore** til at slå funktionen til og fra.
+## 2. Forstå automatisk style-valg
 
-!!! note "Eksisterende projekter bevares"
-    Når du genåbner et almindeligt gemt QGIS-projekt, bliver de gemte lagstyles **ikke** automatisk overskrevet. StyleCore kan opdatere udvalgte skabeloner og tilbyder **Manual Style Update** til bevidste ændringer i eksisterende projekter.
+Når et nyt lag tilføjes, prøver StyleCore disse kilder i rækkefølge:
 
-## Opret og gem QML-styles
+| Prioritet | Kilde | Eksempel |
+|---|---|---|
+| 1 | **Personal Override** | Din egen `Buildings.qml` |
+| 2 | **Shared automatic layer style** | `Buildings` → `Office_Buildings.qml` |
+| 3 | **File Suffix Rule** | `survey-points.geojson` → `Points.qml` |
+| 4 | **Matchende QML-filnavn** | Lag `Roads` → `Roads.qml` |
 
-Opret eller rediger et lags style via QGIS' normale **Layer Properties → Symbology / Labels**, og gem eller eksportér den som en `.qml`-fil i den konfigurerede stylemappe. Brug et filnavn, der matcher laget, eller opret en fælles mapping eller File Suffix Rule, som peger på QML-filen.
+## 3. Vedligehold Shared automatic layer styles
 
-Den ansvarlige kan også bruge **Developer → Save layer styles…** til at vælge projektlag og gemme deres aktuelle styling i den fælles mappe. Det kan overskrive teamets QML-filer og kræver udviklergodkendelse. Se [Udviklerværktøjer](developer-tools.md#gem-qml-styles-fra-qgis).
-
-## Match på lagnavn
-
-Den enkleste løsning er at have en QML-fil med samme navn som det synlige QGIS-lag i den konfigurerede stylemappe:
-
-| QGIS-lag | QML-fil |
-|---|---|
-| `Buildings` | `Buildings.qml` |
-| `Roads` | `Roads.qml` |
-| `Survey Points` | `Survey Points.qml` |
-
-Du kan give forskellige forekomster af samme datakilde forskellige lagnavne og deres egne QML-filer. Det er nyttigt, når to skabeloner eksempelvis skal have forskellige filtre eller styles til den samme Oracle-view.
-
-## Shared automatic layer styles
-
-Fælles regler forbinder et bestemt **QGIS-lagnavn** med en QML-fil, også når filnavnet ikke svarer til lagnavnet.
-
-1. Åbn **Settings → Options → StyleCore → Developer**.
-2. Aktivér **Developer Mode**.
-3. Tilføj eller rediger en mapping mellem lagnavn og QML under **Shared automatic layer styles**.
-4. Vælg Apply/Save, og bekræft med udviklerkoden.
-5. Bed kollegerne indlæse den fælles konfiguration igen for at få den opdaterede mapping.
-
-Fælles regler gemmes i den aktive JSON-fil, så ændringer kan påvirke alle brugere af konfigurationen. Brug gerne relative filstier under den fælles stylemappe, og sørg for, at alle relevante kolleger kan tilgå QML-filerne.
-
-## File Suffix Rules
-
-En File Suffix Rule identificerer et filbaseret lag ud fra **slutningen af filnavnet** kombineret med filtypen. Reglerne virker med filformater, som QGIS kan indlæse.
-
-| Suffix | Filtype | QML-fil | Eksempel på match |
-|---|---|---|---|
-| `-control-points` | `.geojson` | `Control.qml` | `survey-control-points.geojson` |
-| `-survey` | `.shp` | `Survey.qml` | `region-survey.shp` |
-| `-results` | `*` | `Results.qml` | `run-results.kml` eller `run-results.geojson` |
-
-Den ansvarlige angiver felterne under **Developer → File Suffix Rules** og gemmer den fælles konfiguration.
-
-### Sådan fungerer matching
-
-- **Suffix** sammenlignes med **filnavnet uden filtypen**.
-- **File type** kan være `.shp`, `shp`, `.geojson`, `.kml`, en anden filendelse eller `*` for alle filtyper. Feltet er fritekst.
-- Store og små bogstaver behandles ens.
-- Hvis flere regler passer, vinder den **længste matchende suffix**.
-- Hvis suffixerne er lige lange, har en **konkret filtype** forrang over `*`. Ved fortsat lighed afgør rækkefølgen i konfigurationen.
-
-For `sample-control-points.geojson` vinder `-control-points` over `-points`. Hvis begge regler bruger `-control-points`, har `.geojson` forrang over `*`.
-
-!!! note "Hvad regnes som en filkilde?"
-    QGIS skal først have indlæst filen som et gyldigt lag. Reglen er ikke en generel matching af Oracle-tabelnavne. For en GeoPackage er det **selve filen**, der bruges til suffix-matching; forskellige interne lag kan derfor rammes af den samme regel.
-
-## Prioritering af styles
-
-StyleCore undersøger matches i denne rækkefølge:
-
-1. **Personal override** for laget og den aktive konfiguration.
-2. **Shared automatic layer style mapping**.
-3. **File Suffix Rule** for filens navn og filendelse.
-4. **QML-fil med samme navn som laget** som fallback.
-
-Hvis en QML-fil mangler eller ikke kan anvendes, kan StyleCore forsøge en anden passende kandidat. Inden for File Suffix Rules gælder den prioritering, der er beskrevet ovenfor.
-
-## Personal Overrides
-
-Med **Personal Overrides** kan du vælge en personlig QML-style til et lag uden at ændre den fælles JSON-fil eller teamets styles.
+![developer-shared-styles.png](../../assets/images/screenshots/developer-shared-styles.png){ width="92%" }
+*Shared automatic layer styles bruges, når et lagnavn skal pege på en bestemt QML-fil.*
 
 1. Åbn **Settings → Options → StyleCore**.
-2. Vælg **Add personal override** under **Personal Overrides**.
+2. Slå **Developer Mode** til.
+3. Tilføj eller vælg en række under **Shared automatic layer styles**.
+4. Indtast lagnavnet og vælg QML-filen.
+5. Gem med developer-koden.
+6. Test ved at tilføje et nyt matchende lag.
+
+## 4. Vedligehold File Suffix Rules
+
+![developer-file-suffix-rules.png](../../assets/images/screenshots/developer-file-suffix-rules.png){ width="92%" }
+*Brug File Suffix Rules, når styling skal afhænge af kildefilens navn i stedet for kun det synlige lagnavn.*
+
+1. Gå til **File Suffix Rules** under **Developer**.
+2. Klik **Add suffix**.
+3. Indtast suffix, filtype og mål-QML.
+4. Gem med developer-koden.
+5. Test med et matchende filbaseret lag.
+
+Eksempelregler:
+
+| Suffix | Filtype | QML-fil | Matcher |
+|---|---|---|---|
+| `-points` | `*` | `points.qml` | `test-points.geojson`, `field-points.kml` |
+| `-observations` | `.geojson` | `obs.qml` | `well-observations.geojson` |
+| `polygons` | `.shp` | `poly.qml` | `area_polygons.shp` |
+
+## 5. Sæt en Personal Override
+
+1. Åbn **Settings → Options → StyleCore → Personal Overrides**.
+2. Klik **Add personal override**.
 3. Vælg eller skriv lagnavnet.
-4. Dobbeltklik i feltet for den personlige style, og vælg den ønskede `.qml`.
-5. Anvend eller gem indstillingerne, og tilføj laget igen for at se resultatet.
+4. Vælg din QML-fil.
+5. Gem og test ved at tilføje et matchende lag.
+6. Brug **Reset to shared default** eller **Reset all personal styles** for at nulstille.
 
-Dit override gemmes i din **lokale QGIS-profil** og knyttes til den valgte konfiguration. Det anvendes på nye matchende lag, når automatisk styling er aktiveret – ikke automatisk på alle lag i allerede gemte projekter.
+## 6. Opdater et eksisterende lag manuelt
 
-Hvis du vil tilbage til teamets standard, skal du vælge reglen og klikke på **Reset to shared default**. Med **Reset all personal styles** fjernes alle personlige overrides for den pågældende konfiguration.
+1. Åbn **StyleCore → Manual Style Update…**.
+2. Vælg laget.
+3. Gennemgå den foreslåede QML eller vælg en anden.
+4. Klik **Use Style**.
+5. Gem QGIS-projektet.
 
-## Manual Style Update
+## 7. Opdater en fælles QML sikkert
 
-Brug **Manual Style Update…** fra StyleCore-menuen, når du vil opdatere et lag i et **eksisterende** QGIS-projekt.
+![developer-save-layer-styles.png](../../assets/images/screenshots/developer-save-layer-styles.png){ width="65%" }
+*Brug **Save layer styles…** til at skrive opdaterede fælles QML-filer tilbage til den fælles styles-mappe.*
 
-1. Åbn menuen, og vælg **Manual Style Update…**.
-2. Vælg et lag i projektet.
-3. Gennemgå den foreslåede QML, eller find en anden `.qml`.
-4. Klik på **Use Style**.
-5. Gem QGIS-projektet for at bevare lagets opdaterede styling.
-
-Forslag kan baseres på det synlige QGIS-lagnavn eller, for relevante Oracle-lag, den underliggende tabel eller view. Ændringen er **et aktivt valg for det enkelte lag**. Den opretter ikke en permanent Oracle-kilderegel og ændrer ikke automatisk andre projekter.
+1. Redigér lagets style i QGIS.
+2. Åbn **Save layer styles…**.
+3. Vælg kun de lag, du vil gemme.
+4. Bekræft destination, developer-kode og eventuelle overskrivninger.
+5. Test med et nyt lag eller en template med Refresh.

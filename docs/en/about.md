@@ -1,17 +1,17 @@
 # About StyleCore
 
-**StyleCore** is an open-source QGIS plugin for managing consistent layer styling, shared project templates and reusable print layouts through a local or shared configuration.
+**StyleCore** is an open-source QGIS plugin that helps individuals and teams use consistent layer styles, project templates, print layouts and optional fonts from shared or local resources.
 
-It is designed to support both individual QGIS users and teams that share GIS resources. Users can apply personal QML preferences without changing their colleagues' shared configuration, while maintainers can manage shared styling rules and templates in one place.
+A team can maintain common rules and resource files centrally while each user can keep personal QML preferences in their own QGIS profile.
 
 ## Project links
 
-- [StyleCore source code on GitHub](https://github.com/vnaru42/StyleCore)
-- [Latest published release](https://github.com/vnaru42/StyleCore/releases/latest)
+- [StyleCore source code](https://github.com/vnaru42/StyleCore)
+- [Latest plugin release](https://github.com/vnaru42/StyleCore/releases/latest)
 - [Report an issue or suggest a feature](https://github.com/vnaru42/StyleCore/issues)
 
-## Documentation
+## Documentation scope
 
-These guides describe **StyleCore v1.8.3**, its first public release. The documentation website is maintained independently of the QGIS plugin and may be updated without releasing new plugin code.
+These guides are written for **StyleCore 1.9.0** and cover its publicly available workflows. Documentation can be updated independently of a plugin release. For a quick introduction, start with [Installation](getting-started/installation.md), [First Use](getting-started/first-use.md) and [Basic Usage](getting-started/basic-usage.md).
 
-Start with [Installation](getting-started/installation.md) and [First use](getting-started/first-use.md), or see [All Features](features/feature-reference.md) for a quick overview.
+StyleCore is licensed under **GPL-3.0-or-later**. Check the repository for licensing details and source code.

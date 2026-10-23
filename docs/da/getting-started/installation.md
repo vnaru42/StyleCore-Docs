@@ -1,23 +1,22 @@
 # Installation
----
 
-## Krav
+Installer først StyleCore. Derefter kan du forbinde pluginet til en eksisterende fælles konfiguration eller oprette din egen.
 
-- QGIS 3.44 eller nyere
+## 1. Kontrollér kravene
 
-## Installér StyleCore fra ZIP
+- QGIS **3.44 eller nyere** (StyleCore 1.9.0 angiver understøttelse af QGIS 4.x).
+- Adgang til de fællesdrev og datakilder, du skal bruge.
 
-1. Download pluginets ZIP-fil fra [den seneste StyleCore-release](https://github.com/vnaru42/StyleCore/releases/latest).
-2. Gå til **Plugins → Manage and Install Plugins** i QGIS.
-3. Vælg **Install from ZIP**.
-4. Vælg den downloadede **StyleCore ZIP-fil**, og bekræft.
-5. Find StyleCore-ikonet på QGIS-værktøjslinjen.
+## 2. Installer pluginet
 
-!!! note "Officielt QGIS-plugin-katalog"
-    Denne vejledning bruger GitHub-releasen. Der arbejdes på at få StyleCore optaget i det officielle QGIS-plugin-katalog.
+1. Åbn **Plugins → Manage and Install Plugins** i QGIS.
+2. Hvis StyleCore findes i plugin-kataloget, skal du søge efter **StyleCore** og vælge **Install**.
+3. Ellers kan du hente [seneste plugin-ZIP](https://github.com/vnaru42/StyleCore/releases/latest), vælge **Install from ZIP** og finde filen.
+4. Find **StyleCore** i QGIS-værktøjslinjen, og åbn menuen.
 
-## Efter installationen
+!!! note "Plugin-ZIP og konfiguration er to forskellige ting"
+    Pluginet installeres separat fra teamets JSON-konfiguration og ressourcemapper. Installation af StyleCore giver ikke automatisk adgang til arbejdspladsens styles eller data.
 
-Nu skal StyleCore sættes op. Har du allerede fået en `config.json`-fil, er du næsten klar.
+## 3. Fortsæt
 
 [Første brug →](first-use.md){ .md-button .md-button--primary }

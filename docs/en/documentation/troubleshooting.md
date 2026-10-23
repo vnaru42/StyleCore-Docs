@@ -1,53 +1,83 @@
 # Troubleshooting
 
-Start by checking the **active configuration**, whether the referenced folders are accessible, and whether **Automatic styling** is enabled. Most problems can be diagnosed without changing the plugin code.
+Start with the **active configuration**, your connection to shared resources, and whether **Automatic Styling** is enabled. Use the sections below to fix the most common problems in order.
 
-??? question "There are templates in the QGIS home screen that has been removed from shared location"
-    An earlier version of StyleCore copied templates from the shared location, to make them appear in the QGIS home screen. This funktion has been removed from the plugin, when StyleCore started to handle the templates itself. These old templates can be deleted from its local location, usually: `C:\Users\(User)\AppData\Roaming\QGIS\QGIS3\profiles\default\project_templates`
+## Configuration and access
 
-??? question "I received a JSON configuration. Where do I load it?"
-    In QGIS open **Settings → Options → StyleCore → Configuration**. Use **Load configuration…** or paste its local/UNC path. The file can be outside the plugin folder. See [Configuration](configuration.md#load-an-existing-configuration).
+??? question "I received a JSON configuration. How do I load it?"
+    1. Open **Settings → Options → StyleCore → Configuration**.
+    2. Click **Load configuration…**, or paste the full JSON path into the path field and load it.
+    3. Check the active configuration name, then test a shared template or QML.
+    See [Configuration – In QGIS](configuration.md).
+
+??? question "The shared JSON or network folder is unavailable"
+    1. Confirm that you are connected to your workplace network/VPN.
+    2. Check the shared path in File Explorer.
+    3. Reload the **same JSON path** when access is restored; StyleCore remembers the selected path rather than silently switching to another configuration.
 
 ??? question "I created a configuration but there are no styles or layouts"
-    New configuration creation makes the resource **subfolders**, but not the QML, QPT, SVG or QGIS project files. Add the resources to their corresponding folders. See [Configuration](configuration.md#create-a-new-configuration).
+    StyleCore creates **resource directories** but not the QML/QPT/QGS/QGZ files. Put your files into the configured folders and try again.
 
-??? question "My shared configuration is temporarily unavailable"
-    Reconnect the network or VPN and reload the JSON. StyleCore keeps your selected configuration path; it does not silently switch to another setup.
+## Moved folders or network drives
 
-??? question "A colleague cannot see a shared rule change"
-    Confirm that you saved to the correct shared JSON, using the developer code and appropriate write permissions. Ask the colleague to reload that configuration. Their Personal Override may take priority for the same layer.
+Use these steps if a folder was renamed, a drive letter changed (for example `P:` → `S:`), the UNC server path changed, or the resource directory was moved.
 
-??? question "My personal style override is not being used"
-    Check the active configuration, the layer name, and the selected QML file. Automatic styling must be enabled for newly added layers. Reopening an ordinary saved QGIS project does not automatically restyle its layers.
+1. **Find the change:** Did the JSON file move, did the root folder move, or did a QGIS project/data source move?
+2. **If using the JSON directory as root (`root_mode: config_dir`):** Move the JSON and its resource folders together. Keep subfolder names and relative layout unchanged.
+3. **If using a separate root (`root_mode: custom`):** Load the configuration, open **Developer** and change the shared root path to the new accessible location; save with the developer code.
+4. **If the JSON path changed:** Every colleague should use **Load configuration…** to select the JSON at its **new** location.
+5. **Check references outside the root:** External template paths and absolute QML/resource paths may need updating.
+6. **Test the result:** Load a style, open a template, open a QPT layout and check optional fonts.
+7. **Repair QGIS project data sources separately:** StyleCore does not automatically rewrite broken file/Oracle/WMS/WFS references inside existing project files.
 
-??? question "My new layer has no automatic style"
-    Check that Automatic styling is enabled, the configuration is available, and that a QML matches through the layer name, personal/shared mapping or File Suffix Rule. If no usable QML exists, StyleCore leaves the layer's appearance unchanged. See [Layer Styling](layer-styling.md).
+!!! tip "Avoid problems next time"
+    Keep the JSON and resource folders together with **Use configuration file folder as resource root**, and prefer relative resource references where possible. UNC paths are often preferable to workstation-specific mapped drive letters when supported by your environment.
 
-??? question "A File Suffix Rule matches the wrong file or not at all"
-    The suffix is matched against the **filename without the extension**. Confirm the source was loaded as a valid QGIS layer, and the rule's extension matches or is `*`. The longest suffix wins; for equal lengths, a specific extension wins over `*`.
+## Styling
 
-??? question "My template does not appear in QGIS"
-    Make sure a valid `.qgs` or `.qgz` exists in the **shared template folder** and is accessible. Templates are opened directly from the configured folder through **StyleCore → New from Template**. Check that the template is **Active** and accessible. See [Project Templates](project-templates.md).
+??? question "A new layer does not get a QML style"
+    1. Check **Automatic Styling** in the StyleCore menu.
+    2. Confirm the correct JSON and shared styles folder are accessible.
+    3. Check Personal Overrides, Shared Rules, File Suffix Rules and matching QML filenames in that order.
+    4. Check the **StyleCore** QGIS log for missing or invalid QML paths. See [Layer Styling](layer-styling.md).
 
-??? question "An ordinary saved project was not restyled"
-    This is expected: StyleCore preserves its saved styles. Use **Manual Style Update** to apply a style explicitly to one layer, then save that QGIS project.
+??? question "My Personal Override is not applied"
+    Check the active configuration, exact layer name and chosen QML. Personal Overrides are applied to matching **newly added** layers, not automatically to all already-open project layers.
 
-??? question "A selected template is not refreshing its existing layers"
-    Check the template's name under **Developer → Template refresh**, its QML availability, and the Automatic styling toggle. Only explicitly selected, recognized templates are refreshed.
+??? question "A File Suffix Rule matches the wrong source"
+    Match the **filename without extension**, and ensure the extension is correct (`.geojson`, `.shp`, `*`, etc.). The longest suffix wins. For GeoPackages, the source is the **package filename**, not an internal table name.
 
-??? question "The PRINT menu is empty"
-    Verify that the active configuration points to an accessible layouts folder containing `.qpt` files. See [Print Layouts](print-layouts.md).
+??? question "Opening an existing project did not update its styles"
+    This is expected. Existing saved project styling is preserved. Use **StyleCore → Manual Style Update…**, apply QML to the selected layer and save the project.
 
-??? question "Move Item Content does not activate when opening a QPT"
-    Open the QPT in QGIS Layout Designer and check that the intended map item has the exact **Item ID** `main_map`. Also check your QGIS version's Layout Designer support.
+## Templates, layouts and fonts
+
+??? question "A template is missing from New from Template"
+    1. Check that the source `.qgs`/`.qgz` exists and is accessible.
+    2. Check **Developer → Templates → Active**.
+    3. If it is an external template, verify the linked path.
+    4. Reopen the **New from Template** menu. See [Project Templates](project-templates.md).
+
+??? question "A template is not refreshing its styles"
+    Make sure **Refresh** is selected for this template, **Automatic Styling** is on, and you opened it specifically via **StyleCore → New from Template**. Check that matching QMLs exist.
+
+??? question "My template opens with missing layers"
+    Open the source `.qgs`/`.qgz` in QGIS and repair its **data-source paths or service connections**. A working template location alone does not guarantee all of its project data is accessible.
+
+??? question "Print Layouts is empty or main_map does not work"
+    Confirm that the configured layouts folder contains `.qpt` files. For map automation, the intended map item must have **Item ID** `main_map` (exact spelling). QGIS support for activating Move Item Content may depend on the version. See [Print Layouts](print-layouts.md).
+
+??? question "An SVG or font is missing"
+    For SVG images, check the QPT Picture **Item ID** against the `.svg` filename in the layouts folder. For fonts, put permitted `.ttf`/`.otf` files in the optional `root/fonts` directory; reload the configuration or restart QGIS if needed.
+
+## Developer settings
 
 ??? question "Developer changes cannot be saved"
-    Confirm the code, shared filesystem permissions, and active configuration. If another person updated the JSON while you were editing, reload before making changes again.
+    Confirm the correct developer code, write permissions and active JSON. If another maintainer changed the shared JSON during editing, reload it before saving. See [Developer Tools](developer-tools.md).
+
+??? question "Old template entries are still on the QGIS Welcome screen"
+    This can be left over from an earlier installation that placed template copies in QGIS' local `project_templates` directory. Current StyleCore opens templates directly from their sources. Check the local QGIS profile template folder, remove only confirmed obsolete copies, and restart QGIS if needed. Do not delete your own unrelated templates.
 
 ## Report a problem
 
-When creating a [GitHub issue](https://github.com/vnaru42/StyleCore/issues), include your QGIS version, StyleCore version, the action that failed and relevant StyleCore log messages. Remove private network paths, tokens and developer codes from anything you post publicly.
-
-## Existing configurations after an update
-
-Configurations created before the configuration-folder root option remain supported. If the JSON has a separate absolute resource root, it will keep using that root unless changed explicitly. To make a configuration portable, choose the configuration-file-folder root option and keep the resource subfolders next to the JSON. Back up the JSON before changing resource locations.
+If the steps above do not help, use [Report an Issue](https://github.com/vnaru42/StyleCore/issues). Include your QGIS and StyleCore versions, steps to reproduce, and relevant QGIS StyleCore log messages. **Remove private paths, credentials, tokens and developer codes** before publishing a report.

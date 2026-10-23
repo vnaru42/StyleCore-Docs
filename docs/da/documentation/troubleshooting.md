@@ -1,53 +1,83 @@
 # Fejlfinding
 
-Start med at kontrollere den **aktive konfiguration**, om ressourcemapperne er tilgængelige, og om **Automatic styling** er aktiveret. De fleste problemer kan undersøges uden at ændre pluginets kode.
+Start med at kontrollere den **aktive konfiguration**, adgangen til de fælles ressourcer og om **Automatic Styling** er slået til. Følg derefter de relevante trin herunder.
 
-??? question "Der skabeloner på min QGIS startskærm som vi ikke benytter mere"
-    En tidligere version af StyleCore kopierede skabeloner fra fællesdrev/delte placeringer, til din lokalt installerede QGIS mappe, for at fremgå på startsiden. Denne funktion er blevet udfaset efter at StyleCore begyndte at varetage skabeloner selv. Disse kan slettes fra din lokale QGIS mappe som normalt ligger på: `C:\Users\(Bruger)\AppData\Roaming\QGIS\QGIS3\profiles\default\project_templates`
+## Konfiguration og adgang
 
-??? question "Jeg har modtaget en JSON-konfiguration. Hvor indlæser jeg den?"
-    Åbn **Settings → Options → StyleCore → Configuration** i QGIS. Brug **Load configuration…**, eller indsæt en lokal sti/UNC-sti. Filen behøver ikke ligge i pluginets mappe. Se [Konfiguration](configuration.md#indlæs-en-eksisterende-konfiguration).
+??? question "Jeg har fået en JSON-konfiguration. Hvordan indlæser jeg den?"
+    1. Åbn **Settings → Options → StyleCore → Configuration**.
+    2. Vælg **Load configuration…**, eller indsæt hele JSON-stien i feltet, og indlæs den.
+    3. Kontrollér aktivt konfigurationsnavn, og test en fælles template eller QML.
+    Se [Konfiguration – i QGIS](configuration.md).
 
-??? question "Jeg har oprettet en konfiguration, men der er ingen styles eller layouts"
-    Når du opretter en konfiguration, laver StyleCore **undermapperne**, men ikke QML-, QPT-, SVG- eller QGIS-projektfiler. Læg ressourcerne i de tilsvarende mapper. Se [Konfiguration](configuration.md#opret-en-ny-konfiguration).
+??? question "Den fælles JSON eller netværksmappe er utilgængelig"
+    1. Kontrollér forbindelsen til netværket/VPN.
+    2. Find stien i Stifinder.
+    3. Genindlæs **samme JSON-sti**, når forbindelsen virker igen. StyleCore husker den valgte sti i stedet for automatisk at skifte konfiguration.
 
-??? question "Min fælles konfiguration er midlertidigt utilgængelig"
-    Genopret netværksforbindelsen eller VPN'en, og indlæs JSON-filen igen. StyleCore husker den valgte sti og skifter ikke automatisk til en anden opsætning.
+??? question "Jeg har oprettet en konfiguration, men ingen styles eller layouts vises"
+    StyleCore opretter **ressourcemapperne**, men ikke QML/QPT/QGS/QGZ-filerne. Læg filerne i de rigtige mapper, og prøv igen.
 
-??? question "En kollega kan ikke se en ændring af en fælles regel"
-    Kontrollér, at du har gemt til den rigtige fælles JSON-fil, med korrekt udviklerkode og de nødvendige skriverettigheder. Bed kollegaen indlæse konfigurationen igen. Et personligt override kan have højere prioritet for samme lag.
+## Flyttede mapper eller fællesdrev
 
-??? question "Mit personlige style-override bliver ikke brugt"
-    Kontrollér den aktive konfiguration, lagnavnet og den valgte QML-fil. Automatisk styling skal være aktiveret for nye lag. Hvis du genåbner et almindeligt gemt projekt, bliver dets lag ikke automatisk stylet igen.
+Brug denne vejledning, hvis en mappe har fået nyt navn, et drevbogstav ændres (fx `P:` → `S:`), UNC-stien ændres, eller ressourcerne flyttes.
 
-??? question "Mit nye lag får ingen automatisk style"
-    Kontrollér, at Automatic styling er slået til, konfigurationen er tilgængelig, og at der findes en QML via lagnavn, personligt/fælles mapping eller File Suffix Rule. Uden en anvendelig QML bevarer laget sit udseende. Se [Lagstyling](layer-styling.md).
+1. **Find ændringen:** Er JSON-filen flyttet, er rodmappen flyttet, eller er en datakilde i et QGIS-projekt flyttet?
+2. **Ved JSON-mappen som rod (`root_mode: config_dir`):** Flyt JSON-filen og ressourcemapperne samlet, og bevar undermappenavne og relativ struktur.
+3. **Ved separat rodmappe (`root_mode: custom`):** Indlæs konfigurationen, åbn **Developer**, og ret den fælles rodmappe til den nye tilgængelige sti. Gem med developer code.
+4. **Hvis JSON-filen har fået ny sti:** Alle kolleger skal bruge **Load configuration…** til at vælge JSON-filen på **den nye placering**.
+5. **Kontrollér eksterne henvisninger:** Stier til eksterne templates og absolutte QML-/ressourcestier skal måske også rettes.
+6. **Test opsætningen:** Tilføj et stylet lag, åbn en template og et QPT-layout, og kontrollér eventuelle fonts.
+7. **Reparér QGIS-datakilder separat:** StyleCore ændrer ikke automatisk ugyldige fil-/Oracle-/WMS-/WFS-stier inde i eksisterende QGIS-projekter.
 
-??? question "En File Suffix Rule matcher forkert eller slet ikke"
-    Suffix sammenlignes med **filnavnet uden filendelsen**. Kontrollér, at kilden er indlæst som et gyldigt QGIS-lag, og at reglen har den rigtige filtype eller `*`. Den længste suffix vinder; ved samme længde vinder en bestemt filendelse over `*`.
+!!! tip "Forebyg samme problem"
+    Hold JSON og ressourcemapper samlet via **Use configuration file folder as resource root**, og brug relative stier, hvor det er muligt. UNC-stier er ofte mere robuste end maskinspecifikke drevbogstaver, hvis arbejdspladsen understøtter dem.
 
-??? question "Min skabelon vises ikke i QGIS"
-    Kontrollér, at den **fælles skabelonmappe** indeholder en gyldig og tilgængelig `.qgs`- eller `.qgz`-fil. Skabeloner åbnes direkte fra den konfigurerede mappe via **StyleCore → New from Template**. Kontrollér, at skabelonen er **Active** og tilgængelig. Se [Projektskabeloner](project-templates.md).
+## Styling
 
-??? question "Et almindeligt gemt projekt blev ikke stylet igen"
-    Det er forventet: StyleCore bevarer projektets gemte styles. Brug **Manual Style Update** til bevidst at ændre et bestemt lag, og gem derefter QGIS-projektet.
+??? question "Et nyt lag får ingen QML-style"
+    1. Kontrollér **Automatic Styling** i StyleCore-menuen.
+    2. Kontrollér, at JSON og fælles styles-mappe er tilgængelige.
+    3. Kontrollér Personal Overrides, Shared Rules, File Suffix Rules og matchende QML-filnavne i den rækkefølge.
+    4. Se i QGIS' **StyleCore-log** efter manglende eller ugyldige QML-stier. Se [Lagstyling](layer-styling.md).
 
-??? question "En udvalgt skabelon opdaterer ikke sine eksisterende lag"
-    Kontrollér skabelonnavnet under **Developer → Template refresh**, at QML-filerne findes, og at Automatic styling er slået til. Kun udtrykkeligt valgte og genkendte skabeloner opdateres.
+??? question "Mit Personal Override bruges ikke"
+    Kontrollér aktiv konfiguration, præcist lagnavn og den valgte QML. Personal Overrides bruges ved matchende **nytilføjede** lag – ikke automatisk på alle åbne projektlag.
 
-??? question "PRINT-menuen er tom"
-    Kontrollér, at den aktive konfiguration peger på en tilgængelig layoutmappe med `.qpt`-filer. Se [Printlayouts](print-layouts.md).
+??? question "En File Suffix Rule matcher en forkert kilde"
+    Reglen matcher **filnavnet uden filtype**. Kontrollér filtypen (`.geojson`, `.shp`, `*` osv.). Længste suffix vinder. Ved GeoPackage er det **pakkens filnavn**, ikke navnet på en intern tabel.
 
-??? question "Move Item Content bliver ikke aktiveret ved åbning af en QPT"
-    Åbn QPT-filen i QGIS Layout Designer, og kontrollér, at det ønskede kortelement har det nøjagtige **Item ID** `main_map`. Kontrollér også understøttelsen i din QGIS-versions Layout Designer.
+??? question "Et eksisterende projekt blev ikke restylet ved åbning"
+    Det er forventet. Eksisterende projekters styles bevares. Brug **StyleCore → Manual Style Update…**, anvend QML på det valgte lag, og gem projektet.
 
-??? question "Ændringer i Developer Mode kan ikke gemmes"
-    Kontrollér udviklerkoden, filrettighederne og den aktive konfiguration. Hvis en anden person har ændret JSON-filen undervejs, skal du indlæse den igen, før du prøver at gemme nye ændringer.
+## Skabeloner, layouts og skrifttyper
 
-## Indberet et problem
+??? question "En skabelon mangler under New from Template"
+    1. Kontrollér, at kildefilen `.qgs`/`.qgz` findes og kan tilgås.
+    2. Kontrollér **Developer → Templates → Active**.
+    3. Hvis det er en ekstern skabelon, skal den tilknyttede sti kontrolleres.
+    4. Åbn **New from Template**-menuen igen. Se [Projektskabeloner](project-templates.md).
 
-Når du opretter en [GitHub-issue](https://github.com/vnaru42/StyleCore/issues), bør du angive QGIS-version, StyleCore-version, handlingen som fejlede, og relevante StyleCore-logbeskeder. Fjern private netværksstier, tokens og udviklerkoder fra det, du offentliggør.
+??? question "En skabelon opdaterer ikke sine styles"
+    Kontrollér, at **Refresh** er valgt for skabelonen, **Automatic Styling** er slået til, og at skabelonen blev åbnet via **StyleCore → New from Template**. Kontrollér også matchende QML-filer.
 
-## Eksisterende konfigurationer efter opdatering
+??? question "Skabelonen åbner med manglende lag"
+    Åbn kildens `.qgs`/`.qgz` i QGIS, og reparér dens **datakildestier eller tjenesteforbindelser**. En fungerende placering af selve template-filen betyder ikke nødvendigvis, at dens datakilder virker.
 
-Konfigurationer oprettet før muligheden for at bruge JSON-filens mappe som rodmappe understøttes stadig. Har JSON-filen en separat absolut rodmappe, bruges den fortsat, indtil du aktivt ændrer indstillingen. Vil du kunne flytte konfigurationen samlet, kan du vælge JSON-filens mappe som rodmappe og beholde ressourcemapperne ved siden af filen. Tag en sikkerhedskopi inden ændringen.
+??? question "Print Layouts er tom, eller main_map virker ikke"
+    Kontrollér, at layouts-mappen indeholder `.qpt`-filer. Ved kortautomatik skal kortelementet have **Item ID** `main_map` (præcis stavning). Muligheden for automatisk Move Item Content kan afhænge af QGIS-versionen. Se [Printlayouts](print-layouts.md).
+
+??? question "En SVG eller skrifttype mangler"
+    Ved SVG skal QPT'ens Picture **Item ID** matche `.svg`-filnavnet i layouts-mappen. Ved fonts placeres lovligt delbare `.ttf`/`.otf` i den valgfrie `root/fonts`-mappe. Genindlæs konfigurationen eller genstart QGIS ved behov.
+
+## Developer-indstillinger
+
+??? question "Ændringer kan ikke gemmes under Developer"
+    Kontrollér developer code, skriverettigheder og den aktive JSON. Hvis en anden har ændret den fælles JSON under redigeringen, skal den genindlæses før gemning. Se [Udviklerværktøjer](developer-tools.md).
+
+??? question "Gamle templates vises stadig på QGIS-velkomstskærmen"
+    Det kan stamme fra en tidligere installation, som lagde kopier i QGIS' lokale `project_templates`-mappe. Den aktuelle StyleCore åbner skabeloner direkte fra kilden. Kontrollér den lokale skabelonmappe i QGIS-profilen, slet kun bekræftede forældede kopier, og genstart eventuelt QGIS. Slet ikke dine egne andre skabeloner.
+
+## Rapportér et problem
+
+Hvis trinene ikke hjælper, kan du bruge [Report an Issue](https://github.com/vnaru42/StyleCore/issues). Oplys version af QGIS og StyleCore, trin til at gentage fejlen og relevante StyleCore-logbeskeder. **Fjern private stier, adgangsoplysninger, tokens og developer codes**, før du offentliggør en fejlrapport.

@@ -1,64 +1,84 @@
 # Developer Tools
 
-**Developer Mode** is intended for the person responsible for maintaining a StyleCore configuration and the team's shared QML resources. It is not necessary for everyday use of StyleCore.
+Use **Developer Mode** when you maintain the shared StyleCore setup. Ordinary users do not need it. Developer Mode gives access to the shared maintenance sections in StyleCore settings.
 
-## Enable Developer Mode
+![options-developer-section.png](../../assets/images/screenshots/options-developer-section.png){ width="82%" }
+*Developer Mode is enabled from the Developer section in the StyleCore settings page.*
+
+## 1. Enable Developer Mode
 
 1. Open **Settings → Options → StyleCore**.
-2. Expand **Developer** and enable **Developer Mode**.
-3. Review the shared settings you intend to manage.
-4. When saving shared changes, enter the **developer code** associated with the active configuration.
+2. Expand **Developer**.
+3. Tick **Enable developer mode**.
+4. Use the sections that appear below.
+5. Save with **Apply / OK** and confirm with the developer code when prompted.
 
-Enabling Developer Mode exposes shared editing controls. The developer code confirms saving shared changes, but it does **not** replace filesystem permissions.
+!!! warning "Developer code is a confirmation step"
+    The developer code confirms shared changes in StyleCore. Real protection still comes from file and server permissions.
 
-## What can be managed?
+## 2. Know the main maintenance areas
 
-| Developer control | What it changes | Detailed instructions |
-|---|---|---|
-| Resource root folder | Where StyleCore's shared styles, templates and layouts are found | [Configuration – In QGIS](configuration.md) |
-| Shared automatic layer styles | Shared layer-name-to-QML mappings in the active JSON | [Layer Styling](layer-styling.md#shared-automatic-layer-styles) |
-| File Suffix Rules | Which file sources receive a matching QML style | [Layer Styling](layer-styling.md#file-suffix-rules) |
-| Template refresh | Which recognized templates refresh existing layer styles on opening | [Project Templates](project-templates.md#template-refresh-update-styles-when-a-template-opens) |
-| Save layer styles | Write selected QGIS layers' current styling to shared QML files | [Save QML styles from QGIS](#save-qml-styles-from-qgis) |
+| Area | Used for |
+|---|---|
+| Resource root | Change a moved or renamed shared root folder |
+| Templates | Manage Active, Refresh and external templates |
+| Shared automatic layer styles | Maintain layer name → QML mappings |
+| File Suffix Rules | Maintain suffix-based rules |
+| Save layer styles… | Write shared QML files from styled layers in QGIS |
 
-All shared changes should be made against the **correct active configuration**, especially if you manage multiple office or field setups.
+![developer-root-folder.png](../../assets/images/screenshots/developer-root-folder.png){ width="92%" }
+*Use the resource-root section when the shared resource folder moves or changes name.*
 
-## Save changes to a shared configuration
+## 3. Maintain templates
 
-1. Load the correct configuration and check its name and path.
-2. Open **Developer**, make the required changes, and choose **Apply / OK** in QGIS settings.
-3. Provide the developer code when prompted.
-4. Ask colleagues to **reload the shared configuration** to pick up updated mappings and settings.
+![developer-templates.png](../../assets/images/screenshots/developer-templates.png){ width="92%" }
+*Templates can be activated, refreshed or linked externally from one place.*
 
-StyleCore saves shared settings to the active JSON and checks whether it has been changed by someone else while you were editing. If that happens, reload before making a new change to avoid overwriting your colleague's work.
+Use this section to:
 
-!!! warning "Protect the shared resources"
-    Anyone with write access to shared files may be able to change the JSON or QML outside StyleCore. Treat the developer code as a UI confirmation, not access control. Set suitable server or folder permissions and coordinate simultaneous edits.
+1. show or hide templates in the StyleCore menu,
+2. decide which templates should use Refresh,
+3. add external templates,
+4. edit or remove external templates.
 
-## Save QML styles from QGIS
+See [Project Templates](project-templates.md) for the step-by-step workflow.
 
-You can export selected layers' current QGIS styling directly to the configured shared styles location:
+## 4. Maintain shared automatic layer styles
 
-1. Make your symbology and label changes to the appropriate layer in QGIS.
-2. Open **Settings → Options → StyleCore → Developer → Save layer styles…**.
-3. Select the layers to save. They are listed in the same order as the QGIS Layers panel; nothing is selected automatically.
-4. Choose **Save selected**, enter the developer code and confirm the operation.
-5. Review the saved/failed/skipped summary and check the resulting QMLs.
+![developer-shared-styles.png](../../assets/images/screenshots/developer-shared-styles.png){ width="92%" }
+*Use this table when the visible layer name and the QML filename do not match.*
 
-StyleCore checks duplicate layer names, allows you to retry an incorrect developer code without losing your selection, and creates `.qml.bak` backups when overwriting existing shared QML files. Depending on the active shared mapping or File Suffix Rule, the target QML may have a different filename from the visible layer name.
+1. Add or select a row.
+2. Enter the layer name.
+3. Choose the QML file with the `...` button.
+4. Save with the developer code.
+5. Ask colleagues to reload the configuration if needed.
 
-!!! important "Personal and shared styles are different"
-    If a layer has a Personal Override, **Save layer styles** still writes to the team's shared QML destination, not to the user's personal settings. StyleCore warns before this kind of operation.
+See [Layer Styling](layer-styling.md).
 
-## Which changes affect colleagues?
+## 5. Maintain File Suffix Rules
 
-| Action | Saved in | Changes colleagues' setup? |
-|---|---|---|
-| Add/reset a Personal Override | Your QGIS profile | No |
-| Change shared layer mappings | Active shared JSON | Yes, once reloaded |
-| Change File Suffix Rules | Active shared JSON | Yes, once reloaded |
-| Change template-refresh selection | Active shared JSON | Yes, once reloaded |
-| Save a shared QML | Configured shared styles folder | Can affect styling of newly added layers or selected templates |
-| Update a shared QPT or QGS/QGZ template | Configured resource folder | Affects layouts or shared templates opened later |
+![developer-file-suffix-rules.png](../../assets/images/screenshots/developer-file-suffix-rules.png){ width="92%" }
+*Each rule connects a filename suffix and a file type to a QML file.*
 
-For everyday QML matching and overrides, see [Layer Styling](layer-styling.md). For shared JSON structure and file locations, see [Configuration – In QGIS](configuration.md).
+1. Click **Add suffix**.
+2. Enter suffix, file type and QML file.
+3. Save with the developer code.
+4. Test with a matching file-based layer.
+
+## 6. Save shared QML styles from QGIS
+
+![developer-save-layer-styles.png](../../assets/images/screenshots/developer-save-layer-styles.png){ width="65%" }
+*Use **Save layer styles…** when you want to write updated shared QML files from the current project.*
+
+1. Style your layers in QGIS.
+2. Open **Save layer styles…**.
+3. Select only the layers you want to write.
+4. Confirm the save and developer code.
+5. Review the summary and test the result.
+
+## 7. Remember what affects colleagues
+
+- **Personal Overrides** do **not** affect colleagues.
+- **Shared mappings**, **File Suffix Rules**, **template settings** and **saved shared QMLs** do affect colleagues after they reload the configuration.
+- Replacing template or layout source files affects future uses of those resources.

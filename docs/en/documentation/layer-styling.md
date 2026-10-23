@@ -1,105 +1,82 @@
 # Layer Styling
 
-StyleCore applies QML styles to layers added in QGIS and gives users ways to customize styles **without changing their colleagues' settings**. Maintainers can also define shared rules for consistent layer appearance.
+StyleCore uses **QML files** to style newly added QGIS layers consistently. Shared rules are maintained centrally; personal overrides stay local. This page covers **creating, applying, changing and maintaining** styles.
 
-## Automatic styling
+## 1. Create a QML style
 
-When **Automatic styling** is enabled and you add a layer, StyleCore looks for a usable QML file. It can find one by the layer name, an explicit shared mapping, your personal override, or a File Suffix Rule. If nothing matches or none of the QML files can be loaded, it leaves the layer's current style unchanged.
+1. Open a QGIS project and style a layer using **Layer Properties → Symbology / Labels**.
+2. Export its style to a `.qml` file in the configured `layer_styles` folder.
+3. If the QML name matches the visible layer name, no explicit shared rule is needed.
+4. Add a new matching layer to test it.
 
-Use the StyleCore toolbar's automatic-styling toggle or **Settings → Options → StyleCore** to enable or disable this behavior.
+## 2. Understand automatic style selection
 
-!!! note "Existing projects are preserved"
-    Reopening an ordinary saved QGIS project does **not** automatically overwrite its saved layer styles. StyleCore can refresh layers in selected templates and provides **Manual Style Update** for deliberate changes to existing project layers.
+When a new layer is added, StyleCore tries these sources in order:
 
-## Creating and saving QML styles
+| Priority | Source | Example |
+|---|---|---|
+| 1 | **Personal Override** | Your own `Buildings.qml` |
+| 2 | **Shared automatic layer style** | `Buildings` → `Office_Buildings.qml` |
+| 3 | **File Suffix Rule** | `survey-points.geojson` → `Points.qml` |
+| 4 | **Matching QML filename** | Layer `Roads` → `Roads.qml` |
 
-Create or edit a layer's style using QGIS' normal **Layer Properties → Symbology / Labels**, then save/export it as a `.qml` file in the configured styles folder. Choose a filename that matches the layer, or set up a shared mapping or File Suffix Rule pointing to the QML.
+If a higher-priority style cannot be used, StyleCore tries the next one.
 
-Maintainers can also use **Developer → Save layer styles…** to select project layers and write their current styles to the configured shared folder. This may overwrite team QMLs and requires developer authorization. See [Developer Tools](developer-tools.md#save-qml-styles-from-qgis).
+## 3. Maintain shared automatic layer styles
 
-## Layer name matching
-
-The simplest approach is to keep a QML file whose name matches the visible QGIS layer name in your configured styles folder:
-
-| QGIS layer | QML file |
-|---|---|
-| `Buildings` | `Buildings.qml` |
-| `Roads` | `Roads.qml` |
-| `Survey Points` | `Survey Points.qml` |
-
-You can give different instances of the same underlying data different layer names and their own QML files. This is useful when two templates need distinct filters or styles for the same Oracle view.
-
-## Shared automatic layer styles
-
-Shared rules explicitly connect a QGIS **layer name** to a particular QML, even when the QML does not have the same name as the layer.
-
-1. Open **Settings → Options → StyleCore → Developer**.
-2. Enable Developer Mode.
-3. In **Shared automatic layer styles**, add or edit a layer-to-QML mapping.
-4. Apply/save and confirm with the developer code.
-5. Ask colleagues to reload the shared configuration to receive the updated mapping.
-
-Shared rules live in the selected JSON, so changes can affect all users of that configuration. Use relative style paths under the shared styles folder where practical. Keep the actual QML files accessible to everyone who needs them.
-
-## File Suffix Rules
-
-A File Suffix Rule identifies a file-backed layer by the **ending of its filename**, together with its file extension. This works with all file formats QGIS can load.
-
-| Suffix | File type | QML file | Example matching source |
-|---|---|---|---|
-| `-control-points` | `.geojson` | `Control.qml` | `survey-control-points.geojson` |
-| `-survey` | `.shp` | `Survey.qml` | `region-survey.shp` |
-| `-results` | `*` | `Results.qml` | `run-results.kml` or `run-results.geojson` |
-
-A maintainer sets these fields in **Developer → File Suffix Rules** and saves the shared configuration.
-
-### How matching works
-
-- The **suffix** is matched against the filename **without the extension**.
-- **File type** can be `.shp`, `shp`, `.geojson`, `.kml`, another extension, or `*` for any extension. The field is free text.
-- Matching is case-insensitive.
-- If several rules match, the **longest matching suffix** wins.
-- If suffixes are equally long, a rule with a **specific extension** wins over `*`. Configuration order resolves remaining ties.
-
-For `sample-control-points.geojson`, the suffix `-control-points` wins over `-points`. When both use `-control-points`, `.geojson` wins over `*`.
-
-!!! note "What counts as a file source?"
-    QGIS must successfully load the file as a layer first. This is not a generic Oracle table-name rule. In a GeoPackage, the source *file* is the basis of the suffix match; different internal layers may therefore match the same suffix rule.
-
-## Style matching priority
-
-StyleCore considers matches in this order:
-
-1. **Personal override** for the layer and active configuration.
-2. **Shared automatic layer style mapping**.
-3. **File Suffix Rule** matching the file's name and extension.
-4. **Layer-name QML fallback**.
-
-If a candidate QML is missing or cannot be applied, StyleCore can fall back to another usable candidate. Within File Suffix Rules, specificity follows the rules described above.
-
-## Personal Overrides
-
-**Personal Overrides** let you choose your own QML for a layer while keeping the shared JSON and the team's styles unchanged.
+![developer-shared-styles.png](../../assets/images/screenshots/developer-shared-styles.png){ width="92%" }
+*Shared automatic layer styles are used when a layer name should point to a specific QML file.*
 
 1. Open **Settings → Options → StyleCore**.
-2. In **Personal Overrides**, select **Add personal override**.
-3. Choose or enter the layer name.
-4. Double-click its personal-style field and select the desired `.qml`.
-5. Apply/save the settings, then add the layer to see the personal rule in effect.
+2. Enable **Developer Mode**.
+3. In **Shared automatic layer styles**, add or select a row.
+4. Enter the layer name and choose the QML file.
+5. Save with the developer code.
+6. Test by adding a new matching layer.
 
-The override is stored in your **local QGIS profile**, scoped to the selected configuration. It applies to newly loaded matching layers when automatic styling is enabled, not to every existing saved project.
+## 4. Maintain File Suffix Rules
 
-To return to team defaults, select the personal rule and choose **Reset to shared default**, or use **Reset all personal styles** to clear all personal overrides for that configuration.
+![developer-file-suffix-rules.png](../../assets/images/screenshots/developer-file-suffix-rules.png){ width="92%" }
+*Use File Suffix Rules when styling should depend on the source filename rather than the visible layer name.*
 
+1. In **Developer**, go to **File Suffix Rules**.
+2. Click **Add suffix**.
+3. Enter the suffix, file type and target QML file.
+4. Save with the developer code.
+5. Test with a matching file-based layer.
 
-## Manual Style Update
+Example rules:
 
-Use **Manual Style Update…** from the StyleCore toolbar menu when you want to update a layer in an **existing** QGIS project.
+| Suffix | File type | QML file | Matches |
+|---|---|---|---|
+| `-points` | `*` | `points.qml` | `test-points.geojson`, `field-points.kml` |
+| `-observations` | `.geojson` | `obs.qml` | `well-observations.geojson` |
+| `polygons` | `.shp` | `poly.qml` | `area_polygons.shp` |
 
-1. Open the menu and choose **Manual Style Update…**.
-2. Select a project layer.
-3. Review the suggested QML file, or browse to another `.qml`.
+## 5. Set a Personal Override
+
+1. Open **Settings → Options → StyleCore → Personal Overrides**.
+2. Click **Add personal override**.
+3. Choose or type the layer name.
+4. Choose your QML file.
+5. Save and test by adding a matching layer.
+6. Use **Reset to shared default** or **Reset all personal styles** to undo.
+
+## 6. Update an existing project's layer manually
+
+1. Open **StyleCore → Manual Style Update…**.
+2. Select the layer.
+3. Review the suggested QML or browse to another one.
 4. Click **Use Style**.
-5. Save the QGIS project to keep that layer's updated style.
+5. Save the QGIS project.
 
-Suggestions can use the visible QGIS layer name or, for suitable Oracle-backed layers, the underlying table/view name. Applying a style is **opt-in for that individual layer**. It does not create a permanent Oracle source association or automatically change other projects.
+## 7. Update a team QML safely
+
+![developer-save-layer-styles.png](../../assets/images/screenshots/developer-save-layer-styles.png){ width="65%" }
+*Use **Save layer styles…** to write updated shared QML files back to the shared styles folder.*
+
+1. Edit the layer style in QGIS.
+2. Open **Save layer styles…**.
+3. Select only the layers you want to save.
+4. Confirm destination, developer code and overwrites.
+5. Test with a new layer or a refreshed template.

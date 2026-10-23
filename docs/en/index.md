@@ -20,7 +20,7 @@ StyleCore helps individuals and teams keep QGIS projects consistent by working w
 <div class="sc-steps">
 <div class="sc-step"><strong>01 · Connect</strong><p>Load or create a JSON configuration that points to your local or shared resource folders.</p></div>
 <div class="sc-step"><strong>02 · Work</strong><p>Use styles, templates and print layouts from the StyleCore menu and QGIS settings.</p></div>
-<div class="sc-step"><strong>03 · Stay consistent</strong><p>Keep configured project templates and layer styles up to date as resources change.</p></div>
+<div class="sc-step"><strong>03 · Stay consistent</strong><p>Use current shared templates and layer styles as your team updates them.</p></div>
 </div>
  
 <img src="assets/images/stylecore-diagram.png"

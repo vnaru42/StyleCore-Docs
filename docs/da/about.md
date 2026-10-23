@@ -1,17 +1,17 @@
 # Om StyleCore
 
-**StyleCore** er et open source-plugin til QGIS, som hjælper med ensartet lagstyling, fælles projektskabeloner og genanvendelige printlayouts via en lokal eller delt konfiguration.
+**StyleCore** er et open source-plugin til QGIS, der hjælper enkeltpersoner og teams med ensartet lagstyling, projektskabeloner, printlayouts og valgfrie skrifttyper fra fælles eller lokale ressourcer.
 
-Det er udviklet til både enkelte QGIS-brugere og teams, der deler GIS-ressourcer. Brugerne kan anvende personlige QML-styles uden at ændre kollegernes fælles konfiguration, mens de ansvarlige kan administrere stylingregler og skabeloner centralt.
+Et team kan vedligeholde fælles regler og ressourcefiler centralt, mens hver bruger kan beholde personlige QML-præferencer i sin egen QGIS-profil.
 
 ## Projektlinks
 
-- [StyleCores kildekode på GitHub](https://github.com/vnaru42/StyleCore)
-- [Seneste offentliggjorte release](https://github.com/vnaru42/StyleCore/releases/latest)
-- [Indberet en fejl, eller foreslå en funktion](https://github.com/vnaru42/StyleCore/issues)
+- [StyleCores kildekode](https://github.com/vnaru42/StyleCore)
+- [Seneste plugin-udgivelse](https://github.com/vnaru42/StyleCore/releases/latest)
+- [Rapportér en fejl, eller foreslå en funktion](https://github.com/vnaru42/StyleCore/issues)
 
-## Dokumentation
+## Dokumentationens indhold
 
-Vejledningerne beskriver **StyleCore v1.8.3**, den første offentlige version. Dokumentationshjemmesiden vedligeholdes uafhængigt af QGIS-pluginet og kan opdateres uden at udgive ny pluginkode.
+Vejledningerne er skrevet til **StyleCore 1.9.0** og beskriver de offentligt tilgængelige arbejdsgange. Dokumentationen kan opdateres uafhængigt af nye plugin-versioner. Start med [Installation](getting-started/installation.md), [Første brug](getting-started/first-use.md) og [Daglig brug](getting-started/basic-usage.md).
 
-Begynd med [Installation](getting-started/installation.md) og [Første brug](getting-started/first-use.md), eller se [Alle funktioner](features/feature-reference.md) for et hurtigt overblik.
+StyleCore udgives under **GPL-3.0-or-later**. Se repositoryet for licensvilkår og kildekode.

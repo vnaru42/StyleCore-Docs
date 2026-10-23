@@ -1,29 +1,26 @@
 # Første brug
 
-## Vælg din opsætning
+Vælg den situation, der passer til dig. **De fleste brugere skal indlæse en konfiguration fra deres team** – ikke oprette en ny.
 
-=== "Jeg har allerede en konfiguration"
+=== "En kollega har givet mig en konfiguration"
 
-    Hvis en kollega har givet dig en `.json`-konfiguration, behøver du **ikke** at oprette en ny.
+    1. Opret forbindelse til arbejdspladsens netværk eller VPN, hvis det er nødvendigt.
+    2. Åbn **StyleCore → Settings…** eller **Settings → Options → StyleCore** i QGIS.
+    3. Åbn **Configuration**, og vælg **Load configuration…**. Du kan også indsætte hele JSON-stien, eksempelvis en UNC-sti som `\\server\GIS\StyleCore\office.json`, i stifeltet og indlæse den.
+    4. Kontrollér, at det rigtige navn vises under **Active configuration**.
+    5. Prøv **StyleCore → New from Template** eller **Print Layouts** for at kontrollere adgangen til ressourcerne.
+    6. [Fortsæt til Daglig brug →](basic-usage.md)
 
-    1. Åbn StyleCore-menuen, og vælg **Settings…** (eller **Settings → Options → StyleCore**).
-    2. Fold **Configuration** ud.
-    3. Klik på **Load configuration…**.
-    4. Vælg filen, eller indsæt dens sti. Stifeltet understøtter også UNC-stier. Filvælgeren starter i pluginets `StyleCore/config/`-mappe, men du kan navigere til andre tilgængelige mapper.
-    5. Kontrollér, at den **aktive konfiguration** og dens rodmappe vises korrekt.
+    !!! tip
+        Brug JSON-filen **direkte fra den fælles placering**. Selvstændige kopier på computeren modtager ikke automatisk teamets ændringer.
 
-    [Fortsæt til daglig brug →](basic-usage.md){ .md-button .md-button--primary }
+=== "Jeg sætter StyleCore op til mig selv eller et team"
 
-    ???+ info "Fælles konfigurationer"
-        Hvis en kollega administrerer StyleCore for jeres team, bør du bruge en konfiguration på en fælles placering.
-
-=== "Jeg skal oprette en konfiguration"
-
-    1. Vælg en rodmappe, hvor dine QML-styles, QGIS-skabeloner og printlayouts skal ligge.
+    1. Vælg, hvor JSON-konfiguration og ressourcer skal ligge. Til et team skal alle kunne tilgå placeringen.
     2. Åbn **Settings → Options → StyleCore → Configuration**.
-    3. Klik på **New configuration…**.
+    3. Vælg **New configuration…**.
+    4. Følg [Opret en ny konfiguration](../documentation/configuration.md#2-opret-en-ny-konfiguration) for at vælge JSON-placering, rodmappe og udviklerkode.
+    5. Tilføj QML-styles, QGIS-projektskabeloner og printlayouts efter behov. Guiden opretter mapperne, men ikke filerne i dem.
+    6. Test opsætningen, og del **stien til JSON-filen** med kollegerne.
 
-    [Fortsæt til konfiguration →](../documentation/configuration.md#opret-en-ny-konfiguration){ .md-button .md-button--primary }
-
-    ???+ info "Ansvarlig for konfigurationen"
-        Hvis du administrerer StyleCore for et team eller en organisation, er det bedst at gemme konfigurationen på et fællesdrev. Del derefter stien med dine kolleger. Når du ændrer indstillinger eller placeringer, kan de indlæse ændringerne fra den samme konfigurationsfil. På den måde styrer du teamets fælles StyleCore-opsætning.
+    Se [Konfiguration – i QGIS](../documentation/configuration.md) for den fulde vejledning.

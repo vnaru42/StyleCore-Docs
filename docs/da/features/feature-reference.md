@@ -1,66 +1,50 @@
-# StyleCores funktioner
+# Alle funktioner
 
-Et samlet overblik over StyleCores funktionalitet.
+StyleCore forbinder QGIS-brugere med fælles eller lokale **styles, projektskabeloner, printlayouts og valgfrie skrifttyper** via en JSON-konfiguration. Her er det hurtige overblik. Linkene fører til trinvise vejledninger.
 
 ## Konfiguration
 
-| Funktion | Beskrivelse |
-|---|---|
-| Opret konfiguration | En komplet JSON-konfiguration kan oprettes fra QGIS-indstillingerne. |
-| Indlæs konfiguration | Vælg en eksisterende JSON-fil, eller opret en ny i indstillingsdialogen. |
-| Lokale eller fælles rodmapper | Styles, skabeloner og layouts findes relativt til en konfigurerbar rodmappe. |
-| Skift konfiguration | Brug **Load configuration…** til at vælge en anden JSON uden at ændre pluginets kode. |
-| Husk aktiv konfiguration | Den senest valgte filsti huskes, også hvis et netværksdrev midlertidigt ikke er tilgængeligt. |
+- Opret eller indlæs en JSON-konfiguration direkte i QGIS.
+- Hold JSON og ressourcemapper samlet i en flytbar opsætning, eller vælg en særskilt rodmappe.
+- Del én config på fællesdrev (også UNC-stier), og skift mellem konfigurationer.
+- Gem fælles regler i JSON, mens personlige valg forbliver lokale.
 
-**Læs mere:** [Konfiguration – i QGIS](../documentation/configuration.md) · [Konfiguration JSON](../documentation/configuration-json.md)
-
----
+[Opsætning af konfiguration →](../documentation/configuration.md) · [JSON-felter →](../documentation/configuration-json.md)
 
 ## Lagstyling
 
-| Funktion | Beskrivelse |
-|---|---|
-| Automatisk lagstyling | Anvend matchende QML-styles på nye lag. |
-| Slå automatisk styling til/fra | Funktionen kan aktiveres eller deaktiveres uden at afinstallere StyleCore. |
-| Manual Style Update | Vælg aktivt en QML til et bestemt eksisterende lag. |
-| Personal Style Overrides | Brug en personlig QML til den aktive konfiguration uden at ændre den fælles JSON. |
-| File Suffix Rules (alle QGIS-understøttede filtyper) | Match på suffix og filtype (eller `*`); den længste suffix har forrang. |
-| Gem aktuelle lagstyles | En udvikler kan eksportere de valgte QGIS-lags styling til fælles QML-filer. |
-| Fælles automatiske lag-mappings | Udviklere kan forbinde lagnavne med QML-filer i den fælles JSON. |
+- Anvend automatisk QML-styles på **nytilføjede** lag.
+- Match på **synligt lagnavn**, **fælles lagregel**, **File Suffix Rule** eller **Personal Override**.
+- Slå Automatic Styling til/fra fra StyleCore-menuen.
+- Anvend QML manuelt på et **eksisterende** lag uden at oprette en fælles regel.
+- Gem udvalgte lagstyles som fælles QML gennem Developer Mode.
 
-**Læs mere:** [Lagstyling](../documentation/layer-styling.md) · [Udviklerværktøjer](../documentation/developer-tools.md)
-
----
+[Brug og vedligehold Lagstyling →](../documentation/layer-styling.md)
 
 ## Projektskabeloner
 
-| Funktion | Beskrivelse |
-|---|---|
-| Fælles skabeloner | Skabeloner fra den konfigurerede rodmappe bliver tilgængelige for brugerne af den fælles StyleCore-opsætning. |
-| Direkte projektskabeloner | Åbn fælles `.qgs`/`.qgz` via **New from Template** uden lokale kopier. |
-| Selektiv refresh ved åbning | Eksisterende lag får kun opdaterede styles i genkendte skabeloner valgt under `Template refresh`. |
+- Åbn fælles `.qgs`/`.qgz` **direkte** uden lokale skabelonkopier.
+- Find skabeloner i den konfigurerede mappe **og dens undermapper**.
+- Tilknyt **eksterne templates**, som ligger andre steder.
+- Indstil **Active** (vis i menu) og **Refresh** (opdater matchende QML ved åbning) uafhængigt.
+- Start nye, ikke-gemte projekter fra skabeloner, så fælles originaler beskyttes.
 
-**Læs mere:** [Projektskabeloner](../documentation/project-templates.md)
-
----
+[Opret og vedligehold projektskabeloner →](../documentation/project-templates.md)
 
 ## Printlayouts
 
-| Funktion | Beskrivelse |
-|---|---|
-| Print med ét klik | Opret et almindeligt printlayout direkte fra StyleCore-menuen. |
-| Åbn fælles QPT-layouts | **PRINT**-menuen viser layouts fra den konfigurerede fælles mappe. |
-| Initialisering af `main_map` | Tilpas til kortvinduet, vælg kortelementet, og aktivér **Move Item Content**, hvor det understøttes. |
-| Initialisering af `mini_map` | Tilpas det pågældende kort til kortvinduets udsnit ved oprettelse. |
-| Automatisk SVG-tilknytning | Knyt SVG-filer til Picture-elementer, når filnavne matcher Item ID'er. |
+- Åbn fælles `.qpt` direkte fra StyleCore-menuen.
+- Tilpas `main_map` og `mini_map` til det aktuelle QGIS-kortudsnit.
+- Aktivér **Move Item Content** for `main_map`, hvor det understøttes.
+- Match SVG'er med layoutets Picture items efter **Item ID**.
+- Opret flere layouts uden at overskrive eksisterende layouts.
 
-**Læs mere:** [Printlayouts](../documentation/print-layouts.md)
+[Opret og vedligehold printlayouts →](../documentation/print-layouts.md)
 
----
+## Skrifttyper, vedligeholdelse og hjælp
 
-## Andre nyttige funktioner
+- Registrér eventuelt `.ttf`/`.otf` fra `root/fonts` i QGIS.
+- Brug **Developer Mode** til fælles indstillinger og QML-gemning med kodebekræftelse og filrettigheder.
+- Åbn dokumentation og fejlrapportering direkte fra StyleCore-menuen.
 
-- **Beskyttelse af gemte projekter:** Styles i almindelige gemte projekter bevares ved genåbning.
-- **Styleprioritering:** Personlige overrides har forrang over fælles mappings; derefter følger suffix-regler og match på lagnavn.
-- **Unikke layoutnavne:** Hvis layoutnavnet allerede findes, tilføjes et nummer.
-- **QGIS-sprog:** Pluginets oversættelser følger de understøttede QGIS-sprogindstillinger.
+[Udviklerværktøjer →](../documentation/developer-tools.md) · [Fejlfinding →](../documentation/troubleshooting.md)

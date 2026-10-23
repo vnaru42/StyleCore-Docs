@@ -252,3 +252,54 @@
     color: var(--md-default-fg-color);
     font-weight: 500;
 }
+
+/* Screenshot figures: cleaner crops, calmer captions, and a light framed look. */
+.md-typeset p:has(> img[src*="assets/images/screenshots/"]),
+.md-typeset p:has(> img[src*="screenshots/"]) {
+  text-align: center;
+  margin: 1rem auto .25rem;
+  clear: both;
+}
+
+.md-typeset img[src*="assets/images/screenshots/"],
+.md-typeset img[src*="screenshots/"] {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-width: min(100%, 860px);
+  height: auto;
+  border: 1px solid rgba(120, 145, 132, .22);
+  border-radius: .5rem;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(36, 61, 55, .04);
+}
+
+.md-typeset p:has(> img[src*="assets/images/screenshots/"]) + p:has(> em),
+.md-typeset p:has(> img[src*="screenshots/"]) + p:has(> em) {
+  max-width: 44rem;
+  margin: .18rem auto .95rem;
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.45;
+  font-size: .67rem;
+}
+
+.md-typeset p:has(> img[src*="assets/images/screenshots/"]) + p em,
+.md-typeset p:has(> img[src*="screenshots/"]) + p em {
+  font-style: normal;
+}
+
+/* Keep very wide images a little calmer inside the reading column. */
+.md-typeset p:has(> img[width="100%"]),
+.md-typeset p:has(> img[style*="width:100%"]){
+  max-width: 56rem;
+}
+
+/* Slightly tighter image/caption spacing on small screens. */
+@media (max-width: 700px) {
+  .md-typeset p:has(> img[src*="assets/images/screenshots/"]) + p:has(> em),
+  .md-typeset p:has(> img[src*="screenshots/"]) + p:has(> em) {
+    font-size: .64rem;
+    margin-bottom: .8rem;
+  }
+}

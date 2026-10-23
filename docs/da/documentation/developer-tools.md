@@ -1,64 +1,80 @@
 # Udviklerværktøjer
 
-**Developer Mode** er beregnet til den person, der vedligeholder en StyleCore-konfiguration og teamets fælles QML-ressourcer. Det er ikke nødvendigt ved almindelig brug af StyleCore.
+Brug **Developer Mode**, når du vedligeholder den fælles StyleCore-opsætning. Almindelige brugere har ikke brug for den. Developer Mode giver adgang til de fælles vedligeholdelsesområder i StyleCore-indstillingerne.
 
-## Aktivér Developer Mode
+![options-developer-section.png](../../assets/images/screenshots/options-developer-section.png){ width="82%" }
+*Developer Mode aktiveres fra Developer-sektionen i StyleCore-indstillingerne.*
+
+## 1. Slå Developer Mode til
 
 1. Åbn **Settings → Options → StyleCore**.
-2. Fold **Developer** ud, og aktivér **Developer Mode**.
-3. Gennemgå de fælles indstillinger, du vil administrere.
-4. Når du gemmer fælles ændringer, indtaster du den **developer code**, som hører til den aktive konfiguration.
+2. Fold **Developer** ud.
+3. Sæt flueben i **Enable developer mode**.
+4. Brug de sektioner, der bliver synlige.
+5. Gem med **Apply / OK** og bekræft med developer-koden.
 
-Developer Mode giver adgang til at redigere fælles indstillinger. Koden bekræfter, at de skal gemmes, men **erstatter ikke filrettigheder**.
+!!! warning "Developer-koden er et bekræftelsestrin"
+    Developer-koden bekræfter fælles ændringer i StyleCore. Den reelle beskyttelse kommer stadig fra skriveadgang til filer og server.
 
-## Hvad kan administreres?
+## 2. Kend de vigtigste vedligeholdelsesområder
 
-| Udviklerfunktion | Hvad ændres? | Vejledning |
-|---|---|---|
-| Root folder | Hvor StyleCore finder fælles styles, skabeloner og layouts | [Konfiguration – i QGIS](configuration.md) |
-| Shared automatic layer styles | Fælles mapping fra lagnavn til QML i aktiv JSON | [Lagstyling](layer-styling.md#shared-automatic-layer-styles) |
-| File Suffix Rules | Hvilke filbaserede lag der får en bestemt QML-style | [Lagstyling](layer-styling.md#file-suffix-rules) |
-| Template refresh | Hvilke skabeloner der får opdateret eksisterende lagstyles ved åbning | [Projektskabeloner](project-templates.md#template-refresh-opdater-styles-ved-abning) |
-| Save layer styles | Gemmer de valgte QGIS-lags aktuelle styles som fælles QML-filer | [Gem QML-styles fra QGIS](#gem-qml-styles-fra-qgis) |
+| Område | Bruges til |
+|---|---|
+| Resource root | Ændre en flyttet eller omdøbt fælles rodmappe |
+| Templates | Styre Active, Refresh og eksterne templates |
+| Shared automatic layer styles | Vedligeholde regler fra lagnavn til QML |
+| File Suffix Rules | Vedligeholde suffix-baserede regler |
+| Save layer styles… | Skrive fælles QML-filer ud fra styles i QGIS |
 
-Foretag altid fælles ændringer i den **rigtige aktive konfiguration**, særligt hvis du administrerer flere forskellige kontor- eller feltopsætninger.
+![developer-root-folder.png](../../assets/images/screenshots/developer-root-folder.png){ width="92%" }
+*Brug resource-root-sektionen, når den fælles ressourcemappe flyttes eller skifter navn.*
 
-## Gem ændringer til en fælles konfiguration
+## 3. Vedligehold templates
 
-1. Indlæs den rigtige konfiguration, og kontrollér navn og sti.
-2. Åbn **Developer**, foretag ændringerne, og vælg **Apply / OK** i QGIS-indstillingerne.
-3. Indtast udviklerkoden, når du bliver bedt om det.
-4. Bed kollegerne **genindlæse den fælles konfiguration**, så de får de opdaterede mappings og indstillinger.
+![developer-templates.png](../../assets/images/screenshots/developer-templates.png){ width="92%" }
+*Templates kan aktiveres, opfriskes eller kobles eksternt fra ét samlet sted.*
 
-StyleCore gemmer de fælles indstillinger i den aktive JSON-fil og undersøger, om en anden person har ændret filen, mens du arbejdede. Hvis det er tilfældet, skal du genindlæse den, før du foretager nye ændringer, så du ikke overskriver en kollegas arbejde.
+Brug denne sektion til at:
 
-!!! warning "Beskyt de fælles ressourcer"
-    Enhver med skriveadgang kan muligvis redigere JSON- eller QML-filer uden om StyleCore. Developer code er en bekræftelse i brugerfladen, ikke adgangskontrol. Brug passende rettigheder på server eller mapper, og koordinér samtidige ændringer.
+1. vise eller skjule templates i StyleCore-menuen,
+2. bestemme hvilke templates der skal bruge Refresh,
+3. tilføje eksterne templates,
+4. redigere eller fjerne eksterne templates.
 
-## Gem QML-styles fra QGIS
+## 4. Vedligehold fælles automatiske lagstyles
 
-Du kan eksportere udvalgte lags aktuelle QGIS-styling direkte til den konfigurerede fælles stylemappe:
+![developer-shared-styles.png](../../assets/images/screenshots/developer-shared-styles.png){ width="92%" }
+*Brug denne tabel, når det synlige lagnavn og QML-filnavnet ikke matcher.*
 
-1. Foretag de ønskede ændringer af symboler og labels i QGIS-laget.
-2. Åbn **Settings → Options → StyleCore → Developer → Save layer styles…**.
-3. Vælg de lag, der skal gemmes. De står i samme rækkefølge som i QGIS' lagpanel. Ingen lag er valgt på forhånd.
-4. Vælg **Save selected**, indtast udviklerkoden, og bekræft handlingen.
-5. Gennemgå oversigten over gemte, fejlede og udeladte filer, og kontrollér QML-resultatet.
+1. Tilføj eller vælg en række.
+2. Indtast lagnavnet.
+3. Vælg QML-filen med `...`-knappen.
+4. Gem med developer-koden.
+5. Bed kolleger genindlæse konfigurationen, hvis det er nødvendigt.
 
-StyleCore kontrollerer dublerede lagnavne, lader dig prøve igen ved forkert udviklerkode uden at miste valget og opretter `.qml.bak`-backups, når eksisterende fælles QML-filer overskrives. På grund af fælles mappings eller File Suffix Rules kan destinationsfilen have et andet navn end det synlige lagnavn.
+## 5. Vedligehold File Suffix Rules
 
-!!! important "Personlige og fælles styles er forskellige"
-    Hvis et lag har et Personal Override, gemmer **Save layer styles** stadig til teamets **fælles QML-fil**, ikke til brugerens personlige indstillinger. StyleCore advarer, inden handlingen gennemføres.
+![developer-file-suffix-rules.png](../../assets/images/screenshots/developer-file-suffix-rules.png){ width="92%" }
+*Hver regel kobler et filnavns-suffix og en filtype til en QML-fil.*
 
-## Hvilke ændringer påvirker kollegerne?
+1. Klik **Add suffix**.
+2. Indtast suffix, filtype og QML-fil.
+3. Gem med developer-koden.
+4. Test med et matchende filbaseret lag.
 
-| Handling | Gemmes hvor? | Ændrer kollegernes opsætning? |
-|---|---|---|
-| Tilføj eller nulstil Personal Override | Din QGIS-profil | Nej |
-| Ændr fælles lag-mappings | Aktiv fælles JSON | Ja, når den genindlæses |
-| Ændr File Suffix Rules | Aktiv fælles JSON | Ja, når den genindlæses |
-| Ændr valg til Template refresh | Aktiv fælles JSON | Ja, når den genindlæses |
-| Gem fælles QML | Konfigureret fælles stylemappe | Kan påvirke nye lag og udvalgte skabeloner |
-| Opdater fælles QPT- eller QGS/QGZ-skabelon | Konfigureret ressourcemappe | Påvirker senere anvendelse af layouts og skabeloner |
+## 6. Gem fælles QML-styles fra QGIS
 
-Se [Lagstyling](layer-styling.md) for den daglige QML-anvendelse og personlige overrides. Se [Konfiguration – i QGIS](configuration.md) og [Konfiguration JSON](configuration-json.md) for fælles opsætning og filplaceringer.
+![developer-save-layer-styles.png](../../assets/images/screenshots/developer-save-layer-styles.png){ width="65%" }
+*Brug **Save layer styles…**, når opdaterede fælles QML-filer skal skrives ud fra det aktuelle projekt.*
+
+1. Style dine lag i QGIS.
+2. Åbn **Save layer styles…**.
+3. Vælg kun de lag, du vil skrive.
+4. Bekræft gemningen og developer-koden.
+5. Gennemgå opsummeringen og test resultatet.
+
+## 7. Husk hvad der påvirker kolleger
+
+- **Personal Overrides** påvirker **ikke** kolleger.
+- **Fælles mappings**, **File Suffix Rules**, **template-indstillinger** og **gemte fælles QML-filer** påvirker kolleger, når de genindlæser konfigurationen.
+- Udskiftning af template- eller layout-kildefiler påvirker fremtidig brug af de ressourcer.

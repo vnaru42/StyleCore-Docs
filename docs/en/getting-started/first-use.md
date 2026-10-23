@@ -1,28 +1,26 @@
-## Choose your setup
+# First Use
 
-=== "I already have a configuration"
+Choose the setup that matches your situation. **Most users should load the configuration provided by their team**, not create a new one.
 
-    If a teammember has provided a `.json` configuration file, you do **not** need to create another one.
+=== "A colleague gave me a configuration"
 
-    1. Open the StyleCore toolbar menu and choose **Settings…** (or **Settings → Options → StyleCore**).
-    2. Expand **Configuration**.
-    3. Click **Load configuration…**.
-    4. Select the file you received or insert a file path. The config path field supports UNC paths. The file picker initially opens in the plugin's `StyleCore/config/` folder, but you can navigate to any accessible folder.
-    5. Check that the **active configuration** and its resource root appear in the settings.
+    1. Connect to your team's network or VPN if necessary.
+    2. Open **StyleCore → Settings…**, or **Settings → Options → StyleCore** in QGIS.
+    3. Expand **Configuration** and select **Load configuration…**. You can also paste the full JSON path, including a UNC path such as `\\server\GIS\StyleCore\office.json`, into the path field and load it.
+    4. Confirm the correct name appears under **Active configuration**.
+    5. Open **StyleCore → New from Template** or **Print Layouts** to check that your shared resources are accessible.
+    6. [Continue to Basic Usage →](basic-usage.md)
 
-	[Continue with basic usage →](basic-usage.md){ .md-button .md-button--primary }
+    !!! tip
+        Keep using the shared JSON **at its shared location**. Separate local copies will not automatically receive changes made by your team.
 
-	???+ info "Shared configs"
-		If your StyleCore is maintained by a teammember, you should point to a shared location.
+=== "I am setting up StyleCore for myself or a team"
 
-=== "I need to create a configuration"
-
-    1. Prepare one folder that will contain your QML styles, QGIS templates and print layouts.
+    1. Decide where the JSON configuration and resources should live. For a team, use a location everyone can access.
     2. Open **Settings → Options → StyleCore → Configuration**.
-    3. Click **New configuration…**.
+    3. Select **New configuration…**.
+    4. Follow [Create a new configuration](../documentation/configuration.md#2-create-a-new-configuration) to choose the JSON location, root and developer code.
+    5. Add QML styles, QGIS project templates and print layouts as needed; the wizard creates their folders, not their contents.
+    6. Test the setup and share the **JSON path** with colleagues.
 
-    [Continue with configuration →](../documentation/configuration.md#create-a-new-configuration){ .md-button .md-button--primary }
-	
-	???+ info "Config developer"
-		If you are maintaining StyleCore for a team or organization, the best practice would be to save your created config to a shared location. You should then distribute the shared location to your team. This means if you as the developer
-		change settings or locations, the settings will then be shared through the commonly used config file. You control the behaviour of the teams StyleCore.
+    See [Configuration – In QGIS](../documentation/configuration.md) for complete instructions.

@@ -1,30 +1,61 @@
 # Projektskabeloner
 
-Projektskabeloner (`.qgs` og `.qgz`) er fælles udgangspunkter for nye QGIS-projekter. **StyleCore åbner skabeloner direkte fra den konfigurerede skabelonmappe** og kopierer dem ikke til hver brugers QGIS-profil.
+En projektskabelon er et genbrugeligt **QGIS-projekt (`.qgs` / `.qgz`)** med foruddefinerede lag, kortindstillinger og styling. StyleCore læser templates **direkte fra deres kildelokation**; de kopieres ikke til hver brugers lokale QGIS-template-mappe.
 
-## Åbn en fælles skabelon
+![menu-new-from-template.png](../../assets/images/screenshots/menu-new-from-template.png){ width="45%" }
+*Brugere åbner templates fra **StyleCore → New from Template**.*
 
-1. Gem `.qgs`- og `.qgz`-filerne i den konfigurerede `template_projects`-mappe (eller den mappe, som konfigurationen angiver).
-2. Vælg en skabelon med **Active** slået til under **StyleCore → New from Template**.
-3. Skabelonen åbnes som et nyt projekt, der endnu ikke er gemt. Gem projektet under et separat filnavn.
+## 1. Åbn en template som nyt projekt
 
-Datakilderne i skabelonen skal være tilgængelige for brugerne. Brug egnede fælles eller relative stier, og kontrollér dem i QGIS.
+1. Åbn **StyleCore → New from Template**.
+2. Vælg en template.
+3. StyleCore åbner den som et **nyt, ikke-gemt projekt**.
+4. Foretag dine ændringer.
+5. Brug **Save As** til at gemme dit eget projekt under et nyt navn.
 
-## Opret eller opdater en skabelon
+## 2. Opret en ny fælles template
 
-1. Forbered et QGIS-projekt med de ønskede lag, koordinatsystem, kortudsnit, synlighed og styles.
-2. Kontrollér adgang til projektets datakilder.
-3. Gem som `.qgs` eller `.qgz` i den fælles skabelonmappe. Undermapper kan bruges til at organisere skabeloner.
-4. Åbn den via **New from Template**, og kontrollér resultatet.
+1. Byg det projekt, du vil kunne genbruge.
+2. Kontroller, at datakilder, lag og standardindstillinger passer til kollegerne.
+3. Gem det som `.qgs` eller `.qgz` i den valgte template-mappe.
+4. Organiser eventuelt templates i undermapper.
+5. Test den fra **StyleCore → New from Template**.
+6. Bekræft i Developer-indstillingerne, at den er **Active**, og vælg om den også skal have **Refresh**.
 
-Opdater den fælles `.qgs`/`.qgz`-kildefil, når skabelonen skal ændres. Der kræves ingen lokal skabelonsynkronisering.
+## 3. Tilføj en ekstern template
 
-## Active og Template Refresh
+Brug dette, når template-filen skal blive liggende uden for den normale template-mappe.
 
-I **Settings → Options → StyleCore** styrer **Active**, om en skabelon vises i StyleCores skabelonmenu. **Refresh** er et selvstændigt valg: for en skabelon med Refresh slået til kan StyleCore opdatere eksisterende lags styles efter de aktuelle QML-regler, når skabelonen åbnes (forudsat at Automatic Styling er slået til).
+1. Åbn **Settings → Options → StyleCore**.
+2. Slå **Developer Mode** til.
+3. Klik **Add external template…** i **Templates**.
+4. Giv den et navn og vælg `.qgs` / `.qgz`-filen.
+5. Gem med developer-koden.
+6. Test den fra **New from Template**.
 
-Skabeloner uden **Refresh** bevarer de styles, som er gemt i skabelonen. Almindelige gemte QGIS-projekter får ikke automatisk ændret deres styles ved åbning. Brug [Manual Style Update](layer-styling.md#manual-style-update), hvis du vil opdatere et eksisterende projekt.
+## 4. Styr Active og Refresh
 
-## Flere skabeloner til forskellige teams
+![developer-templates.png](../../assets/images/screenshots/developer-templates.png){ width="92%" }
+*I Templates-tabellen bestemmer vedligeholderen, hvilke templates der vises i menuen, og hvilke der skal genopfriske matchende styles.*
 
-Kontor- og måleskabeloner kan ligge i den samme fælles mappe. Forskellige lagnavne og QML-regler kan understøtte både præsentation og feltarbejde uden at duplikere hele StyleCore-konfigurationen.
+| Active | Refresh | Resultat |
+|---|---|---|
+| Til | Fra | Vises i menuen og åbnes med sine gemte styles |
+| Til | Til | Vises i menuen og åbnes med genanvendte matchende styles |
+| Fra | Ligegyldigt | Skjules fra menuen |
+
+1. Åbn **Developer → Templates**.
+2. Find templaten.
+3. Sæt flueben i **Active**, hvis den skal være synlig.
+4. Sæt flueben i **Refresh**, hvis matchende styles skal genanvendes ved åbning gennem StyleCore.
+5. Gem med developer-koden.
+
+## 5. Opdater eller flyt en eksisterende template
+
+1. Åbn **kildeprojektet** (`.qgs` / `.qgz`), ikke en brugers gemte kopi.
+2. Lav ændringerne og gem kildefilen.
+3. Hvis filen flyttes eller omdøbes, så opdater referencen i **Developer → Templates** efter behov.
+4. Test den fra **New from Template**.
+5. Brug **Save As** til testoutput.
+
+**Vigtigt:** Refresh kører kun, når templaten åbnes gennem **StyleCore → New from Template**, og **Automatic Styling** er slået til.

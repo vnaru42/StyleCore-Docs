@@ -1,111 +1,115 @@
 # Configuration – In QGIS
 
-A **configuration** tells StyleCore where to find its QML styles, QGIS project templates and print layouts, and which shared styling rules to use. It is a JSON file, but you can create and manage it using the StyleCore settings in QGIS. This page covers the QGIS workflow; [Configuration JSON](configuration-json.md) explains the file itself.
+A configuration is the **JSON file** that tells StyleCore where to find shared styles, project templates, print layouts and optional fonts. This page explains the **practical workflow inside QGIS**. For the fields stored in the JSON itself, see [Configuration JSON](configuration-json.md).
 
-If a colleague already maintains a configuration for your team, **load that existing file from a shared location rather than making another copy**. If you are responsible for managing StyleCore at your workplace you need to create a new configuration.
+![options-main-open.png](../../assets/images/screenshots/options-main-open.png){ width="100%" }
+*The main StyleCore settings page in QGIS. Ordinary users mostly work with **Personal Overrides** and **Configuration**. Maintainers also use **Developer**.*
 
-For shared setups, it is usually easiest to appoint one or a few people to maintain the configuration.
+## 1. Load an existing configuration
 
----
+Use this when a colleague has already created the shared setup.
 
-## Load an existing configuration
+1. Connect to the required shared drive, VPN or network location.
+2. Open **Settings → Options → StyleCore**.
+3. Expand **Configuration**.
+4. Use **Load configuration…** and browse to the JSON file, or paste the full path in the field and click **Load path**.
+5. Confirm the name under **Active configuration**.
+6. Test the configuration from the StyleCore menu, for example **New from Template** or **Print Layouts**.
 
-1. Make sure you can access the configuration file and its linked resources, including any network folders.
-2. In QGIS, open **Settings → Options → StyleCore** and expand **Configuration**.
-3. Select **Load configuration…** and browse to the `.json` file. Alternatively, paste its local or UNC path into the configuration-path field and use the adjacent load button.
-4. Confirm that **Active configuration** displays the correct name.
-5. Check that the expected templates and PRINT layouts are available. Add a layer with a known shared style to check styling.
+![options-configuration-section.png](../../assets/images/screenshots/options-configuration-section.png){ width="82%" }
+*The Configuration section stores the path to the active JSON file and gives access to **Load configuration…** and **New configuration…**.*
 
-The file picker initially opens in StyleCore's `config/` folder, but the JSON can live anywhere you have access to. 
+!!! tip "Share a path, not separate copies"
+    Colleagues should normally load the **same shared JSON file**. Shared behavior belongs in that file. Personal Overrides stay in each user's local QGIS profile.
 
-!!! tip "Using a team configuration"
-    Keep a **single JSON file on a shared location** and give colleagues its path, for example `\\server\GIS\StyleCore\office.json`. Users normally only need read access; developers need write access to save shared configuration changes. Users must also be able to access the resource folders referenced by the JSON.
+## 2. Create a new configuration
 
-!!! warning "Disconnected network share"
-    If the selected JSON becomes temporarily unavailable, StyleCore keeps the selected path until it is available again. Reconnect the network or VPN, then load it again.
-
----
-
-## Create a new configuration
-
-A new configuration is suitable for an individual setup or for the person responsible for maintaining the resources used by a team.
-
-### 1. Choose the resource location
-
-This is where StyleCore **will create** resource folders. Decide where the resources should live: on your own computer or on a shared drive accessible to colleagues. This location is the **root folder**. A typical structure is:
-
-```text
-StyleCore_resources/
-├── layer_styles/        # QML style files
-├── template_projects/   # QGS / QGZ project templates
-├── layouts/             # QPT layout templates and SVG graphics
-└── fonts/               # Optional; create manually for shared fonts
-```
-
-The three standard resource folder names are configurable. **When you save a new configuration, StyleCore creates `layer_styles`, `template_projects` and `layouts`** (using your chosen names). It does not create your actual QML, QGS/QGZ, QPT or SVG files. Add those separately. The optional `fonts` folder is not created automatically.
-
-
-### 2. Use New configuration in QGIS
+Use this once when you are setting up StyleCore for a team or for yourself.
 
 1. Open **Settings → Options → StyleCore → Configuration**.
-2. Select **New configuration…**.
-3. Enter a **Name** and select the **Configuration file** path (for example, `office.json`) using the browse button.
-4. Leave **Use configuration file folder as resource root** checked to keep JSON and resource folders together, or uncheck it to choose a separate **Root folder**.
-5. Confirm the resource folder names and enter the **Developer code** twice. Click **Save configuration**.
-6. The new configuration becomes active immediately. Place your QML styles, templates and layouts in the corresponding folders.
+2. Click **New configuration…**.
+3. Enter a **Name**.
+4. Choose the **Configuration file** path.
+5. Decide how the resource root should work:
+   - **Recommended:** keep **Use configuration file folder as resource root** enabled.
+   - **Alternative:** disable it and choose a separate **Root folder**.
+6. Keep or rename the three default resource folders: **Styles**, **Templates** and **Print layouts**.
+7. Enter and confirm the **Developer code**.
+8. Click **Save configuration**.
+9. Put your actual resource files into the created folders.
+10. Test the configuration and then share the JSON path with colleagues.
 
-??? info "Configuration fields in QGIS"
-	| Field | Example | Purpose |
-	|---|---|---|
-	| Name | `Office` | Shown as the active configuration in QGIS |
-	| Configuration file | `C:/GIS/StyleCore/office.json` | Location of the shared JSON file |
-	| Use configuration file folder as resource root | Checked | Resource folders follow the JSON file when moved |
-	| Root folder | `C:/GIS/StyleCore_resources` | Separate resource location when the checkbox is off |
-	| Styles folder | `layer_styles` | Where StyleCore looks for QML styles |
-	| Templates folder | `template_projects` | Source folder for shared QGIS project templates |
-	| Print layouts folder | `layouts` | Folder containing QPT and related SVG files |
-	| Developer code | Set by the maintainer | Confirms changes to shared settings |
+### Recommended: JSON folder also acts as resource root
 
-!!! info "Developer code and permissions"
-    The code is a confirmation mechanism inside StyleCore, **not a substitute for file permissions**. For shared resources, use server or folder permissions to control who can modify the JSON and QML files.
+![new-config-config-dir.png](../../assets/images/screenshots/new-config-config-dir.png){ width="78%" }
+*This is the simplest and most portable setup. The JSON file and the resource folders live together.*
 
-### 3. Share the configuration with colleagues
+Typical structure:
 
-Put the JSON and resources somewhere colleagues can reach, share the **path to the JSON**, and ask them to load it from **Configuration**. Avoid distributing independent copies if you want everybody to receive shared changes. When a maintainer updates the JSON, colleagues should reload that configuration to pick up the new settings.
+```text
+StyleCore/
+├── office.json
+├── layer_styles/
+├── template_projects/
+├── layouts/
+└── fonts/                # optional, create manually if needed
+```
 
----
+### Alternative: separate resource root
 
-## Understand local and shared resources
+![new-config-custom-root.png](../../assets/images/screenshots/new-config-custom-root.png){ width="78%" }
+*Use this if the JSON file should live in one place but the shared resources should live somewhere else, for example on a dedicated drive or UNC path.*
 
-StyleCore uses three different locations with different purposes:
+This setup is useful when:
 
-| Location | What is stored there? | Who is affected? |
-|---|---|---|
-| Active configuration JSON | Shared mappings, File Suffix Rules, selected template refresh, resource paths | Everyone using that shared JSON after reloading |
-| Resource root folders | Actual QML files, `.qgs`/`.qgz` templates, `.qpt` layouts, fonts and SVG files | Everyone with access to the folders |
-| Your QGIS profile | Selected configuration path, automatic-styling toggle, personal style overrides | Only your own QGIS profile |
+- the JSON file is distributed separately,
+- the shared resources already exist in another folder,
+- or the team wants to keep the configuration file and the actual resources apart.
 
-StyleCore opens project templates directly from the configured templates folder; it does not copy them to local QGIS profiles. QML and QPT files are also read from their configured locations.
+## 3. Add or update shared resources
 
-## Optional shared fonts
+After creating the configuration, StyleCore creates the folder structure, but **not** the actual content. Add the resources yourself:
 
-If your QGIS styles or print layouts use fonts that are not installed on every colleague’s computer, create a folder named **`fonts`** directly inside the configured **root folder**. Add the required font files (`.ttf` or `.otf`) there, for example `fonts/Roboto-Regular.ttf`. Include any license files required when distributing the fonts.
+1. **Styles:** Put `.qml` files in the styles folder. If the layer name and QML filename differ, add rules in Developer settings. See [Layer Styling](layer-styling.md).
+2. **Templates:** Put `.qgs` / `.qgz` files in the templates folder, or add external template references. See [Project Templates](project-templates.md).
+3. **Print layouts:** Put `.qpt` files (and matching `.svg` files if used) in the layouts folder. See [Print Layouts](print-layouts.md).
+4. **Fonts (optional):** Create a `fonts` folder at the root and add licensed `.ttf` / `.otf` files there.
 
-StyleCore automatically registers fonts from this folder with QGIS when the configuration is loaded. This works with local and accessible shared network folders, including UNC paths. The fonts do **not** need to be installed in Windows, and **no new JSON field or settings change is required**.
+## 4. Switch or reload a configuration
 
-The folder is entirely optional. If it does not exist, StyleCore continues working normally. Create it manually if needed; it is not part of the three folders created by **New configuration**.
+1. Return to **Settings → Options → StyleCore → Configuration**.
+2. Load the required JSON file.
+3. Confirm the active configuration name.
+4. Test a known template, print layout or layer style.
 
+Use this after a colleague changes shared settings or when you move between different office / field / test setups.
 
-## Switch between configurations
+## 5. Move or rename a configuration or shared drive
 
-Use **Settings → Options → StyleCore → Configuration → Load configuration…** or the path field to select a different JSON. Each setup can point to different root folders and contain different shared rules, templates and layouts. Your personal style overrides are scoped to the configuration you selected, so preferences for one setup do not spill into another.
+1. Identify what changed:
+   - the JSON file location,
+   - the resource root location,
+   - or referenced template / data paths.
+2. If the JSON file folder is also the resource root, move the JSON **together with** its resource folders.
+3. If the configuration uses a separate root folder, a maintainer must update that root in **Developer**.
+4. Have each colleague reload the JSON if the JSON file path changed.
+5. Test templates, styles, layouts and fonts afterwards.
 
-## Maintain a shared configuration
+See [Troubleshooting – Moved folders or network drives](troubleshooting.md#moved-folders-or-network-drives).
 
-The **Developer** section contains controls for the shared root, layer-to-QML mappings, File Suffix Rules and template-refresh selections. An authorized maintainer can make changes and save them to the selected JSON. Shared settings saved in Developer Mode are written to the active JSON; colleagues using that file can load the updated settings. Other users can continue working with personal overrides without editing that file.
+## 6. Maintain shared settings for a team
 
-See [Layer Styling](layer-styling.md), [Project Templates](project-templates.md), [Print Layouts](print-layouts.md) and [Developer Tools](developer-tools.md) for instructions on managing these resources.
+Ordinary users mainly need the configuration path. Maintainers also need **Developer Mode**.
 
----
+![options-developer-section.png](../../assets/images/screenshots/options-developer-section.png){ width="82%" }
+*Developer Mode unlocks the shared maintenance sections.*
 
-For the structure, fields and examples inside the file itself, see [Configuration JSON](configuration-json.md).
+Use Developer Mode when you need to:
+
+- change the shared resource root,
+- maintain shared layer rules,
+- maintain File Suffix Rules,
+- maintain template availability,
+- or save shared QML styles.
+
+Those tasks are described in detail in [Developer Tools](developer-tools.md) and [Configuration JSON](configuration-json.md).

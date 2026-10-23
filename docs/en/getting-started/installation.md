@@ -1,23 +1,22 @@
 # Installation
----
 
-## Requirements
+Install StyleCore first. You can then connect it to an existing team's configuration or create your own.
 
-- QGIS 3.44 or later
+## 1. Check the requirements
 
-## Install StyleCore from ZIP
+- QGIS **3.44 or later** (StyleCore 1.9.0 declares compatibility through QGIS 4.x).
+- Access to any shared drives and data sources your team uses.
 
-1. Download the plugin ZIP from the [latest StyleCore release](https://github.com/vnaru42/StyleCore/releases/latest).
-2. In QGIS, go to **Plugins → Manage and Install Plugins**.
-3. Select **Install from ZIP**.
-4. Choose the downloaded **StyleCore plugin ZIP** and confirm.
-5. Find the StyleCore icon in the QGIS toolbar.
+## 2. Install the plugin
 
-!!! note "Official QGIS plugin catalogue"
-    These steps use the GitHub release. StyleCore has been submitted to the official QGIS' Plugin Repository and is awaiting approval.
+1. In QGIS, open **Plugins → Manage and Install Plugins**.
+2. If StyleCore is available in the plugin catalogue, search for **StyleCore** and select **Install**.
+3. Otherwise, download the [latest plugin ZIP](https://github.com/vnaru42/StyleCore/releases/latest), choose **Install from ZIP**, and select it.
+4. Find the **StyleCore** button in the QGIS toolbar and open its menu.
 
-## After installation
+!!! note "Plugin ZIP versus configuration"
+    The plugin is installed separately from your team's JSON configuration and resource folders. Installing StyleCore does not automatically provide your organization's styles or data.
 
-Now it's time for setting up StyleCore. If you already have been given a `config.json` file, you are pretty much ready to go.
+## 3. Continue
 
 [First use →](first-use.md){ .md-button .md-button--primary }
