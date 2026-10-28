@@ -2,14 +2,23 @@
 
 Når en konfiguration er indlæst, arbejder StyleCore side om side med normale QGIS-arbejdsgange. Du har **ikke** brug for Developer Mode for at bruge de fælles ressourcer.
 
-![menu-main.png](../../assets/images/screenshots/menu-main.png){ width="36%" }
-*StyleCore-menuen giver almindelige brugere hurtig adgang til indstillinger, Automatic Styling, templates, layouts og hjælp.*
+<div class="sc-media-row" markdown>
+<div class="sc-media-row__text" markdown>
 
 ## 1. Tjek din opsætning
 
 1. Åbn **StyleCore → Settings…**.
 2. Bekræft, at den rigtige konfiguration er aktiv.
 3. Hvis du skal oprette eller reparere en konfiguration, se [Konfiguration – i QGIS](../documentation/configuration.md).
+
+</div>
+<div class="sc-media-row__visual" markdown>
+
+![StyleCores hovedmenu](../../assets/images/screenshots/menu-main.png){ width="100%" }
+*StyleCore-menuen giver adgang til indstillinger, Automatic Styling, skabeloner, printlayouts og hjælp.*
+
+</div>
+</div>
 
 ## 2. Tilføj lag og brug Automatic Styling
 
@@ -18,24 +27,42 @@ Når en konfiguration er indlæst, arbejder StyleCore side om side med normale Q
 3. Hvis der findes en matchende QML, bruger StyleCore den.
 4. Hvis ingen regel eller matchende QML findes, beholder laget sit normale udseende.
 
-## 3. Start et projekt fra en fælles template
+<div class="sc-media-row" markdown>
+<div class="sc-media-row__text" markdown>
 
-![menu-new-from-template.png](../../assets/images/screenshots/menu-new-from-template.png){ width="45%" }
-*Templates åbnes direkte fra StyleCore-menuen.*
+## 3. Start et projekt fra en fælles skabelon
 
 1. Åbn **StyleCore → New from Template**.
-2. Vælg en template.
+2. Vælg en skabelon.
 3. Arbejd videre i det nye projekt.
 4. Brug **Save As** til at gemme dit eget projekt under et nyt navn.
 
-## 4. Tilføj et printlayout
+</div>
+<div class="sc-media-row__visual" markdown>
 
-![menu-print-layouts.png](../../assets/images/screenshots/menu-print-layouts.png){ width="45%" }
-*Tilgængelige printlayouts vises direkte i StyleCore-menuen.*
+![New from Template-menu](../../assets/images/screenshots/menu-new-from-template.png){ width="100%" }
+*Skabeloner åbnes direkte fra StyleCore-menuen.*
+
+</div>
+</div>
+
+<div class="sc-media-row" markdown>
+<div class="sc-media-row__text" markdown>
+
+## 4. Tilføj et printlayout
 
 1. Åbn **StyleCore → Print Layouts**.
 2. Vælg et layout.
 3. QGIS Layout Designer åbner med et nyt layout i dit projekt.
+
+</div>
+<div class="sc-media-row__visual" markdown>
+
+![Print Layouts-menu](../../assets/images/screenshots/menu-print-layouts.png){ width="100%" }
+*Tilgængelige printlayouts vises direkte i StyleCore-menuen.*
+
+</div>
+</div>
 
 ## 5. Brug din egen style eller opdater et eksisterende lag
 

@@ -89,7 +89,7 @@ Brug dette efter ændringer i fælles indstillinger eller når du skifter mellem
 4. Hvis JSON-stien ændres, skal hver kollega genindlæse konfigurationen.
 5. Test templates, styles, layouts og fonte bagefter.
 
-Se [Fejlfinding – Flyttede mapper eller netværksdrev](troubleshooting.md#moved-folders-or-network-drives).
+Se [Fejlfinding – Flyttede mapper eller netværksdrev](troubleshooting.md).
 
 ## 6. Vedligehold fælles indstillinger for et team
 

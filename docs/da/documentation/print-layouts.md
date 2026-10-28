@@ -1,44 +1,63 @@
 # Printlayouts
 
-StyleCore læser **QGIS-printlayoutskabeloner (`.qpt`)** direkte fra den konfigurerede fælles mappe `layouts`. Brugerne kan indsætte et fælles layout i det aktuelle projekt via StyleCore-menuen.
+StyleCore åbner fælles QGIS-printlayoutskabeloner (`.qpt`) fra den konfigurerede mappe `layouts`.
 
-## 1. Åbn et fælles layout
+## 1. Åbn et layout
 
-1. Åbn QGIS-projektet, og indstil kortudsnittet til det område, du vil udskrive.
-2. Åbn **StyleCore → Print Layouts**, og vælg et layout.
-3. StyleCore indsætter et **nyt layout** i projektet og åbner **QGIS Layout Designer**.
-4. Hvis der findes et kort med Item ID `main_map`, tilpasses det kortudsnittet, og **Move Item Content** aktiveres, hvor QGIS understøtter det.
-5. Tilpas layoutet, og eksportér eller print fra QGIS.
+1. Indstil det ønskede kortudsnit i QGIS.
+2. Vælg **StyleCore → Print Layouts**, og vælg et layout.
+3. Et nyt layout åbner i **QGIS Layout Designer**. Tilpas det og eksportér eller udskriv.
 
-Hvis du åbner samme QPT igen, oprettes et nyt layout med et entydigt navn i stedet for at overskrive det eksisterende.
+![Eksempel på layout i QGIS Layout Designer](../../assets/images/screenshots/print-layout-example.png)
+*Eksempel på et fælles layout åbnet via StyleCore.*
 
-## 2. Opret en fælles QPT-skabelon
+## 2. Opret en layoutskabelon
 
-1. Åbn **Project → New Print Layout** i QGIS.
-2. Vælg papirstørrelse, kortfelter, signaturforklaring, målestok, logoer og øvrige elementer.
-3. Giv hovedkortet **Item ID** `main_map`; brug eventuelt `mini_map` til et mindre kort.
-4. Til automatisk SVG-indlæsning oprettes Picture items med et **Item ID**, der svarer til SVG-filens navn uden `.svg`.
-5. Eksportér layoutet som en **QGIS-layoutskabelon (`.qpt`)**.
-6. Læg QPT-filen og eventuelle tilhørende SVG'er i den fælles **layouts-mappe**.
-7. Åbn skabelonen via **StyleCore → Print Layouts** i et andet QGIS-projekt for at teste den.
+1. Vælg **Project → New Print Layout** i QGIS, og tilføj kort, signaturforklaring og grafik.
+2. Angiv Item ID på de elementer, StyleCore skal håndtere automatisk, som beskrevet nedenfor.
+3. Eksportér layoutet som `.qpt` i den fælles `layouts`-mappe sammen med eventuelle SVG-filer.
+4. Test det via **StyleCore → Print Layouts**.
 
-## 3. Forstå reglerne for Item ID
+## 3. Item ID
 
-| Item ID | Funktion |
-|---|---|
-| `main_map` | Tilpasses det aktuelle QGIS-kortudsnit, vælges og aktiverer **Move Item Content**, hvor det understøttes |
-| `mini_map` | Tilpasses også kortudsnittet; opretter **ikke** automatisk et overview-map-forhold |
-| `CompanyLogo` | Et Picture item med dette ID kan bruge `CompanyLogo.svg` fra layouts-mappen |
+Angiv Item ID i **QGIS Layout Designer → Item Properties**. Navnene styrer, hvordan StyleCore udfylder eller opdaterer layoutelementerne.
 
-Indstil **Item ID** under det relevante elements **Item Properties** i Layout Designer. Navnene skal matche præcist. SVG-filer findes i den konfigurerede layouts-mappe og installeres ikke automatisk i andre programmer.
+| Item ID | Eksempel | Funktion |
+|---|---|---|
+| `main_map` | <img src="../../assets/images/screenshots/item-id-main-map.png" alt="Item ID main_map" width="140"> | Bruger det aktuelle QGIS-kortudsnit til hovedkortet og aktiverer **Move Item Content**, hvor det understøttes. |
+| `mini_map` | <img src="../../assets/images/screenshots/item-id-mini-map.png" alt="Item ID mini_map" width="140"> | Bruger også det aktuelle kortudsnit, men opretter ikke automatisk et overview-forhold. |
+| `logo` | <img src="../../assets/images/screenshots/item-id-logo.png" alt="Item ID logo" width="140"> | Indlæser på et Picture-element en SVG-fil med samme basisnavn fra layouts-mappen. |
 
-## 4. Opdater eller vedligehold et layout
 
-1. Åbn kildelayoutet/QPT i QGIS, og foretag ændringerne.
-2. Eksportér den opdaterede `.qpt` til **samme fælles placering** (eller et nyt filnavn, hvis det skal være et separat layout).
-3. Kontrollér, at eventuelle SVG'er, skrifttyper og billeder kan tilgås af kollegerne.
-4. Åbn det opdaterede layout via StyleCore, og kontrollér kortfelter og grafik.
 
-**Layouts, der allerede ligger i gemte QGIS-projekter, bliver ikke erstattet automatisk.** Den nye QPT bruges, når et nyt layout oprettes efter opdateringen.
+<div class="sc-example sc-example--side" markdown="1">
+<div class="sc-copy" markdown="1">
 
-Se [Konfiguration](configuration.md) for fællesmapper og [Fejlfinding](troubleshooting.md) ved manglende ressourcer.
+## 4. SVG picture items
+
+Giver man sin billede fil et *Item ID* der matcher med en `.svg` fil på navn, kigger StyleCore efter en matchende `.svg` fil. Opdatere firmaet et logo, kan man ligge de nye logoer ind i layouts mappen og give den samme navn som Item ID'et i et layout.
+**Picture Item ID** skal matche SVG-filnavnet **uden** `.svg`.
+
+- `logo` → `logo.svg`
+- `nord_pil` → `nord_pil.svg`
+- `firma_tegn` → `firma_tegn.svg`
+
+</div>
+<div class="sc-media-row__visual" markdown>
+
+
+<img src="../../assets/images/screenshots/logo-example.png" alt="Example SVG logo" width="100%">
+<figcaption>Du kan bruge et vilkårligt SVG-filnavn, så længe Picture Item ID og SVG-filens basisnavn matcher helt præcist.</figcaption>
+
+
+
+</div>
+</div>
+
+
+
+## 5. Opdater en eksisterende skabelon
+
+Redigér kildelayoutet, eksportér den opdaterede `.qpt` til fællesmappen, og test ved at oprette et nyt layout via StyleCore. **Layouts, der allerede er gemt i QGIS-projekter, ændres ikke automatisk.**
+
+Se [Konfiguration](configuration.md) om ressourcemapper og [Fejlfinding](troubleshooting.md) ved manglende filer.

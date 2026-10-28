@@ -303,3 +303,6 @@
     margin-bottom: .8rem;
   }
 }
+
+/* Final stylesheet controls all screenshot framing; ordinary text remains unboxed. */
+.md-typeset .sc-media-row {background:transparent!important;border:0!important;padding:0!important;border-radius:0!important;}

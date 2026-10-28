@@ -20,18 +20,3 @@ This documentation website is built using [MkDocs](https://www.mkdocs.org/) and 
 ## Languages
 
 The documentation is available in **English** and **Danish**. English is the default language at the website root; Danish is available at `/da/` through the language selector. Source files live in `docs/en/` and `docs/da/`, with shared assets in `docs/assets/`.
-
-To preview locally:
-
-```bash
-pip install -r requirements.txt
-mkdocs serve
-```
-
-To publish:
-
-```bash
-mkdocs gh-deploy
-```
-
-Edit each language's Markdown files separately. The language switcher is provided by `mkdocs-static-i18n`.

@@ -1,0 +1,173 @@
+/* StyleCore screenshot layout: compact, quiet, no image upscaling. */
+.md-typeset img[src*="/screenshots/"] {
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto;
+  border: 1px solid rgba(0,0,0,.4);
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+/* A card is opt-in: never wrap ordinary explanation paragraphs. */
+.md-typeset .sc-example {
+  box-sizing: border-box;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  padding: .55rem .7rem .65rem;
+  margin: .8rem 0 1rem;
+  background: rgba(125,132,135,.04);
+  border: 1px solid rgba(110,115,120,.18);
+  border-radius: 7px;
+  overflow: visible;
+}
+.md-typeset .sc-example figure { margin: 0; }
+.md-typeset .sc-example figure img {
+  display: block;
+  margin: 0 auto;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto;
+}
+.md-typeset .sc-example figcaption,
+.md-typeset .sc-example .sc-caption {
+  font-size: .72em;
+  line-height: 1.35;
+  color: var(--md-default-fg-color--light);
+  text-align: center;
+  margin: .4rem .15rem 0;
+}
+
+/* Text + narrow screenshot: use only with genuinely short instructions. */
+@media (min-width: 1000px) {
+  .md-typeset .sc-example--side {
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  .md-typeset .sc-example--side .sc-copy {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+  .md-typeset .sc-example--side figure {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+}
+.md-typeset .sc-example .sc-copy p { margin: .2rem 0; }
+
+/* Legacy Markdown image + caption pairs must NOT become a split card:
+   the old separate borders caused a flat cut-off at the bottom. */
+.md-typeset > p:has(> img[src*="screenshots/"]),
+.md-typeset > p:has(> img[src*="screenshots/"]) + p:has(> em) {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+}
+.md-typeset > p:has(> img[src*="screenshots/"]) {
+  margin: .85rem auto .18rem;
+}
+.md-typeset > p:has(> img[src*="screenshots/"]) + p:has(> em) {
+  font-size: .72rem;
+  line-height: 1.35;
+  margin: .2rem auto .9rem;
+}
+
+/* Existing small screenshot side rows: compact and no forced full width. */
+.md-typeset .sc-media-row {
+  background: rgba(125,132,135,.04);
+  border: 1px solid rgba(110,115,120,.18);
+  border-radius: 7px;
+  padding: .6rem .75rem;
+}
+.md-typeset .sc-media-row__visual img {
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto;
+}
+[data-md-color-scheme="slate"] .md-typeset .sc-example,
+[data-md-color-scheme="slate"] .md-typeset .sc-media-row {
+  background: rgba(235,239,237,.025);
+  border-color: rgba(216,225,221,.16);
+}
+
+/* Compact collection of Item ID details: no repeated grey panels. */
+.md-typeset .sc-id-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: .45rem .8rem;
+  margin: .6rem 0 .95rem;
+}
+.md-typeset .sc-id-strip figure { flex: 0 1 auto; margin: 0; max-width: 100%; }
+.md-typeset .sc-id-strip img {
+  max-width: min(100%, 320px) !important;
+  width: auto !important;
+  display: block;
+}
+.md-typeset .sc-id-strip figcaption {
+  color: var(--md-default-fg-color--light);
+  font-size: .7em;
+  margin: .15rem 0 0;
+  text-align: left;
+}
+/* Keep screenshot content readable and avoid any overly wide framing. */
+.md-typeset .sc-single-image { margin: .7rem 0 .15rem; }
+.md-typeset .sc-single-image img { max-width: 100%; width: auto !important; }
+
+
+/* v8: the picture and caption are the only framed elements. */
+.md-typeset .sc-media-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 38%);
+  gap: 1.1rem;
+  align-items: center;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 1.15rem 0 1.5rem;
+}
+.md-typeset .sc-media-row__text {min-width:0;}
+.md-typeset .sc-media-row__visual,
+.md-typeset .sc-example figure,
+.md-typeset .sc-items-figure {
+  background: rgba(125,132,135,.045);
+  border: 1px solid rgba(110,115,120,.20);
+  border-radius: 7px;
+  padding: .55rem;
+  box-sizing: border-box;
+}
+.md-typeset .sc-example--side {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 160px !important;
+  gap: 1rem;
+  width: 100% !important;
+  align-items: center;
+  border: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+.md-typeset .sc-example--side .sc-copy { grid-column:1; grid-row:1; }
+.md-typeset .sc-example--side figure { grid-column:2; grid-row:1; }
+.md-typeset .sc-example--side figure img[src*="logo-example.png"] {
+  display:block;
+  box-sizing:border-box;
+  width: 120px !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+.md-typeset .sc-example--side figcaption {font-size:.64rem;}
+.md-typeset .sc-items-figure { width:fit-content; max-width:100%; margin:.9rem auto; }
+.md-typeset .sc-items-figure img {display:block; width: 260px !important; max-width:100% !important; height:auto;}
+.md-typeset .sc-items-figure figcaption {font-size:.67rem; color:var(--md-default-fg-color--light);text-align:center; margin:.3rem 0 0;}
+@media (max-width: 680px) {
+  .md-typeset .sc-media-row,
+  .md-typeset .sc-example--side {display:block !important;}
+  .md-typeset .sc-media-row__visual,
+  .md-typeset .sc-example--side figure {margin-top:.65rem;}
+}

@@ -15,6 +15,7 @@ StyleCore connects QGIS users to shared or local **styles, project templates, pr
 
 - Automatically apply QML styles to **newly added** layers.
 - Match by **visible layer name**, **shared layer rule**, **File Suffix Rule**, or **Personal Override**.
+- Keep personal QML choices local with **Personal Overrides**, without changing the shared setup.
 - Toggle Automatic Styling from the StyleCore menu.
 - Apply QML manually to a selected **existing** layer without creating a shared rule.
 - Save selected project-layer styles to shared QMLs with Developer Mode.
@@ -36,7 +37,7 @@ StyleCore connects QGIS users to shared or local **styles, project templates, pr
 - Open shared `.qpt` files from the StyleCore menu.
 - Initialize `main_map` and `mini_map` from the current QGIS canvas.
 - Activate **Move Item Content** for `main_map` where supported.
-- Match SVGs to layout Picture items by **Item ID**.
+- Match SVGs to layout Picture items by **Item ID** — for example `logo` → `logo.svg` or `north_arrow` → `north_arrow.svg`.
 - Create multiple layouts without overwriting existing layouts.
 
 [Create and maintain Print Layouts →](../documentation/print-layouts.md)

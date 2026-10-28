@@ -11,4 +11,4 @@ Brug vejledningerne til at **oprette, bruge, opdatere og vedligeholde** StyleCor
 <a class="sc-card" href="developer-tools/"><h3>Udviklerværktøjer →</h3><p>Administrér fælles ændringer sikkert.</p></a>
 </div>
 
-Ved problemer: Se [Fejlfinding](troubleshooting.md), herunder [flyttede mapper og drev](troubleshooting.md#flyttede-mapper-eller-faellesdrev).
+Ved problemer: Se [Fejlfinding](troubleshooting.md), herunder [flyttede mapper og drev](troubleshooting.md).

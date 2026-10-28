@@ -15,6 +15,7 @@ StyleCore forbinder QGIS-brugere med fælles eller lokale **styles, projektskabe
 
 - Anvend automatisk QML-styles på **nytilføjede** lag.
 - Match på **synligt lagnavn**, **fælles lagregel**, **File Suffix Rule** eller **Personal Override**.
+- Brug **Personal Overrides** til lokale QML-valg uden at ændre den fælles opsætning.
 - Slå Automatic Styling til/fra fra StyleCore-menuen.
 - Anvend QML manuelt på et **eksisterende** lag uden at oprette en fælles regel.
 - Gem udvalgte lagstyles som fælles QML gennem Developer Mode.
@@ -36,7 +37,7 @@ StyleCore forbinder QGIS-brugere med fælles eller lokale **styles, projektskabe
 - Åbn fælles `.qpt` direkte fra StyleCore-menuen.
 - Tilpas `main_map` og `mini_map` til det aktuelle QGIS-kortudsnit.
 - Aktivér **Move Item Content** for `main_map`, hvor det understøttes.
-- Match SVG'er med layoutets Picture items efter **Item ID**.
+- Match SVG'er med layoutets Picture items efter **Item ID** — fx `logo` → `logo.svg` eller `north_arrow` → `north_arrow.svg`.
 - Opret flere layouts uden at overskrive eksisterende layouts.
 
 [Opret og vedligehold printlayouts →](../documentation/print-layouts.md)

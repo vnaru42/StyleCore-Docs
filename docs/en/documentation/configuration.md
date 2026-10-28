@@ -2,8 +2,7 @@
 
 A configuration is the **JSON file** that tells StyleCore where to find shared styles, project templates, print layouts and optional fonts. This page explains the **practical workflow inside QGIS**. For the fields stored in the JSON itself, see [Configuration JSON](configuration-json.md).
 
-![options-main-open.png](../../assets/images/screenshots/options-main-open.png){ width="100%" }
-*The main StyleCore settings page in QGIS. Ordinary users mostly work with **Personal Overrides** and **Configuration**. Maintainers also use **Developer**.*
+<figure class="sc-shot sc-shot--large"><img src="../../assets/images/screenshots/options-main-open.png" alt="options-main-open.png"><figcaption>The main StyleCore settings page in QGIS. Ordinary users mostly work with **Personal Overrides** and **Configuration**. Maintainers also use **Developer**.</figcaption></figure>
 
 ## 1. Load an existing configuration
 
@@ -16,8 +15,7 @@ Use this when a colleague has already created the shared setup.
 5. Confirm the name under **Active configuration**.
 6. Test the configuration from the StyleCore menu, for example **New from Template** or **Print Layouts**.
 
-![options-configuration-section.png](../../assets/images/screenshots/options-configuration-section.png){ width="82%" }
-*The Configuration section stores the path to the active JSON file and gives access to **Load configuration…** and **New configuration…**.*
+<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/options-configuration-section.png" alt="options-configuration-section.png"><figcaption>The Configuration section stores the path to the active JSON file and gives access to **Load configuration…** and **New configuration…**.</figcaption></figure>
 
 !!! tip "Share a path, not separate copies"
     Colleagues should normally load the **same shared JSON file**. Shared behavior belongs in that file. Personal Overrides stay in each user's local QGIS profile.
@@ -41,8 +39,7 @@ Use this once when you are setting up StyleCore for a team or for yourself.
 
 ### Recommended: JSON folder also acts as resource root
 
-![new-config-config-dir.png](../../assets/images/screenshots/new-config-config-dir.png){ width="78%" }
-*This is the simplest and most portable setup. The JSON file and the resource folders live together.*
+<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/new-config-config-dir.png" alt="new-config-config-dir.png"><figcaption>This is the simplest and most portable setup. The JSON file and the resource folders live together.</figcaption></figure>
 
 Typical structure:
 
@@ -57,8 +54,7 @@ StyleCore/
 
 ### Alternative: separate resource root
 
-![new-config-custom-root.png](../../assets/images/screenshots/new-config-custom-root.png){ width="78%" }
-*Use this if the JSON file should live in one place but the shared resources should live somewhere else, for example on a dedicated drive or UNC path.*
+<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/new-config-custom-root.png" alt="new-config-custom-root.png"><figcaption>Use this if the JSON file should live in one place but the shared resources should live somewhere else, for example on a dedicated drive or UNC path.</figcaption></figure>
 
 This setup is useful when:
 
@@ -101,8 +97,7 @@ See [Troubleshooting – Moved folders or network drives](troubleshooting.md#mov
 
 Ordinary users mainly need the configuration path. Maintainers also need **Developer Mode**.
 
-![options-developer-section.png](../../assets/images/screenshots/options-developer-section.png){ width="82%" }
-*Developer Mode unlocks the shared maintenance sections.*
+<figure class="sc-shot sc-shot--tiny"><img src="../../assets/images/screenshots/options-developer-section.png" alt="options-developer-section.png"><figcaption>Developer Mode unlocks the shared maintenance sections.</figcaption></figure>
 
 Use Developer Mode when you need to:
 

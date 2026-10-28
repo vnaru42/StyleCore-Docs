@@ -2,8 +2,7 @@
 
 Brug **Developer Mode**, når du vedligeholder den fælles StyleCore-opsætning. Almindelige brugere har ikke brug for den. Developer Mode giver adgang til de fælles vedligeholdelsesområder i StyleCore-indstillingerne.
 
-![options-developer-section.png](../../assets/images/screenshots/options-developer-section.png){ width="82%" }
-*Developer Mode aktiveres fra Developer-sektionen i StyleCore-indstillingerne.*
+<figure class="sc-shot sc-shot--tiny"><img src="../../assets/images/screenshots/options-developer-section.png" alt="options-developer-section.png"><figcaption>Developer Mode aktiveres fra Developer-sektionen i StyleCore-indstillingerne.</figcaption></figure>
 
 ## 1. Slå Developer Mode til
 
@@ -26,13 +25,11 @@ Brug **Developer Mode**, når du vedligeholder den fælles StyleCore-opsætning.
 | File Suffix Rules | Vedligeholde suffix-baserede regler |
 | Save layer styles… | Skrive fælles QML-filer ud fra styles i QGIS |
 
-![developer-root-folder.png](../../assets/images/screenshots/developer-root-folder.png){ width="92%" }
-*Brug resource-root-sektionen, når den fælles ressourcemappe flyttes eller skifter navn.*
+<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/developer-root-folder.png" alt="developer-root-folder.png"><figcaption>Brug resource-root-sektionen, når den fælles ressourcemappe flyttes eller skifter navn.</figcaption></figure>
 
 ## 3. Vedligehold templates
 
-![developer-templates.png](../../assets/images/screenshots/developer-templates.png){ width="92%" }
-*Templates kan aktiveres, opfriskes eller kobles eksternt fra ét samlet sted.*
+<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-templates.png" alt="developer-templates.png"><figcaption>Templates kan aktiveres, opfriskes eller kobles eksternt fra ét samlet sted.</figcaption></figure>
 
 Brug denne sektion til at:
 
@@ -43,8 +40,7 @@ Brug denne sektion til at:
 
 ## 4. Vedligehold fælles automatiske lagstyles
 
-![developer-shared-styles.png](../../assets/images/screenshots/developer-shared-styles.png){ width="92%" }
-*Brug denne tabel, når det synlige lagnavn og QML-filnavnet ikke matcher.*
+<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-shared-styles.png" alt="developer-shared-styles.png"><figcaption>Brug denne tabel, når det synlige lagnavn og QML-filnavnet ikke matcher.</figcaption></figure>
 
 1. Tilføj eller vælg en række.
 2. Indtast lagnavnet.
@@ -54,8 +50,7 @@ Brug denne sektion til at:
 
 ## 5. Vedligehold File Suffix Rules
 
-![developer-file-suffix-rules.png](../../assets/images/screenshots/developer-file-suffix-rules.png){ width="92%" }
-*Hver regel kobler et filnavns-suffix og en filtype til en QML-fil.*
+<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-file-suffix-rules.png" alt="developer-file-suffix-rules.png"><figcaption>Hver regel kobler et filnavns-suffix og en filtype til en QML-fil.</figcaption></figure>
 
 1. Klik **Add suffix**.
 2. Indtast suffix, filtype og QML-fil.
@@ -64,8 +59,7 @@ Brug denne sektion til at:
 
 ## 6. Gem fælles QML-styles fra QGIS
 
-![developer-save-layer-styles.png](../../assets/images/screenshots/developer-save-layer-styles.png){ width="65%" }
-*Brug **Save layer styles…**, når opdaterede fælles QML-filer skal skrives ud fra det aktuelle projekt.*
+<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/developer-save-layer-styles.png" alt="developer-save-layer-styles.png"><figcaption>Brug **Save layer styles…**, når opdaterede fælles QML-filer skal skrives ud fra det aktuelle projekt.</figcaption></figure>
 
 1. Style dine lag i QGIS.
 2. Åbn **Save layer styles…**.

@@ -22,8 +22,8 @@ StyleCore helps individuals and teams keep QGIS projects consistent by working w
 <div class="sc-step"><strong>02 · Work</strong><p>Use styles, templates and print layouts from the StyleCore menu and QGIS settings.</p></div>
 <div class="sc-step"><strong>03 · Stay consistent</strong><p>Use current shared templates and layer styles as your team updates them.</p></div>
 </div>
- 
-<img src="assets/images/stylecore-diagram.png"
+
+<img src="assets/images/stylecore_diagram_NOBG.png"
      alt="StyleCore connects QGIS users to shared resources"
      style="width: 95%; display: block; margin: 20px auto;">
 
@@ -31,7 +31,7 @@ StyleCore helps individuals and teams keep QGIS projects consistent by working w
 <a class="sc-card" href="getting-started/installation/">
 <span class="sc-icon">↓</span>
 <h3>Install</h3>
-<p>Get StyleCore running in QGIS using the downloadable plugin ZIP.</p>
+<p>Install StyleCore directly from the official QGIS plugin catalogue, or use the release ZIP from GitHub.</p>
 </a>
 <a class="sc-card" href="getting-started/basic-usage/">
 <span class="sc-icon">◈</span>

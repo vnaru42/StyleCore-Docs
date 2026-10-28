@@ -2,8 +2,8 @@
 
 A project template is a reusable **QGIS project (`.qgs` / `.qgz`)** with predefined layers, map settings and styling. StyleCore reads templates **directly from their source locations**; it does not copy them into each user's local QGIS template folder.
 
-![menu-new-from-template.png](../../assets/images/screenshots/menu-new-from-template.png){ width="45%" }
-*Users open templates from **StyleCore → New from Template**.*
+<div class="sc-media-row" markdown>
+<div class="sc-media-row__text" markdown>
 
 ## 1. Open a template as a new project
 
@@ -14,6 +14,15 @@ A project template is a reusable **QGIS project (`.qgs` / `.qgz`)** with predefi
 5. Use **Save As** to save your own project under a new name.
 
 This protects the shared original.
+
+</div>
+<div class="sc-media-row__visual" markdown>
+
+![New from Template menu](../../assets/images/screenshots/menu-new-from-template.png){ width="100%" }
+*Users open templates from **StyleCore → New from Template**.*
+
+</div>
+</div>
 
 ## 2. Create a new shared template
 
