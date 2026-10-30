@@ -1,12 +1,39 @@
+
+
 # All Features
 
-StyleCore connects QGIS users to shared or local **styles, project templates, print layouts and optional fonts** through a JSON configuration. This is a quick overview; each link leads to step-by-step instructions.
+StyleCore connects QGIS users to shared or local **styles, project templates, print layouts and optional fonts**. Shared resource folders help teams stay consistent as styles and templates evolve.
+
+<img src="../../assets/images/StyleCore_Diagram_noBG.png"
+     alt="StyleCore connects QGIS users to shared resources"
+     style="width: 95%; display: block; margin: 20px auto;">
+
+
+
+<div class="sc-steps">
+  <div class="sc-step">
+    <strong>Connect</strong>
+    <p>Bring your team together through shared QGIS resources.</p>
+  </div>
+  <div class="sc-step">
+    <strong>Create</strong>
+    <p>Build projects faster with ready-to-use styles, templates and layouts.</p>
+  </div>
+  <div class="sc-step">
+    <strong>Stay consistent</strong>
+    <p>Keep every project aligned as your shared resources evolve.</p>
+  </div>
+</div>
+
+
+This is a quick overview; each link leads to step-by-step instructions.
 
 ## Configuration
 
+- Share a single config on a network drive (including UNC paths).
+- Colleagues use the same shared configuration and can reload it when shared settings change.
 - Create or load a JSON configuration directly inside QGIS.
 - Keep JSON and resource folders together for a portable setup, or use a separate resource root.
-- Share a single config on a network drive (including UNC paths), and switch between configurations.
 - Keep shared rules in JSON while personal preferences remain local.
 
 [Set up Configuration →](../documentation/configuration.md) · [Configuration JSON fields →](../documentation/configuration-json.md)

@@ -5,27 +5,27 @@ hide:
 
 <div class="sc-hero" markdown>
 
-<p class="sc-eyebrow">User Guide</p>
+<p class="sc-eyebrow" style="margin-left: 70px;">
+  <span>User Guide</span>
+  <span>·</span>
+  <span>Help</span>
+  <span>·</span>
+  <span>Documentation</span>
+</p>
 
-# StyleCore — a common home for QGIS styles, templates and layouts.
+<h1 class="sc-visually-hidden">StyleCore</h1>
 
-StyleCore helps individuals and teams keep QGIS projects consistent by working with shared styles, project templates and print layouts.
-
-</div>
-
-<div class="sc-hero" markdown>
-
-## A simpler everyday workflow
-
-<div class="sc-steps">
-<div class="sc-step"><strong>01 · Connect</strong><p>Load or create a JSON configuration that points to your local or shared resource folders.</p></div>
-<div class="sc-step"><strong>02 · Work</strong><p>Use styles, templates and print layouts from the StyleCore menu and QGIS settings.</p></div>
-<div class="sc-step"><strong>03 · Stay consistent</strong><p>Use current shared templates and layer styles as your team updates them.</p></div>
-</div>
-
-<img src="assets/images/stylecore_diagram_NOBG.png"
-     alt="StyleCore connects QGIS users to shared resources"
+<br>
+<img src="assets/images/SClogonobg.png"
+     alt="StyleCore"
      style="width: 95%; display: block; margin: 20px auto;">
+	 
+<p style="font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 200; white-space: nowrap; margin-left: clamp(0px, 4vw, 60px);">
+  Consistency by design.
+</p>
+
+
+<br>
 
 <div class="sc-card-grid">
 <a class="sc-card" href="getting-started/installation/">

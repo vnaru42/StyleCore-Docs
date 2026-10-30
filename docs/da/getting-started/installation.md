@@ -7,7 +7,7 @@ Installér først StyleCore direkte i QGIS. Derefter kan du indlæse dit teams f
 - **QGIS 3.44 eller nyere.** StyleCore 1.9.0 angiver kompatibilitet med QGIS 3.44 og 4.x.
 - Adgang til fællesdrev eller datakilder **kun hvis dit teams konfiguration bruger dem**.
 
-<div class="sc-install-illustration"><figure><img src="../../assets/images/screenshots/installation-qgis.png" alt="StyleCore i QGIS’ officielle pluginadministration (allerede installeret)." style="max-width:640px"><figcaption>StyleCore i QGIS’ officielle pluginadministration (allerede installeret).</figcaption></figure></div>
+<div class="sc-install-illustration"><figure><img src="../../../assets/images/screenshots/installation-qgis.png" alt="StyleCore i QGIS’ officielle pluginadministration (allerede installeret)." style="max-width:640px"><figcaption>StyleCore i QGIS’ officielle pluginadministration (allerede installeret).</figcaption></figure></div>
 
 ## 2. Installér fra QGIS (anbefalet)
 

@@ -2,7 +2,7 @@
 
 A configuration is the **JSON file** that tells StyleCore where to find shared styles, project templates, print layouts and optional fonts. This page explains the **practical workflow inside QGIS**. For the fields stored in the JSON itself, see [Configuration JSON](configuration-json.md).
 
-<figure class="sc-shot sc-shot--large"><img src="../../assets/images/screenshots/options-main-open.png" alt="options-main-open.png"><figcaption>The main StyleCore settings page in QGIS. Ordinary users mostly work with **Personal Overrides** and **Configuration**. Maintainers also use **Developer**.</figcaption></figure>
+<figure class="sc-shot sc-shot--large"><img src="../../assets/images/screenshots/options-main-open.png" alt="options-main-open.png"><figcaption>The main StyleCore settings page in QGIS. Ordinary users mostly work with <strong>Personal Overrides</strong> and <strong>Configuration</strong>. Maintainers also use <strong>Developer</strong>.</figcaption></figure>
 
 ## 1. Load an existing configuration
 
@@ -15,7 +15,7 @@ Use this when a colleague has already created the shared setup.
 5. Confirm the name under **Active configuration**.
 6. Test the configuration from the StyleCore menu, for example **New from Template** or **Print Layouts**.
 
-<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/options-configuration-section.png" alt="options-configuration-section.png"><figcaption>The Configuration section stores the path to the active JSON file and gives access to **Load configuration…** and **New configuration…**.</figcaption></figure>
+<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/options-configuration-section.png" alt="options-configuration-section.png"><figcaption>The Configuration section stores the path to the active JSON file and gives access to <strong>Load configuration…</strong> and <strong>New configuration…</strong>.</figcaption></figure>
 
 !!! tip "Share a path, not separate copies"
     Colleagues should normally load the **same shared JSON file**. Shared behavior belongs in that file. Personal Overrides stay in each user's local QGIS profile.

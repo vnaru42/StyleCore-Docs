@@ -4,31 +4,45 @@ hide:
 ---
 
 <div class="sc-hero" markdown>
-<p class="sc-eyebrow">Brugervejledning</p>
 
-# StyleCore — ét fælles sted til QGIS-styles, skabeloner og printlayouts.
+<p class="sc-eyebrow" style="margin-left: 70px;">
+  <span>Brugervejledning</span>
+  <span>·</span>
+  <span>Hjælp</span>
+  <span>·</span>
+  <span>Dokumentation</span>
+</p>
 
-StyleCore hjælper enkeltpersoner og teams med at arbejde ensartet i QGIS ved at bruge fælles styles, projektskabeloner og printlayouts.
+<h1 class="sc-visually-hidden">StyleCore</h1>
 
-</div>
-
-<div class="sc-hero" markdown>
-
-## En enklere arbejdsdag
-
-<div class="sc-steps">
-<div class="sc-step"><strong>01 · Forbind</strong><p>Indlæs eller opret en JSON-konfiguration, der peger på dine lokale eller fælles ressourcemapper.</p></div>
-<div class="sc-step"><strong>02 · Arbejd</strong><p>Brug styles, skabeloner og printlayouts via StyleCore-menuen og QGIS-indstillingerne.</p></div>
-<div class="sc-step"><strong>03 · Bevar ensartetheden</strong><p>Hold udvalgte projektskabeloner og lagstyles opdateret, når ressourcerne ændres.</p></div>
-</div>
-
-<img src="../assets/images/stylecore-diagram.png"
-     alt="StyleCore forbinder QGIS-brugere med fælles ressourcer"
+<br>
+<img src="../assets/images/SClogonobg.png"
+     alt="StyleCore"
      style="width: 95%; display: block; margin: 20px auto;">
+	 
+<p style="font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 200; white-space: nowrap; margin-left: clamp(0px, 4vw, 60px);">
+  Consistency by design.
+</p>
+
+
+<br>
 
 <div class="sc-card-grid">
-<a class="sc-card" href="getting-started/installation/"><span class="sc-icon">↓</span><h3>Installér</h3><p>Installér StyleCore fra QGIS' officielle pluginrepository, eller brug ZIP-filen fra GitHub.</p></a>
-<a class="sc-card" href="getting-started/basic-usage/"><span class="sc-icon">◈</span><h3>Brug</h3><p>Indlæs en konfiguration, og begynd at bruge fælles QGIS-ressourcer.</p></a>
-<a class="sc-card" href="features/feature-reference/"><span class="sc-icon">▦</span><h3>Udforsk</h3><p>Se StyleCores muligheder uden at læse den tekniske opsætning.</p></a>
+<a class="sc-card" href="getting-started/installation/">
+<span class="sc-icon">↓</span>
+<h3>Installér</h3>
+<p>Installér StyleCore fra QGIS’ officielle pluginrepository, eller brug ZIP-filen fra GitHub.</p>
+</a>
+<a class="sc-card" href="getting-started/basic-usage/">
+<span class="sc-icon">◈</span>
+<h3>Brug</h3>
+<p>Indlæs en konfiguration, og begynd at bruge fælles QGIS-ressourcer.</p>
+</a>
+<a class="sc-card" href="features/feature-reference/">
+<span class="sc-icon">▦</span>
+<h3>Udforsk</h3>
+<p>Få overblik over StyleCores funktioner uden at læse tekniske opsætningsvejledninger.</p>
+</a>
 </div>
+
 </div>

@@ -123,7 +123,7 @@ A more specific rule can point to a different filename or a QML in another subfo
 ]
 ```
 
-<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-shared-styles.png" alt="developer-shared-styles.png"><figcaption>Shared automatic layer styles are maintained in Developer settings and then written into `style_rules`.</figcaption></figure>
+<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-shared-styles.png" alt="developer-shared-styles.png"><figcaption>Shared automatic layer styles are maintained in Developer settings and then written into <code>style_rules</code>.</figcaption></figure>
 
 ## 7. Understand File Suffix Rules
 

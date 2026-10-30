@@ -8,7 +8,7 @@ StyleCore åbner fælles QGIS-printlayoutskabeloner (`.qpt`) fra den konfigurere
 2. Vælg **StyleCore → Print Layouts**, og vælg et layout.
 3. Et nyt layout åbner i **QGIS Layout Designer**. Tilpas det og eksportér eller udskriv.
 
-![Eksempel på layout i QGIS Layout Designer](../../assets/images/screenshots/print-layout-example.png)
+![Eksempel på layout i QGIS Layout Designer](../../../assets/images/screenshots/print-layout-example.png)
 *Eksempel på et fælles layout åbnet via StyleCore.*
 
 ## 2. Opret en layoutskabelon
@@ -24,9 +24,9 @@ Angiv Item ID i **QGIS Layout Designer → Item Properties**. Navnene styrer, hv
 
 | Item ID | Eksempel | Funktion |
 |---|---|---|
-| `main_map` | <img src="../../assets/images/screenshots/item-id-main-map.png" alt="Item ID main_map" width="140"> | Bruger det aktuelle QGIS-kortudsnit til hovedkortet og aktiverer **Move Item Content**, hvor det understøttes. |
-| `mini_map` | <img src="../../assets/images/screenshots/item-id-mini-map.png" alt="Item ID mini_map" width="140"> | Bruger også det aktuelle kortudsnit, men opretter ikke automatisk et overview-forhold. |
-| `logo` | <img src="../../assets/images/screenshots/item-id-logo.png" alt="Item ID logo" width="140"> | Indlæser på et Picture-element en SVG-fil med samme basisnavn fra layouts-mappen. |
+| `main_map` | <img src="../../../assets/images/screenshots/item-id-main-map.png" alt="Item ID main_map" width="140"> | Bruger det aktuelle QGIS-kortudsnit til hovedkortet og aktiverer **Move Item Content**, hvor det understøttes. |
+| `mini_map` | <img src="../../../assets/images/screenshots/item-id-mini-map.png" alt="Item ID mini_map" width="140"> | Bruger også det aktuelle kortudsnit, men opretter ikke automatisk et overview-forhold. |
+| `logo` | <img src="../../../assets/images/screenshots/item-id-logo.png" alt="Item ID logo" width="140"> | Indlæser på et Picture-element en SVG-fil med samme basisnavn fra layouts-mappen. |
 
 
 
@@ -46,7 +46,7 @@ Giver man sin billede fil et *Item ID* der matcher med en `.svg` fil på navn, k
 <div class="sc-media-row__visual" markdown>
 
 
-<img src="../../assets/images/screenshots/logo-example.png" alt="Example SVG logo" width="100%">
+<img src="../../../assets/images/screenshots/logo-example.png" alt="Example SVG logo" width="100%">
 <figcaption>Du kan bruge et vilkårligt SVG-filnavn, så længe Picture Item ID og SVG-filens basisnavn matcher helt præcist.</figcaption>
 
 

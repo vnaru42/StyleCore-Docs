@@ -63,7 +63,7 @@ See [Layer Styling](layer-styling.md).
 
 ## 6. Save shared QML styles from QGIS
 
-<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/developer-save-layer-styles.png" alt="developer-save-layer-styles.png"><figcaption>Use **Save layer styles…** when you want to write updated shared QML files from the current project.</figcaption></figure>
+<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/developer-save-layer-styles.png" alt="developer-save-layer-styles.png"><figcaption>Use <strong>Save layer styles…</strong> when you want to write updated shared QML files from the current project.</figcaption></figure>
 
 1. Style your layers in QGIS.
 2. Open **Save layer styles…**.

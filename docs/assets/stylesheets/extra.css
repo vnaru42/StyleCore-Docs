@@ -306,3 +306,41 @@
 
 /* Final stylesheet controls all screenshot framing; ordinary text remains unboxed. */
 .md-typeset .sc-media-row {background:transparent!important;border:0!important;padding:0!important;border-radius:0!important;}
+
+.sc-eyebrow-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(10px, 2.5vw, 35px);
+    width: auto;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.sc-eyebrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+}
+
+@media (max-width: 600px) {
+    .sc-eyebrow-row {
+        gap: 8px;
+        font-size: 10px;
+    }
+}
+
+/* Keep the logo-based homepage accessible without adding a visible duplicate title. */
+.md-typeset .sc-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

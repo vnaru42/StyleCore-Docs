@@ -1,12 +1,35 @@
 # Alle funktioner
 
-StyleCore forbinder QGIS-brugere med fælles eller lokale **styles, projektskabeloner, printlayouts og valgfrie skrifttyper** via en JSON-konfiguration. Her er det hurtige overblik. Linkene fører til trinvise vejledninger.
+StyleCore forbinder QGIS-brugere med fælles eller lokale **styles, projektskabeloner, printlayouts og valgfrie skrifttyper**. Fælles ressourcemapper hjælper teams med at arbejde ensartet, mens styles og skabeloner udvikles.
+
+
+<img src="../../../assets/images/StyleCore_Diagram_noBG.png"
+     alt="StyleCore forbinder QGIS-brugere med fælles ressourcer"
+     style="width: 95%; display: block; margin: 20px auto;">
+
+<div class="sc-steps">
+  <div class="sc-step">
+    <strong>Forbind</strong>
+    <p>Saml teamet om fælles QGIS-ressourcer.</p>
+  </div>
+  <div class="sc-step">
+    <strong>Opret</strong>
+    <p>Opret projekter hurtigere med færdige styles, skabeloner og layouts.</p>
+  </div>
+  <div class="sc-step">
+    <strong>Bevar ensartetheden</strong>
+    <p>Hold projekterne ensartede, mens de fælles ressourcer udvikler sig.</p>
+  </div>
+</div>
+
+Dette er et hurtigt overblik; hvert link fører til en trinvis vejledning.
 
 ## Konfiguration
 
 - Opret eller indlæs en JSON-konfiguration direkte i QGIS.
 - Hold JSON og ressourcemapper samlet i en flytbar opsætning, eller vælg en særskilt rodmappe.
-- Del én config på fællesdrev (også UNC-stier), og skift mellem konfigurationer.
+- Del én konfiguration på et fællesdrev (også UNC-stier).
+- Kollegaer kan bruge samme fælles konfiguration og genindlæse den, når de fælles indstillinger ændres.
 - Gem fælles regler i JSON, mens personlige valg forbliver lokale.
 
 [Opsætning af konfiguration →](../documentation/configuration.md) · [JSON-felter →](../documentation/configuration-json.md)

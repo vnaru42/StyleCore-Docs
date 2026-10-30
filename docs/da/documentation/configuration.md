@@ -2,7 +2,7 @@
 
 En konfiguration er den **JSON-fil**, som fortæller StyleCore, hvor de fælles styles, projektskabeloner, printlayouts og eventuelle fonte ligger. Denne side forklarer den **praktiske arbejdsgang i QGIS**. Se [Konfiguration JSON](configuration-json.md) for felterne i selve JSON-filen.
 
-![options-main-open.png](../../assets/images/screenshots/options-main-open.png){ width="100%" }
+![options-main-open.png](../../../assets/images/screenshots/options-main-open.png){ width="100%" }
 *StyleCores hovedside i QGIS-indstillingerne. Almindelige brugere arbejder typisk med **Personal Overrides** og **Configuration**. Vedligeholdere bruger også **Developer**.*
 
 ## 1. Indlæs en eksisterende konfiguration
@@ -16,7 +16,7 @@ Brug dette, hvis en kollega allerede har oprettet den fælles opsætning.
 5. Bekræft navnet under **Active configuration**.
 6. Test konfigurationen fra StyleCore-menuen, fx **New from Template** eller **Print Layouts**.
 
-![options-configuration-section.png](../../assets/images/screenshots/options-configuration-section.png){ width="82%" }
+![options-configuration-section.png](../../../assets/images/screenshots/options-configuration-section.png){ width="82%" }
 *Configuration-sektionen viser stien til den aktive JSON-fil og giver adgang til **Load configuration…** og **New configuration…**.*
 
 !!! tip "Del en sti – ikke flere kopier"
@@ -41,7 +41,7 @@ Brug dette én gang, når du sætter StyleCore op for et team eller til dig selv
 
 ### Anbefalet: JSON-mappen er også rodmappe
 
-![new-config-config-dir.png](../../assets/images/screenshots/new-config-config-dir.png){ width="78%" }
+![new-config-config-dir.png](../../../assets/images/screenshots/new-config-config-dir.png){ width="78%" }
 *Dette er den enkleste og mest flytbare løsning. JSON-filen og ressourcemapperne ligger samlet.*
 
 Typisk struktur:
@@ -57,7 +57,7 @@ StyleCore/
 
 ### Alternativ: separat rodmappe
 
-![new-config-custom-root.png](../../assets/images/screenshots/new-config-custom-root.png){ width="78%" }
+![new-config-custom-root.png](../../../assets/images/screenshots/new-config-custom-root.png){ width="78%" }
 *Brug dette, hvis JSON-filen skal ligge ét sted, men de fælles ressourcer skal ligge et andet sted, fx på et dedikeret drev eller UNC-sti.*
 
 ## 3. Tilføj eller opdater fælles ressourcer
@@ -95,7 +95,7 @@ Se [Fejlfinding – Flyttede mapper eller netværksdrev](troubleshooting.md).
 
 Almindelige brugere har primært brug for konfigurationsstien. Vedligeholdere har også brug for **Developer Mode**.
 
-![options-developer-section.png](../../assets/images/screenshots/options-developer-section.png){ width="82%" }
+![options-developer-section.png](../../../assets/images/screenshots/options-developer-section.png){ width="82%" }
 *Developer Mode åbner de fælles vedligeholdelsesområder.*
 
 Brug Developer Mode, når du skal:

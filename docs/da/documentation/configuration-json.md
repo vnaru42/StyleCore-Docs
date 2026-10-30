@@ -88,13 +88,13 @@ Når du har brug for mere kontrol, kan JSON-filen også gemme **eksplicitte regl
 
 Det betyder, at **mappen med JSON-filen** er rodmappen.
 
-<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/new-config-config-dir.png" alt="new-config-config-dir.png"><figcaption>Når denne mulighed er slået til, fungerer konfigurationsfilens mappe også som rodmappe for ressourcer.</figcaption></figure>
+<figure class="sc-shot sc-shot--small"><img src="../../../assets/images/screenshots/new-config-config-dir.png" alt="new-config-config-dir.png"><figcaption>Når denne mulighed er slået til, fungerer konfigurationsfilens mappe også som rodmappe for ressourcer.</figcaption></figure>
 
 ### `root_mode: "custom"`
 
 Det betyder, at JSON-filen peger på en **separat rodmappe**.
 
-<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/new-config-custom-root.png" alt="new-config-custom-root.png"><figcaption>Brug en custom root, når de fælles ressourcer skal ligge et andet sted end selve JSON-filen.</figcaption></figure>
+<figure class="sc-shot sc-shot--small"><img src="../../../assets/images/screenshots/new-config-custom-root.png" alt="new-config-custom-root.png"><figcaption>Brug en custom root, når de fælles ressourcer skal ligge et andet sted end selve JSON-filen.</figcaption></figure>
 
 ## 6. Forstå fælles style-regler
 
@@ -117,7 +117,7 @@ En mere selvstændig regel kan pege på et andet navn eller en QML-fil i en ande
 ]
 ```
 
-<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-shared-styles.png" alt="developer-shared-styles.png"><figcaption>Shared automatic layer styles vedligeholdes i Developer og skrives derefter til `style_rules` i JSON-filen.</figcaption></figure>
+<figure class="sc-shot "><img src="../../../assets/images/screenshots/developer-shared-styles.png" alt="developer-shared-styles.png"><figcaption>Shared automatic layer styles vedligeholdes i Developer og skrives derefter til <code>style_rules</code> i JSON-filen.</figcaption></figure>
 
 ## 7. Forstå File Suffix Rules
 
@@ -133,7 +133,7 @@ Eksempel:
 ]
 ```
 
-<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-file-suffix-rules.png" alt="developer-file-suffix-rules.png"><figcaption>Hver File Suffix Rule gemmer et suffix, en filtype og en mål-QML.</figcaption></figure>
+<figure class="sc-shot "><img src="../../../assets/images/screenshots/developer-file-suffix-rules.png" alt="developer-file-suffix-rules.png"><figcaption>Hver File Suffix Rule gemmer et suffix, en filtype og en mål-QML.</figcaption></figure>
 
 ## 8. Forstå templates i JSON-filen
 
@@ -154,7 +154,7 @@ Eksempel:
 
 `restyle_on_open` gemmer templates, som skal genanvende matchende styles, når de åbnes gennem StyleCore.
 
-<figure class="sc-shot "><img src="../../assets/images/screenshots/developer-templates.png" alt="developer-templates.png"><figcaption>Templates-tabellen styrer Active, Refresh og eksterne template-referencer.</figcaption></figure>
+<figure class="sc-shot "><img src="../../../assets/images/screenshots/developer-templates.png" alt="developer-templates.png"><figcaption>Templates-tabellen styrer Active, Refresh og eksterne template-referencer.</figcaption></figure>
 
 ## 9. Sådan vedligeholder du JSON-filen sikkert
 
@@ -169,9 +169,9 @@ Normalt bør du **ikke redigere JSON-filen manuelt**, medmindre det er nødvendi
 
 Nyttige steder til vedligeholdelse:
 
-<figure class="sc-shot sc-shot--tiny"><img src="../../assets/images/screenshots/options-developer-section.png" alt="options-developer-section.png"><figcaption>Developer Mode åbner de fælles vedligeholdelsesområder.</figcaption></figure>
+<figure class="sc-shot sc-shot--tiny"><img src="../../../assets/images/screenshots/options-developer-section.png" alt="options-developer-section.png"><figcaption>Developer Mode åbner de fælles vedligeholdelsesområder.</figcaption></figure>
 
-<figure class="sc-shot sc-shot--small"><img src="../../assets/images/screenshots/developer-root-folder.png" alt="developer-root-folder.png"><figcaption>Brug rodmappe-sektionen, når en fælles mappe eller et drev skifter placering.</figcaption></figure>
+<figure class="sc-shot sc-shot--small"><img src="../../../assets/images/screenshots/developer-root-folder.png" alt="developer-root-folder.png"><figcaption>Brug rodmappe-sektionen, når en fælles mappe eller et drev skifter placering.</figcaption></figure>
 
 JSON-filen vedligeholdes især gennem:
 

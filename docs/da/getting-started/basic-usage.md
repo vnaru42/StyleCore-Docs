@@ -14,7 +14,7 @@ Når en konfiguration er indlæst, arbejder StyleCore side om side med normale Q
 </div>
 <div class="sc-media-row__visual" markdown>
 
-![StyleCores hovedmenu](../../assets/images/screenshots/menu-main.png){ width="100%" }
+![StyleCores hovedmenu](../../../assets/images/screenshots/menu-main.png){ width="100%" }
 *StyleCore-menuen giver adgang til indstillinger, Automatic Styling, skabeloner, printlayouts og hjælp.*
 
 </div>
@@ -40,7 +40,7 @@ Når en konfiguration er indlæst, arbejder StyleCore side om side med normale Q
 </div>
 <div class="sc-media-row__visual" markdown>
 
-![New from Template-menu](../../assets/images/screenshots/menu-new-from-template.png){ width="100%" }
+![New from Template-menu](../../../assets/images/screenshots/menu-new-from-template.png){ width="100%" }
 *Skabeloner åbnes direkte fra StyleCore-menuen.*
 
 </div>
@@ -58,7 +58,7 @@ Når en konfiguration er indlæst, arbejder StyleCore side om side med normale Q
 </div>
 <div class="sc-media-row__visual" markdown>
 
-![Print Layouts-menu](../../assets/images/screenshots/menu-print-layouts.png){ width="100%" }
+![Print Layouts-menu](../../../assets/images/screenshots/menu-print-layouts.png){ width="100%" }
 *Tilgængelige printlayouts vises direkte i StyleCore-menuen.*
 
 </div>

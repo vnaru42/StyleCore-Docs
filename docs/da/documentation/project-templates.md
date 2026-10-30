@@ -18,7 +18,7 @@ Det beskytter den fælles original.
 </div>
 <div class="sc-media-row__visual" markdown>
 
-![New from Template-menu](../../assets/images/screenshots/menu-new-from-template.png){ width="100%" }
+![New from Template-menu](../../../assets/images/screenshots/menu-new-from-template.png){ width="100%" }
 *Brugere åbner skabeloner fra **StyleCore → New from Template**.*
 
 </div>
@@ -46,7 +46,7 @@ Brug dette, når template-filen skal blive liggende uden for den normale templat
 
 ## 4. Styr Active og Refresh
 
-![developer-templates.png](../../assets/images/screenshots/developer-templates.png){ width="92%" }
+![developer-templates.png](../../../assets/images/screenshots/developer-templates.png){ width="92%" }
 *I Templates-tabellen bestemmer vedligeholderen, hvilke templates der vises i menuen, og hvilke der skal genopfriske matchende styles.*
 
 | Active | Refresh | Resultat |
